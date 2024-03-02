@@ -1,0 +1,68 @@
+{
+  "bottom_navigation": {
+    "activity": "Atividade",
+    "home": "Lar",
+    "settings": "Configurações",
+    "transfer": "Transferir"
+  },
+  "common": {
+    "aluminum": "Alumínio",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "sign_out": "sair"
+  },
+  "dashboard": {
+    "account_qr_hint": "Você pode usar este código QR para se identificar e mostrar quem você é.",
+    "balance": "Saldo",
+    "balance_other": "Saldos",
+    "earn_points_card_cta": "Vamos ajudar a ecologia juntos",
+    "earn_points_card_title": "Ganhe pontos VERICLEAN através do descarte de resíduos descartados.",
+    "hello": "Olá",
+    "material_collected": "Material coletado",
+    "material_collected_other": "Materiais coletados",
+    "view_account_qr": "Código QR da conta",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "glass": "Vidro",
+    "nothing_collected_yet": "Nada coletado ainda"
+  },
+  "exceptions": {
+    "work_in_progress": "Estamos expandindo sua experiência veridibloc",
+    "work_in_progress_second_line": "Fique atento às atualizações ecológicas",
+    "page_not_found": "Opa, você encontrou um lugar perdido",
+    "page_not_found_second_line": "Este lugar parece não ter sido reivindicado por nós ainda. Pedimos desculpas por este acontecimento desagradável. Pedimos gentilmente que retorne à página anterior.\nSe o problema persistir, não hesite em contactar-nos imediatamente."
+  },
+  "index": {
+    "welcome_title": "Bem-vindo, configure sua conta para continuar sua jornada de reciclagem"
+  },
+  "settings": {
+    "account_settings_card": {
+      "description": "Gerencie as informações da sua conta, privacidade e configurações de segurança para aprimorar sua experiência no Veridibloc.",
+      "label": "Gerencie sua conta",
+      "title": "Conta e personalização"
+    },
+    "language_card": {
+      "description": "Mude para o seu idioma preferido",
+      "label": "Mudar idioma",
+      "title": "Linguagem"
+    }
+  },
+  "pwa": {
+    "add_button_label": "Pressione o botão [Adicionar à tela inicial]",
+    "copy_body": "Este site possui funcionalidade de aplicativo. Adicione-o à tela inicial para usá-lo em tela cheia e off-line.",
+    "copy_title": "Adicionar à tela inicial",
+    "share_button_label": "Pressione o botão [Compartilhar]",
+    "close": "Fechar"
+  },
+  "activity": {
+    "card": {
+      "receive_title": "Receber fundos",
+      "transfer_title": "Transferir fundos"
+    },
+    "title": "Atividade",
+    "no_activity": {
+      "description": "Você não tem atividades. Vamos ajudar a ecologia juntos",
+      "title": "Nenhuma atividade para mostrar"
+    }
+  }
+}
