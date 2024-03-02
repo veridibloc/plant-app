@@ -1,5 +1,5 @@
 import { Webhook } from "svix";
-import { UserWebhookEvent, WebhookEvent } from "@clerk/nextjs/server";
+import { UserWebhookEvent, WebhookEvent} from "@clerk/nextjs/server";
 import { handleUserCreation } from "./eventHandlers/handleUserCreation";
 import { handleUserUpdate } from "./eventHandlers/handleUserUpdate";
 import { handleUserDeletion } from "./eventHandlers/handleUserDeletion";

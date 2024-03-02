@@ -7,6 +7,12 @@
   display: none;
 }
 
+.cl-profilePage__security,
+.cl-footer,
+.cl-navbarButton__security {
+  display: none;
+}
+
 .cl-userProfile-root,
 .cl-userProfile-root .cl-card {
   width: 100%;
