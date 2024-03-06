@@ -1,11 +1,9 @@
-import { currentUser } from "@clerk/nextjs";
+import {auth, currentUser, SignedIn} from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { Home } from "@/features/home";
 
-export default async function Page() {
-  const user = await currentUser();
-
-  if (user) return redirect(`/dashboard`);
-
+export default function Page() {
+  const {userId} = auth();
+  if (userId) return redirect(`/dashboard`);
   return <Home />;
 }

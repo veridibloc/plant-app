@@ -14,10 +14,11 @@ export const NavigationLink = ({ label, href, Icon }: Props) => {
   const isLinkActive = formattedPathName === href;
 
   const iconColor = isLinkActive ? "#166534" : "#737373";
+  const border = isLinkActive ? "border-b-4 border-b-green-800" : "";
   const textColor = isLinkActive ? "text-green-800" : "text-neutral-500";
 
   return (
-    <Link href={href}>
+    <Link href={href} className={border}>
       <div className="flex flex-col items-center justify-center">
         <Icon size={28} color={iconColor} />
         <span className={`text-sm font-medium ${textColor} text`}>{label}</span>

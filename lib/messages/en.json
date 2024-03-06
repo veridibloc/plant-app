@@ -3,14 +3,21 @@
     "activity": "Activity",
     "home": "Home",
     "settings": "Settings",
-    "transfer": "Transfer"
+    "transfer": "Transfer",
+    "incoming": "Incoming"
   },
   "common": {
     "aluminum": "Aluminum",
     "paper": "Paper",
     "plastic": "Plastic",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "qr-code": {
+      "scanning_error": "Could not scan QR code",
+      "device": "Device",
+      "touch_to_scan": "Touch to scan"
+    }
   },
+
   "dashboard": {
     "account_qr_hint": "You can use this QR code to be identified and show who you are.",
     "balance": "Balance",
@@ -64,5 +71,8 @@
       "receive_title": "Receive Funds",
       "transfer_title": "Transfer Funds"
     }
+  },
+  "incoming" : {
+    "scan": "Scan QR Code"
   }
 }

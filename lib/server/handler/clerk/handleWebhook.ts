@@ -7,6 +7,8 @@ import { getEnv } from "@/server/getEnv";
 import { NextRequest, NextResponse } from "next/server";
 import { headers as NextHeaders } from "next/headers";
 
+console.log("WH", getEnv("CLERK_WEBHOOK_SECRET"));
+
 export const handleWebhook = async (req: NextRequest) => {
   const headers = NextHeaders();
   const svix_id = headers.get("svix-id");
@@ -19,8 +21,9 @@ export const handleWebhook = async (req: NextRequest) => {
 
   let evt: WebhookEvent;
   try {
+    const body = await req.json();
     const webhook = new Webhook(getEnv("CLERK_WEBHOOK_SECRET"));
-    evt = webhook.verify(JSON.stringify(req.body), {
+    evt = webhook.verify(JSON.stringify(body), {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,

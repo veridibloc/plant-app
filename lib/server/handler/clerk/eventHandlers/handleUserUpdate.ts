@@ -4,7 +4,9 @@ import db from '@/server/prisma'
 export async function handleUserUpdate(event: UserWebhookEvent) {
     const user = event.data as UserJSON;
     console.log("Updating user:", user.id);
-    await db.account.update({
+    try {
+
+        await db.account.update({
         where: {
             userId: user.id,
         },
@@ -12,4 +14,8 @@ export async function handleUserUpdate(event: UserWebhookEvent) {
             status: user.banned ? "Inactive" : "Active",
         }
     })
+    } catch (e: any) {
+        console.error("[User Update Failed]:", e.message)
+        // ignore if not exists
+    }
 }

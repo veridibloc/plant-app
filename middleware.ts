@@ -8,14 +8,8 @@ const intlMiddleware = createIntlMiddleware({
   defaultLocale: DefaultLocale,
 });
 
-const IgnoreIntlRoute = /\/api\/.*/;
-
 export default authMiddleware({
   beforeAuth: (req) => {
-    if (IgnoreIntlRoute.test(req.url)) {
-      return NextResponse.next();
-    }
-
     // Execute next-intl middleware before Clerk's auth middleware
     return intlMiddleware(req);
   },
@@ -23,9 +17,6 @@ export default authMiddleware({
   ignoredRoutes:["/api/clerk/webhook"],
 });
 
-
-const localesMatcher = `/(${Locales.join("|")})(.*)`
-
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)",  "/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)"],
 };

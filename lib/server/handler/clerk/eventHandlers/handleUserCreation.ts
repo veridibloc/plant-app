@@ -6,6 +6,7 @@ import {createBip39Seed, encrypt} from '@/server/crypto';
 import db from '@/server/prisma'
 import {Amount} from '@signumjs/util';
 import {getLedgerClient} from '@/server/getLedgerClient';
+import {PrismaClientKnownRequestError} from '@prisma/client/runtime/library';
 
 
 /*
@@ -53,24 +54,35 @@ import {getLedgerClient} from '@/server/getLedgerClient';
 }
  */
 export async function handleUserCreation(event: UserWebhookEvent) {
+
     const user = event.data as UserJSON;
     const seed = createBip39Seed();
     const encryptedSeed = encrypt(seed, getEnv('AES_SECRET')) as string;
     const {publicKey} = generateMasterKeys(seed);
     const address = Address.fromPublicKey(publicKey);
     console.info("Creating account: ", user.email_addresses[0].email_address, user.id);
-    await db.account.create({
-        data: {
-            userId: user.id,
-            accountId: address.getNumericId(),
-            encSeed: encryptedSeed,
-            publicKey,
-            status: 'Active'
+    try {
+        await db.account.create({
+            data: {
+                userId: user.id,
+                accountId: address.getNumericId(),
+                encSeed: encryptedSeed,
+                publicKey,
+                status: 'Active'
+            }
+        })
+        console.info("Activating Account: ", address.getReedSolomonAddress(false), user.id);
+        await activateLedgerAccount(address);
+        console.log("User successfully created", address.getNumericId());
+    } catch (e: any) {
+        if (e instanceof PrismaClientKnownRequestError) {
+            if (e.code === "P2002") {
+                console.log(`User ${user.email_addresses[0].email_address} exists already`);
+                return;
+            }
         }
-    })
-    console.info("Activating Account: ",address.getReedSolomonAddress(false), user.id);
-    await activateLedgerAccount(address);
-    console.log("User successfully created", address.getNumericId());
+        throw e;
+    }
 }
 
 async function activateLedgerAccount(address: Address) {
@@ -81,8 +93,8 @@ async function activateLedgerAccount(address: Address) {
         feePlanck: Amount.fromSigna(0.02).getPlanck(),
         recipientId: address.getNumericId(),
         recipientPublicKey: address.getPublicKey(),
-        senderPublicKey:publicKey,
-        senderPrivateKey:signPrivateKey,
+        senderPublicKey: publicKey,
+        senderPrivateKey: signPrivateKey,
         attachment: new AttachmentMessage({
             message: 'Bem vindo à Veridibloc! Uma nova era de reciclagem começou! ♻️ - Movido pelo blockchain ecológico Signum.',
             messageIsText: true

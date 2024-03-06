@@ -24,6 +24,7 @@
     "@signumjs/crypto": "^1.0.0-rc.75",
     "@signumjs/http": "^1.0.0-rc.75",
     "@signumjs/util": "^1.0.0-rc.75",
+    "@yudiel/react-qr-scanner": "^2.0.0-beta.3",
     "next": "^14.1.0",
     "next-intl": "^3.9.1",
     "preline": "^2.0.3",

@@ -1,15 +1,21 @@
 {
   "bottom_navigation": {
     "activity": "Atividade",
-    "home": "Lar",
+    "home": "Início",
     "settings": "Configurações",
-    "transfer": "Transferir"
+    "transfer": "Transferir",
+    "incoming": "Entrada"
   },
   "common": {
     "aluminum": "Alumínio",
     "paper": "Papel",
     "plastic": "Plástico",
-    "sign_out": "sair"
+    "sign_out": "sair",
+    "qr-code": {
+      "scanning_error": "Não conseguiu ler o código QR",
+      "device": "Dispositivo",
+      "touch_to_scan": "Toque para escanear"
+    }
   },
   "dashboard": {
     "account_qr_hint": "Você pode usar este código QR para se identificar e mostrar quem você é.",
@@ -64,5 +70,8 @@
       "description": "Você não tem atividades. Vamos ajudar a ecologia juntos",
       "title": "Nenhuma atividade para mostrar"
     }
+  },
+  "incoming" : {
+    "scan": "Escanear Código QR"
   }
 }
