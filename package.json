@@ -35,7 +35,8 @@
     "reactjs-popup": "^2.0.6",
     "svix": "^1.13.0",
     "swr": "^2.2.5",
-    "zustand": "^4.4.3"
+    "zustand": "^4.4.3",
+    "@veridibloc/smart-contracts": "./veridibloc-smart-contracts-v0.0.6.tgz"
   },
   "devDependencies": {
     "@types/node": "^20",

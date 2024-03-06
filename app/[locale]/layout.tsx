@@ -1,15 +1,16 @@
-import {Suspense, type ReactNode} from "react";
+import {type ReactNode, Suspense} from "react";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {NextIntlClientProvider, useMessages} from "next-intl";
 import {ClerkProvider, currentUser} from "@clerk/nextjs";
-import {getClerkLocalization} from "@/utils/getClerkLocalization";
+import {getClerkLocalization} from "@/common/getClerkLocalization";
 import {Locales} from "@/types/locales";
 import {fetchUserAccount} from "@/server/fetchUserAccount";
-import {PublicKeyProvider} from "@/context/PublicKeyContext";
-import {PrelineScript} from "@/components/PrelineScript";
+import {PublicKeyProvider} from "@/ui/context/PublicKeyContext";
+import {PrelineScript} from "@/ui/components/PrelineScript";
 import {Inter} from "next/font/google";
 import "../globals.css";
+import {Spinner} from "@/ui/components/Spinner";
 
 export const metadata: Metadata = {
     title: "Veridibloc Wallet",

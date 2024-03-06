@@ -19,6 +19,11 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@braintree/sanitize-url@^6.0.1":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.4.tgz#923ca57e173c6b232bbbb07347b1be982f03e783"
+  integrity sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==
+
 "@clerk/backend@0.38.3":
   version "0.38.3"
   resolved "https://registry.yarnpkg.com/@clerk/backend/-/backend-0.38.3.tgz#d0b9e07ac12f50587ff5b8aa8ac3c5e7c08bb277"
@@ -450,6 +455,14 @@
   dependencies:
     axios "^0.21.4"
 
+"@signumjs/standards@^1.0.0-rc.75":
+  version "1.0.0-rc.75"
+  resolved "https://registry.yarnpkg.com/@signumjs/standards/-/standards-1.0.0-rc.75.tgz#e39f72f6dc11eaa4936da121484747053a638382"
+  integrity sha512-/KuKXUph1hCXjdQIvD/9Q3kxzUtYE4/ScWBcsJZmyBfvahM0n3nfX1bng8YdIm7X8OfaMHdZsXwzZG/ipgMMFQ==
+  dependencies:
+    "@braintree/sanitize-url" "^6.0.1"
+    "@signumjs/core" "^1.0.0-rc.75"
+
 "@signumjs/util@^1.0.0-rc.75":
   version "1.0.0-rc.75"
   resolved "https://registry.yarnpkg.com/@signumjs/util/-/util-1.0.0-rc.75.tgz#6920f4f44f2d5d9afefbb002ece1d2943f95485e"
@@ -623,6 +636,11 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/retry@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
+  integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
+
 "@types/scheduler@*":
   version "0.16.4"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.4.tgz#fedc3e5b15c26dc18faae96bf1317487cb3658cf"
@@ -694,6 +712,18 @@
   dependencies:
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
+
+"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.6.tgz":
+  version "0.0.6"
+  resolved "./veridibloc-smart-contracts-v0.0.6.tgz#4b9905c99cc2822f8e05834a3c7bd829b6d67e6c"
+  dependencies:
+    "@signumjs/contracts" "^1.0.0-rc.75"
+    "@signumjs/core" "^1.0.0-rc.75"
+    "@signumjs/crypto" "^1.0.0-rc.75"
+    "@signumjs/standards" "^1.0.0-rc.75"
+    "@signumjs/util" "^1.0.0-rc.75"
+    p-retry "4"
+    signum-smartc-testbed "./signum-smartc-testbed-v1.0.2.tgz"
 
 "@yudiel/react-qr-scanner@^2.0.0-beta.3":
   version "2.0.0-beta.3"
@@ -2527,6 +2557,14 @@ p-locate@^5.0.0:
   dependencies:
     p-limit "^3.0.2"
 
+p-retry@4:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.6.2.tgz#9baae7184057edd4e17231cee04264106e092a16"
+  integrity sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==
+  dependencies:
+    "@types/retry" "0.12.0"
+    retry "^0.13.1"
+
 pako@^1.0.10:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
@@ -2826,6 +2864,11 @@ resolve@^2.0.0-next.4:
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
+retry@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/retry/-/retry-0.13.1.tgz#185b1587acf67919d63b357349e03537b2484658"
+  integrity sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==
+
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
@@ -2923,10 +2966,27 @@ signal-exit@^4.0.1:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.1.0.tgz#952188c1cbd546070e2dd20d0f41c0ae0530cb04"
   integrity sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==
 
+signum-smartc-testbed@./signum-smartc-testbed-v1.0.2.tgz:
+  version "1.0.2"
+  resolved "./signum-smartc-testbed-v1.0.2.tgz#72dcfe3d219237f69d740915ea14ed733539cf62"
+  dependencies:
+    smartc-signum-compiler "2.2.1"
+    smartc-signum-simulator "^3.0.3"
+
 slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
+
+smartc-signum-compiler@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/smartc-signum-compiler/-/smartc-signum-compiler-2.2.1.tgz#3ba41a86286c74867e02ee9cd93305659fe41823"
+  integrity sha512-W98XPx42DIyB9yMzGjPIitN/yCs4XVOYEPSg9MAqWyqi8U0za6Qag3qvp2fp6thhNgEbZ8NCfCBQLS7XVjWQlA==
+
+smartc-signum-simulator@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/smartc-signum-simulator/-/smartc-signum-simulator-3.0.3.tgz#b9af9dff3c6c9cad79e72cc7c5b9e93282271f68"
+  integrity sha512-H398MW0URz2BjOK1FpqdIN6bN4k46STj7P+JPKW6FRLFOex/wqrVSJ4Mnp++8pMNoTkPbyG1QVUbcORPIcU/8g==
 
 snake-case@^3.0.4:
   version "3.0.4"

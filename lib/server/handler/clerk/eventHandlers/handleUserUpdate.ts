@@ -1,5 +1,5 @@
 import { UserWebhookEvent, UserJSON } from '@clerk/nextjs/server'
-import db from '@/server/prisma'
+import db from '../../../prisma'
 
 export async function handleUserUpdate(event: UserWebhookEvent) {
     const user = event.data as UserJSON;

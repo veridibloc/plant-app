@@ -1,0 +1,84 @@
+{
+  "bottom_navigation": {
+    "activity": "Activity",
+    "home": "Home",
+    "settings": "Settings",
+    "transfer": "Transfer",
+    "incoming": "Incoming"
+  },
+  "common": {
+    "aluminum": "Aluminum",
+    "paper": "Paper",
+    "plastic": "Plastic",
+    "sign_out": "Sign out",
+    "qr-code": {
+      "scanning_error": "Could not scan QR code",
+      "device": "Device",
+      "touch_to_scan": "Touch to scan"
+    }
+  },
+
+  "dashboard": {
+    "account_qr_hint": "You can use this QR code to be identified and show who you are.",
+    "balance": "Balance",
+    "balance_other": "Balances",
+    "earn_points_card_cta": "Let's help ecology together",
+    "earn_points_card_title": "Earn VERICLEAN points through the disposal of discarded waste.",
+    "hello": "Hello",
+    "material_collected": "Material Collected",
+    "material_collected_other": "Materials Collected",
+    "paper": "Paper",
+    "plastic": "Plastic",
+    "glass": "Glass",
+    "view_account_qr": "Account QR Code",
+    "nothing_collected_yet": "Nothing collected yet"
+  },
+  "exceptions": {
+    "work_in_progress": "We're expanding your veridibloc experience",
+    "work_in_progress_second_line": "Stay tuned to ecology updates",
+    "page_not_found": "Oooops, you found a lost place",
+    "page_not_found_second_line": "This place seems not to be claimed by us yet. We apologize for this unpleasant event. We kindly ask you to return to the previous page.\nIf this problem persist, do not hesitate to contact us immediately."
+  },
+  "index": {
+    "welcome_title": "Welcome, set up your account to continue your recycling journey"
+  },
+  "settings": {
+    "account_settings_card": {
+      "description": "Manage your account information, privacy, and security settings to enhance your Veridibloc experience.",
+      "label": "Manage your account",
+      "title": "Account & personalization"
+    },
+    "language_card": {
+      "description": "Change to your preferred language",
+      "label": "Change language",
+      "title": "Language"
+    }
+  },
+  "pwa": {
+    "add_button_label": "Press the [Add to Home Screen] button",
+    "copy_body": "This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.",
+    "copy_title": "Add to Home Screen",
+    "share_button_label": "Press the [Share] button",
+    "close": "Close"
+  },
+  "activity": {
+    "title": "Activity",
+    "no_activity": {
+      "title": "No activity to show",
+      "description": "You have no activities. Let's help ecology together"
+    },
+    "card": {
+      "receive_title": "Receive Funds",
+      "transfer_title": "Transfer Funds"
+    }
+  },
+  "incoming" : {
+    "title": "Incoming Goods",
+    "description": "Scan the QR Code of incoming goods to proceed",
+    "scan": "Scan QR Code",
+    "confirmation": {
+      "title": "Confirm Receipt",
+      "description": "Please, confirm the receipt of the goods by entering the weight."
+    }
+  }
+}

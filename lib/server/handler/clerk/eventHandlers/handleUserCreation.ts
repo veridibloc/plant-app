@@ -1,11 +1,11 @@
 import {UserWebhookEvent, UserJSON} from '@clerk/nextjs/server'
 import {generateMasterKeys} from '@signumjs/crypto';
 import {Address, AttachmentMessage, LedgerClientFactory} from '@signumjs/core';
-import {getEnv} from '@/server/getEnv';
-import {createBip39Seed, encrypt} from '@/server/crypto';
-import db from '@/server/prisma'
+import {getEnv} from '../../../../common/getEnv';
+import {createBip39Seed, encrypt} from '../../../crypto';
+import db from '../../../prisma'
 import {Amount} from '@signumjs/util';
-import {getLedgerClient} from '@/server/getLedgerClient';
+import {getLedgerClient} from '../../../../common/getLedgerClient';
 import {PrismaClientKnownRequestError} from '@prisma/client/runtime/library';
 
 

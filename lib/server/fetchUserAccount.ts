@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { User } from "@clerk/backend";
-import prisma from "@/server/prisma";
+import prisma from "./prisma";
 
 export const fetchUserAccount = cache(
   async (user: User): Promise<{ id: string; pk: string } | null> => {

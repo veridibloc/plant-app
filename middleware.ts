@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { authMiddleware } from "@clerk/nextjs";
 import { DefaultLocale, Locales } from "@/types/locales";
 import createIntlMiddleware from "next-intl/middleware";

@@ -3,7 +3,7 @@ import { UserWebhookEvent, WebhookEvent} from "@clerk/nextjs/server";
 import { handleUserCreation } from "./eventHandlers/handleUserCreation";
 import { handleUserUpdate } from "./eventHandlers/handleUserUpdate";
 import { handleUserDeletion } from "./eventHandlers/handleUserDeletion";
-import { getEnv } from "@/server/getEnv";
+import { getEnv } from "../../../common/getEnv";
 import { NextRequest, NextResponse } from "next/server";
 import { headers as NextHeaders } from "next/headers";
 

@@ -17,7 +17,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./lib/*"]
+      "@/features/*": ["./features/*"],
+      "@/ui/*": ["./lib/ui/*"],
+      "@/types/*": ["./lib/types/*"],
+      "@/common/*": ["./lib/common/*"],
+      "@/server/*": ["./lib/server/*"],
+      "@/lib/*": ["./lib/*"]
     },
     "plugins": [
       {
