@@ -7,20 +7,25 @@ import {useRouter} from "next/navigation";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 
 
-const CodeValidator = /^(?<contractId>\d{10,24})-(?<lotId>\d{10,24})$/;
+const RegistrationCodeValidator = /^(?<accountId>\d{10,24})(-(?<lotId>\d{10,24}))?$/;
 export const Incoming = () => {
     const t = useTranslations("incoming")
     const {push} = useRouter()
 
     const handleOnResult = (text: string) => {
-
-        const match = CodeValidator.exec(text);
+        const match = RegistrationCodeValidator.exec(text);
         if (match) {
-            console.info("Valid Code found");
+            console.info("Valid Lot Code found");
             // @ts-ignore
-            const {contractId, lotId} = match.groups
-            if (contractId && lotId) {
-                return push(`./incoming/${contractId}/${lotId}`)
+            const {accountId, lotId} = match.groups
+            if (accountId && lotId) {
+                // lot registration - recycler+
+                return push(`./incoming/${accountId}/${lotId}`)
+            }
+
+            if (accountId && !lotId) {
+                // collected waste registration - waste collector
+                return push(`./incoming/${accountId}`)
             }
         }
         console.debug("Invalid Code Format");

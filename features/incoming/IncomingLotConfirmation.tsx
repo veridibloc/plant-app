@@ -3,13 +3,14 @@ import {useTranslations} from "next-intl";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 
 interface Props {
+    contractId: string;
     lotId: string;
     materialName: string;
     quantity: number;
 }
 
-export const IncomingConfirmation = ({quantity, materialName, lotId}: Props) => {
-    const t = useTranslations("incoming.confirmation")
+export const IncomingLotConfirmation = ({quantity, materialName, lotId}: Props) => {
+    const t = useTranslations("incoming.confirmation.lot")
 
     return <PageContainer>
 

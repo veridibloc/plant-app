@@ -77,8 +77,14 @@
     "description": "Scan the QR Code of incoming goods to proceed",
     "scan": "Scan QR Code",
     "confirmation": {
-      "title": "Confirm Receipt",
-      "description": "Please, confirm the receipt of the goods by entering the weight."
+      "collection": {
+        "title": "Confirm Collection Receipt",
+        "description": "Please, confirm the receipt of the collected material."
+      },
+      "lot": {
+        "title": "Confirm Lot Receipt",
+        "description": "Please, confirm the receipt of the goods."
+      }
     }
   }
 }

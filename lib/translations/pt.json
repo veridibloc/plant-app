@@ -76,9 +76,14 @@
     "description": "Digitalize o código QR das mercadorias recebidas para prosseguir",
     "scan": "Escanear Código QR",
     "confirmation": {
-      "title": "Confirmar Recebimento",
-      "description": "Por favor, confirme o recebimento da mercadoria informando o peso."
+      "collection": {
+        "title": "Recebimento da Coleta",
+        "description": "Por favor, confirme o recebimento do material coletado."
+      },
+      "lot": {
+        "title": "Recebimento de Mercadoria",
+        "description": "Por favor, confirme o recebimento da mercadoria."
+      }
     }
-
   }
 }

@@ -17,6 +17,7 @@
   "dependencies": {
     "@clerk/localizations": "^1.26.15",
     "@clerk/nextjs": "^4.29.9",
+    "@emeraldpay/hashicon-react": "^0.5.2",
     "@prisma/client": "^5.5.2",
     "@scure/bip39": "^1.2.1",
     "@signumjs/contracts": "^1.0.0-rc.75",
@@ -24,6 +25,7 @@
     "@signumjs/crypto": "^1.0.0-rc.75",
     "@signumjs/http": "^1.0.0-rc.75",
     "@signumjs/util": "^1.0.0-rc.75",
+    "@veridibloc/smart-contracts": "./veridibloc-smart-contracts-v0.0.6.tgz",
     "@yudiel/react-qr-scanner": "^2.0.0-beta.3",
     "next": "^14.1.0",
     "next-intl": "^3.9.1",
@@ -35,8 +37,7 @@
     "reactjs-popup": "^2.0.6",
     "svix": "^1.13.0",
     "swr": "^2.2.5",
-    "zustand": "^4.4.3",
-    "@veridibloc/smart-contracts": "./veridibloc-smart-contracts-v0.0.6.tgz"
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^20",
