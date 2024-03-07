@@ -6,11 +6,21 @@
     "transfer": "Transferir",
     "incoming": "Entrada"
   },
+  "materials": {
+    "aluminum": "Alumínio",
+    "paper": "Papel",
+    "plastic": "Plástico",
+    "glass": "Vidro",
+    "residue": "Resíduo"
+  },
   "common": {
     "aluminum": "Alumínio",
     "paper": "Papel",
     "plastic": "Plástico",
     "sign_out": "sair",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "success": "Sucesso",
     "qr-code": {
       "scanning_error": "Não conseguiu ler o código QR",
       "device": "Dispositivo",
@@ -75,6 +85,8 @@
     "title": "Entrada Mercadoria",
     "description": "Digitalize o código QR das mercadorias recebidas para prosseguir",
     "scan": "Escanear Código QR",
+    "enter_weight": "Digite o peso em kg",
+    "select_material": "Seleciona Material",
     "confirmation": {
       "collection": {
         "title": "Recebimento da Coleta",

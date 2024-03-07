@@ -77,6 +77,9 @@ async function fetchAccountInfo({
   return response;
 }
 
+/**
+ * @deprecated this is about the collector...
+ */
 export const useAccount = () => {
   const { user, isSignedIn } = useUser();
   const ledgerService = useLedgerService();

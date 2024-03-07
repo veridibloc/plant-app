@@ -1,19 +1,19 @@
-import {type ReactNode, Suspense} from "react";
+import {type ReactNode} from "react";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {NextIntlClientProvider, useMessages} from "next-intl";
 import {ClerkProvider, currentUser} from "@clerk/nextjs";
 import {getClerkLocalization} from "@/common/getClerkLocalization";
-import {Locales} from "@/types/locales";
+import {Locales} from "@/lib/translations/locales";
 import {fetchUserAccount} from "@/server/fetchUserAccount";
-import {PublicKeyProvider} from "@/ui/context/PublicKeyContext";
 import {PrelineScript} from "@/ui/components/PrelineScript";
 import {Inter} from "next/font/google";
 import "../globals.css";
-import {Spinner} from "@/ui/components/Spinner";
+import {UserAccount} from "@/types/userAccount";
+import {AccountContext, AccountProvider} from "@/ui/context/AccountContext";
 
 export const metadata: Metadata = {
-    title: "Veridibloc Wallet",
+    title: "VeridiBloc Plant App",
 };
 
 const inter = Inter({subsets: ["latin"]});
@@ -21,9 +21,9 @@ const inter = Inter({subsets: ["latin"]});
 function RootLayout({
                         children,
                         locale,
-                        account,
+                        userAccount,
                     }: {
-    account: { id: string; pk: string } | null;
+    userAccount: UserAccount;
     locale: string;
     children: ReactNode;
 }) {
@@ -63,9 +63,9 @@ function RootLayout({
 
         <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
-            <PublicKeyProvider publicKey={account?.pk || ""}>
+            <AccountProvider account={userAccount}>
                 {children}
-            </PublicKeyProvider>
+            </AccountProvider>
         </NextIntlClientProvider>
         </body>
 
@@ -82,9 +82,16 @@ async function AccountWrapper({
     children: ReactNode;
 }) {
     const user = await currentUser();
-    const account = user && (await fetchUserAccount(user));
+    if (!user) {
+        return null;
+    }
+    const account = await fetchUserAccount(user)
+    if (!account) {
+        console.error("Account not found for userId: ", user.id)
+        return notFound();
+    }
     return (
-        <RootLayout account={account} locale={locale}>
+        <RootLayout userAccount={account} locale={locale}>
             {children}
         </RootLayout>
     );

@@ -13,9 +13,9 @@ export const NavigationLink = ({ label, href, Icon }: Props) => {
   const matcher = new RegExp(`${href}(\/.*)?`);
   const isLinkActive = matcher.test(pathname);
 
-  const iconColor = isLinkActive ? "#166534" : "#737373";
-  const border = isLinkActive ? "border-b-4 border-b-green-800" : "";
-  const textColor = isLinkActive ? "text-green-800" : "text-neutral-500";
+  const iconColor = isLinkActive ? "#3b82f0" : "#737373";
+  const border = isLinkActive ? "border-b-4 border-b-blue-500" : "";
+  const textColor = isLinkActive ? "text-blue-500" : "text-neutral-500";
 
   return (
     <Link href={href} className={border}>

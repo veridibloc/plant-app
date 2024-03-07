@@ -1,25 +1,28 @@
-import { cache } from "react";
-import { User } from "@clerk/backend";
-import prisma from "./prisma";
+import {cache} from 'react'
+import {MetaInfo, UserAccount} from '@/types/userAccount';
+import {MaterialInfo} from '@/types/materialInfo';
+import prisma from './prisma';
+import {User} from '@clerk/backend';
+export const fetchUserAccount = cache(async (user: User, withSeed = false): Promise<UserAccount | null> => {
+    const account = await prisma.account.findUnique({where: {userId: user.id}})
 
-export const fetchUserAccount = cache(
-  async (user: User): Promise<{ id: string; pk: string } | null> => {
-    const userId = user.id;
+    if (!account) return null;
 
-    const account = await prisma.account.findUnique({
-      where: {
-        userId,
-      },
-    });
-
-    if (!account) {
-      console.error(`Account for userId [${userId}] not found`);
-      return null;
+    const metaInfo = (user.publicMetadata as unknown as MetaInfo) ?? {};
+    // being defensive
+    if(!metaInfo.collectible){
+        metaInfo.collectible = [];
+    }
+    if(!metaInfo.stockContracts){
+        metaInfo.stockContracts= [];
     }
 
     return {
-      id: account.accountId,
-      pk: account.publicKey,
-    };
-  }
-);
+        email: user.emailAddresses[0].emailAddress,
+        publicKey: account.publicKey,
+        firstName: user.firstName ?? "",
+        isActive: account.status === "Active",
+        encryptedSeed: withSeed ? account.encSeed : undefined,
+        ...metaInfo,
+    }
+})

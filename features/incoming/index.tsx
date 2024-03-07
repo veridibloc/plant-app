@@ -15,17 +15,18 @@ export const Incoming = () => {
     const handleOnResult = (text: string) => {
         const match = RegistrationCodeValidator.exec(text);
         if (match) {
-            console.info("Valid Lot Code found");
             // @ts-ignore
             const {accountId, lotId} = match.groups
             if (accountId && lotId) {
+                console.info("Valid Lot Code found");
                 // lot registration - recycler+
-                return push(`./incoming/${accountId}/${lotId}`)
+                return push(`/incoming/${accountId}/${lotId}`)
             }
 
             if (accountId && !lotId) {
+                console.info("Valid Collector Code found");
                 // collected waste registration - waste collector
-                return push(`./incoming/${accountId}`)
+                return push(`/incoming/${accountId}`)
             }
         }
         console.debug("Invalid Code Format");

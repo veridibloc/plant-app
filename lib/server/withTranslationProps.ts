@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { DefaultLocale } from "@/types/locales";
+import { DefaultLocale } from "@/lib/translations/locales";
 
 export async function withTranslationProps(ctx: GetServerSidePropsContext) {
   const { locale = DefaultLocale } = ctx;

@@ -17,6 +17,13 @@ export const PublicKeyContext =
 interface Props extends ChildrenProps {
   publicKey: string;
 }
+
+/**
+ * @deprecated This is not needed anymore as we use the AccountContext
+ * @param children
+ * @param publicKey
+ * @constructor
+ */
 export const PublicKeyProvider: FC<Props> = ({ children, publicKey = "" }) => {
   return (
     <PublicKeyContext.Provider value={{ publicKey }}>
