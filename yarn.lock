@@ -772,9 +772,9 @@
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
 
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.7.tgz":
-  version "0.0.7"
-  resolved "./veridibloc-smart-contracts-v0.0.7.tgz#7df0b2ba3a01951441b5570fb3f08d92a9d7fce2"
+"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.8.tgz":
+  version "0.0.8"
+  resolved "./veridibloc-smart-contracts-v0.0.8.tgz#bb3c0b24b7b399f504aba7991e207868d38555cd"
   dependencies:
     "@signumjs/contracts" "^1.0.0-rc.75"
     "@signumjs/core" "^1.0.0-rc.75"
@@ -782,7 +782,6 @@
     "@signumjs/standards" "^1.0.0-rc.75"
     "@signumjs/util" "^1.0.0-rc.75"
     p-retry "4"
-    signum-smartc-testbed "./signum-smartc-testbed-v1.0.2.tgz"
 
 "@yudiel/react-qr-scanner@^2.0.0-beta.3":
   version "2.0.0-beta.3"
@@ -3039,27 +3038,10 @@ signal-exit@^4.0.1:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-4.1.0.tgz#952188c1cbd546070e2dd20d0f41c0ae0530cb04"
   integrity sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==
 
-signum-smartc-testbed@./signum-smartc-testbed-v1.0.2.tgz:
-  version "1.0.2"
-  resolved "./signum-smartc-testbed-v1.0.2.tgz#72dcfe3d219237f69d740915ea14ed733539cf62"
-  dependencies:
-    smartc-signum-compiler "2.2.1"
-    smartc-signum-simulator "^3.0.3"
-
 slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
-
-smartc-signum-compiler@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/smartc-signum-compiler/-/smartc-signum-compiler-2.2.1.tgz#3ba41a86286c74867e02ee9cd93305659fe41823"
-  integrity sha512-W98XPx42DIyB9yMzGjPIitN/yCs4XVOYEPSg9MAqWyqi8U0za6Qag3qvp2fp6thhNgEbZ8NCfCBQLS7XVjWQlA==
-
-smartc-signum-simulator@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/smartc-signum-simulator/-/smartc-signum-simulator-3.0.3.tgz#b9af9dff3c6c9cad79e72cc7c5b9e93282271f68"
-  integrity sha512-H398MW0URz2BjOK1FpqdIN6bN4k46STj7P+JPKW6FRLFOex/wqrVSJ4Mnp++8pMNoTkPbyG1QVUbcORPIcU/8g==
 
 snake-case@^3.0.4:
   version "3.0.4"
