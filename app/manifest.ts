@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Veridibloc Wallet",
+    name: "Veridibloc Plant App",
     short_name: "Veridibloc",
     description: "Next generation of true Recycling and Circular Economy",
     start_url: "/",

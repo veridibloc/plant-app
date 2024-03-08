@@ -12,10 +12,11 @@ export default authMiddleware({
     // Execute next-intl middleware before Clerk's auth middleware
     return intlMiddleware(req);
   },
-  publicRoutes: ["/", "/:locale"],
+  publicRoutes: ["/", "/:locale", "/:locale/signin"],
   ignoredRoutes:["/api/clerk/webhook"],
 });
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", '/(pt|en)/:path*', "/(api|trpc)(.*)"],
+  // matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)"],
 };

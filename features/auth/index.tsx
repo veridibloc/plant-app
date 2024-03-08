@@ -1,7 +1,7 @@
 "use client";
 
-import {useTranslations} from "next-intl";
-import {useUser, SignIn} from "@clerk/nextjs";
+import {useLocale, useTranslations} from "next-intl";
+import {useAuth, SignIn as ClerkSignIn} from "@clerk/nextjs";
 import {Spinner} from "@/ui/components/Spinner";
 import {useEffect, useRef} from "react";
 
@@ -15,11 +15,10 @@ function disableSignUp() {
             }
         }, 1_000
     )
-
 }
 
-export const Home = () => {
-    const {isLoaded} = useUser();
+export const SignIn = () => {
+    const {isLoaded} = useAuth();
     const ref = useRef<any>();
     const t = useTranslations("index");
 
@@ -35,8 +34,7 @@ export const Home = () => {
             <p className="text-center text-neutral-500 max-w-xs font-medium mb-4">
                 {t("welcome_title")}
             </p>
-
-            {isLoaded ? <div ref={ref}><SignIn/></div> : <Spinner/>}
+            {isLoaded ? <div ref={ref}><ClerkSignIn/></div> : <Spinner/>}
         </section>
     );
 };
