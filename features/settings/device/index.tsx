@@ -28,7 +28,12 @@ export const DeviceSettings = memo(function DeviceSettings() {
                 </div>
                 )}
                 {videoDevices.map(({deviceId, label}) => <DeviceCard
-                    key={`dcard-${deviceId}`} label={label} deviceId={deviceId} onClick={handleDeviceSelected}/>)}
+                    key={`dcard-${deviceId}`}
+                    label={label}
+                    deviceId={deviceId}
+                    onClick={handleDeviceSelected}
+                    isActive={userSettings.deviceId === deviceId}
+                />)}
             </div>
         </section>
 );
