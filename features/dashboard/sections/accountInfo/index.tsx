@@ -1,3 +1,5 @@
+"use client"
+
 import { useTranslations } from "next-intl";
 import { UserButton } from "@clerk/nextjs";
 import { useState } from "react";

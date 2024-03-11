@@ -1,6 +1,6 @@
 "use client";
 
-import {useLocale, useTranslations} from "next-intl";
+import {useTranslations} from "next-intl";
 import {useAuth, SignIn as ClerkSignIn} from "@clerk/nextjs";
 import {Spinner} from "@/ui/components/Spinner";
 import {useEffect, useRef} from "react";

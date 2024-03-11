@@ -61,6 +61,12 @@
       "description": "Mude para o seu idioma preferido",
       "label": "Mudar idioma",
       "title": "Linguagem"
+    },
+    "device_card": {
+      "description": "Altera sua camera perferida",
+      "label": "Alterar Camera",
+      "title": "Camera",
+      "no_device_found": "Nenhum dispositivo encontrado"
     }
   },
   "pwa": {

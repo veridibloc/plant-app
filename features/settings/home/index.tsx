@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { AccountInfo } from "./sections/accountInfo";
 import { NavigationLinks } from "./sections/navigationLinks";
