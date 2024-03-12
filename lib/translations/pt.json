@@ -4,14 +4,44 @@
     "home": "Início",
     "settings": "Configurações",
     "transfer": "Transferir",
-    "incoming": "Entrada"
+    "incoming": "Entrada",
+    "separation": "Separação",
+    "conversion": "Conversão"
   },
   "materials": {
     "aluminum": "Alumínio",
     "paper": "Papel",
     "plastic": "Plástico",
     "glass": "Vidro",
-    "residue": "Resíduo"
+    "residue": "Resíduo",
+    "pet": {
+      "label": "PET",
+      "description": "Tereftalato de Polietileno"
+    },
+    "hdpe": {
+      "label": "HDPE",
+      "description": "Polietileno de Alta Densidade"
+    },
+    "pvc": {
+      "label": "PVC",
+      "description": "Policloreto de Vinila"
+    },
+    "ldpe": {
+      "label": "LDPE",
+      "description": "Polietileno de Baixa Densidade"
+    },
+    "pp": {
+      "label": "PP",
+      "description": "Polipropileno"
+    },
+    "ps": {
+      "label": "PS",
+      "description": "Poliestireno"
+    },
+    "other": {
+      "label": "OTH",
+      "description": "Outros"
+    }
   },
   "common": {
     "aluminum": "Alumínio",
@@ -102,6 +132,27 @@
         "title": "Recebimento de Mercadoria",
         "description": "Por favor, confirme o recebimento da mercadoria."
       }
+    }
+  },
+  "separation": {
+    "select": {
+      "title": "Separar Material",
+      "description": "Selecionar material separado"
+    },
+    "register": {
+      "title": "Separar Material",
+      "description": "Inserir quantidade e confirmar processo de separação",
+      "register_failed": "Falha no registro. Tente novamente ou solicite suporte."
+    }
+  },
+  "conversion": {
+    "select": {
+      "title": "Converter Material",
+      "description": "Selecionar material convertido"
+    },
+    "register": {
+      "title": "Converter Material",
+      "description": "Inserir quantidade e confirmar processo de conversão"
     }
   }
 }

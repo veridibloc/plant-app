@@ -6,7 +6,7 @@ import {Scanner, useDeviceList} from "@yudiel/react-qr-scanner";
 import {DropDown} from "@/ui/components/DropDown";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
 import {IconButton} from "@/ui/components/IconButton";
-import {RiSettings2Line} from "react-icons/ri";
+import {RiCameraLine, RiCameraSwitchLine, RiSettings2Line} from "react-icons/ri";
 import {useRouter} from "next/navigation";
 
 interface Props {
@@ -53,7 +53,7 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     return (<div className="p-2 md:p-20 md:max-w-1/2 relative overflow-hidden">
         {videoDevices.length > 1 && (
             <section className="relative w-full text-right">
-                <IconButton onClick={handleOpenCameraSettings} Icon={RiSettings2Line} iconSize={24} color="#9CA3AF">
+                <IconButton onClick={handleOpenCameraSettings} Icon={RiCameraSwitchLine} iconSize={24} color="#9CA3AF">
                     <small className="text-gray-400 text-sm">Change Camera</small>
                 </IconButton>
             </section>

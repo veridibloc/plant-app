@@ -1,7 +1,7 @@
 'use server'
 import {z, ZodError} from 'zod'
 import {contractsProvider} from '@/common/contractsProvider';
-import {badRequest, boomify, notFound} from '@hapi/boom';
+import {badRequest, boomify, notFound, unauthorized} from '@hapi/boom';
 import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
 
@@ -23,8 +23,13 @@ export async function registerCollection(prevState: any, formData: FormData) {
         }
 
         const user = await ensureAuthenticatedUser();
+        if(user.publicMetadata.role !== 'separator'){
+            throw unauthorized("You are not authorized to perform this action");
+        }
+
         const contract = await contractsProvider.getCollectorTokenContractSingleton();// check if exists!
-        const {materialId, quantity, collectorId} =  parsedData.data
+        const {materialId, quantity, collectorId} =  parsedData.data;
+
         const collectorAccount = await contractsProvider.ledger.account.getAccount({
             accountId: collectorId,
             includeCommittedAmount: false,

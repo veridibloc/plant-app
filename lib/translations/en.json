@@ -4,14 +4,44 @@
     "home": "Home",
     "settings": "Settings",
     "transfer": "Transfer",
-    "incoming": "Incoming"
+    "incoming": "Incoming",
+    "separation": "Separation",
+    "conversion": "Conversion"
   },
   "materials": {
     "aluminum": "Aluminum",
     "paper": "Paper",
     "plastic": "Plastic",
     "glass": "Glass",
-    "residue": "Residue"
+    "residue": "Residue",
+    "pet": {
+      "label": "PET",
+      "description": "Polyethylene Terephthalate"
+    },
+    "hdpe": {
+      "label": "HDPE",
+      "description": "High-Density Polyethylene"
+    },
+    "pvc": {
+      "label": "PVC",
+      "description": "Polyvinyl Chloride"
+    },
+    "ldpe": {
+      "label": "HDPE",
+      "description": "Low-Density Polyethylene"
+    },
+    "pp": {
+      "label": "PP",
+      "description": "Polypropylene"
+    },
+    "ps": {
+      "label": "PS",
+      "description": "Polystyrene"
+    },
+    "other": {
+      "label": "XX",
+      "description": "Other"
+    }
   },
   "common": {
     "aluminum": "Aluminum",
@@ -27,7 +57,6 @@
       "touch_to_scan": "Touch to scan"
     }
   },
-
   "dashboard": {
     "account_qr_hint": "You can use this QR code to be identified and show who you are.",
     "balance": "Balance",
@@ -88,11 +117,11 @@
       "transfer_title": "Transfer Funds"
     }
   },
-  "incoming" : {
+  "incoming": {
     "title": "Incoming Goods",
     "description": "Scan the QR Code of incoming goods to proceed",
     "scan": "Scan QR Code",
-    "confirm":"Confirm",
+    "confirm": "Confirm",
     "cancel": "Cancel",
     "enter_weight": "Enter weight in kg",
     "select_material": "Select Material",
@@ -105,6 +134,28 @@
         "title": "Confirm Lot Receipt",
         "description": "Please, confirm the receipt of the goods."
       }
+    }
+  },
+  "separation": {
+    "select": {
+      "title": "Separate Material",
+      "description": "Select separated material "
+    },
+    "register": {
+      "title": "Separate Material",
+      "description": "Enter quantity and confirm separation process",
+      "enter_weight": "Enter weight in kg",
+      "register_failed": "Registration failed. Try again, or ask for support"
+    }
+  },
+  "conversion": {
+    "select": {
+      "title": "Convert Material",
+      "description": "Select converted material "
+    },
+    "register": {
+      "title": "Convert Material",
+      "description": "Enter quantity and confirm conversion process"
     }
   }
 }

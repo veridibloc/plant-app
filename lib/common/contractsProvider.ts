@@ -26,7 +26,6 @@ export class ContractsProvider {
         })
     }
 
-
     getCollectorTokenContractService() {
         return new CollectorTokenContractService({
             ledger: this.ledger,
@@ -50,8 +49,13 @@ export class ContractsProvider {
         })
     }
 
-    getStockContract(contractId: string) {
-        return this.getStockContractService().with(contractId)
+    async getStockContract(contractId: string) {
+        const contract = await this.getStockContractService().with(contractId)
+        const expectedHash = getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH");
+        if(contract.contract.machineCodeHashId !== expectedHash ) {
+          throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
+        }
+        return contract;
     }
 
     getManyStockContracts(contractIds: string[]){
