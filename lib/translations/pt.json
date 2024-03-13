@@ -5,6 +5,7 @@
     "settings": "Configurações",
     "transfer": "Transferir",
     "incoming": "Entrada",
+    "outgoing": "Saída",
     "separation": "Separação",
     "conversion": "Conversão"
   },
@@ -132,6 +133,12 @@
         "title": "Recebimento de Mercadoria",
         "description": "Por favor, confirme o recebimento da mercadoria."
       }
+    }
+  },
+  "outgoing" : {
+    "select": {
+      "title": "Saída de Mercadoria",
+      "description": "Selecionar material usado para criação de lote de mercardoria"
     }
   },
   "separation": {

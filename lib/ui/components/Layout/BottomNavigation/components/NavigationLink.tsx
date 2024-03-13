@@ -18,7 +18,7 @@ export const NavigationLink = ({ label, href, Icon }: Props) => {
   const textColor = isLinkActive ? "text-blue-500" : "text-neutral-500";
 
   return (
-    <Link href={href} className={border}>
+    <Link href={href} className={border} >
       <div className="flex flex-col items-center justify-center">
         <Icon size={28} color={iconColor} />
         <span className={`text-sm font-medium ${textColor} text`}>{label}</span>

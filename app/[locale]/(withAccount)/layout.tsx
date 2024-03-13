@@ -1,12 +1,13 @@
-import {Layout} from "@/ui/components/Layout";
+import {ClientRootLayout} from "@/ui/components/Layout/ClientRootLayout";
 import type {ChildrenProps} from "@/types/childrenProps";
-import {auth, currentUser, useUser} from "@clerk/nextjs";
-import {notFound, redirect} from "next/navigation";
+import {currentUser} from "@clerk/nextjs";
+import {notFound} from "next/navigation";
 import {fetchUserAccount} from "@/server/fetchUserAccount";
 import {AccountProvider} from "@/ui/context/AccountContext";
 
 export default async function RootLayout({children}: ChildrenProps) {
     const user = await currentUser();
+
     if (!user) {
         console.debug("No user found");
         return null;
@@ -20,9 +21,9 @@ export default async function RootLayout({children}: ChildrenProps) {
 
     return (
         <AccountProvider account={account}>
-            <Layout>
+            <ClientRootLayout>
                 {children}
-            </Layout>;
+            </ClientRootLayout>;
         </AccountProvider>
     )
 }

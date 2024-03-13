@@ -1,16 +1,18 @@
+"use client";
+
 import {Header} from "@/ui/components/Layout/Header";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {useTranslations} from "next-intl";
+import {useRouter} from "next/navigation";
 import {MaterialSelector} from "@/ui/components/Materials";
 import {useMemo} from "react";
-import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 
-export function SeparationMaterialSelector() {
-    const t = useTranslations("separation")
+export function Outgoing() {
+    const t = useTranslations("outgoing")
     const tm = useTranslations("materials")
     const {stockContracts, role} = useUserAccount();
-    const router = useEnhancedRouter();
+    const router = useRouter();
 
     const materials = useMemo(() => {
         return stockContracts.map(({id, label}) => {
@@ -23,7 +25,8 @@ export function SeparationMaterialSelector() {
         })
     }, [stockContracts, tm])
     const handleOnClick = (materialId: string) => {
-        router.push(`/process/${role}/${materialId}`);
+        console.log("material", materialId)
+        // router.push(`/process/${role}/${materialId}`);
     }
 
     return (<PageContainer>

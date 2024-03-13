@@ -5,6 +5,7 @@
     "settings": "Settings",
     "transfer": "Transfer",
     "incoming": "Incoming",
+    "outgoing": "Outgoing",
     "separation": "Separation",
     "conversion": "Conversion"
   },
@@ -135,6 +136,12 @@
         "description": "Please, confirm the receipt of the goods."
       }
     }
+  },
+  "outgoing" : {
+      "select": {
+        "title": "Create Lot",
+        "description": "Select material to mount a lot"
+      }
   },
   "separation": {
     "select": {

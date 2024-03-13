@@ -3,14 +3,14 @@
 import {useTranslations} from "next-intl";
 import {QrCodeScanner} from "@/ui/components/QrCodeScanner";
 import {Header} from "@/ui/components/Layout/Header";
-import {useRouter} from "next/navigation";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
+import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 
 
 const RegistrationCodeValidator = /^(?<type>va|vb)\.(?<accountId>\d{10,24})(\.(?<lotId>\d{10,24}))?$/;
 export const Incoming = () => {
     const t = useTranslations("incoming")
-    const {push} = useRouter()
+    const {push} = useEnhancedRouter();
 
     const handleOnResult = (text: string) => {
         const match = RegistrationCodeValidator.exec(text);
