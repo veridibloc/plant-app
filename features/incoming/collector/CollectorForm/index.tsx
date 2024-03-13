@@ -76,7 +76,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
                         withButtons={false}
                         min={0}
                         max={10_000}
-                        autocompletion={false}
+                        autocompletion="off"
                         aria-autocomplete="none"
                     />
                 </div>

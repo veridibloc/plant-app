@@ -3,7 +3,7 @@ import React from "react";
 
 
 interface Props {
-    label: string;
+    label: React.ReactNode | string;
     items: Record<string, any>;
     renderItem: (id:string, item: any, index: number) => React.ReactNode;
     onSelected: (id: string) => void;

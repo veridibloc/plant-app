@@ -1,5 +1,5 @@
 {
-  "bottom_navigation": {
+  "navigation": {
     "activity": "Activity",
     "home": "Home",
     "settings": "Settings",
@@ -7,7 +7,9 @@
     "incoming": "Incoming",
     "outgoing": "Outgoing",
     "separation": "Separation",
-    "conversion": "Conversion"
+    "conversion": "Conversion",
+    "signout": "Sign out",
+    "account": "Account"
   },
   "materials": {
     "aluminum": "Aluminum",

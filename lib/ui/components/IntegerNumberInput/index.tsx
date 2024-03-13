@@ -9,7 +9,7 @@ interface Props extends Omit<HtmlHTMLAttributes<HTMLInputElement>, "onChange"> {
     max?: number;
     withButtons?: boolean;
     value?: number,
-    autocompletion?: boolean
+    autocompletion?: string;
     onChange: (value: number) => void;
 }
 

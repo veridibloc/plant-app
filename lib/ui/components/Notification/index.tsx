@@ -38,7 +38,6 @@ export function Notification() {
             {notification && (
                 <section className="absolute top-0">
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1, y: 32}} exit={{opacity: 0, y: -32}}>
-
                         <div
                             className={`max-w-sm bg-${color}-100 border border-${color}-200 text-sm text-${color}-800 rounded-lg dark:bg-${color}-800/10 dark:border-${color}-900 dark:text-${color}-500 shadow-xl`}
                             role="alert">

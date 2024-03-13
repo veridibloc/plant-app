@@ -1,5 +1,5 @@
 {
-  "bottom_navigation": {
+  "navigation": {
     "activity": "Atividade",
     "home": "Início",
     "settings": "Configurações",
@@ -7,7 +7,9 @@
     "incoming": "Entrada",
     "outgoing": "Saída",
     "separation": "Separação",
-    "conversion": "Conversão"
+    "conversion": "Conversão",
+    "signout": "Sair",
+    "account": "Conta"
   },
   "materials": {
     "aluminum": "Alumínio",
