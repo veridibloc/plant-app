@@ -27,7 +27,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
     const user = useUserAccount();
     const [state, action] = useFormState<any>(registerAction, {});
     const [fieldValues, setFieldValues] = useState(initialFormValues);
-    const [submitSuccessful, setSubmitSuccessful] = useState(true);
+    const [submitSuccessful, setSubmitSuccessful] = useState(false);
     const handleOnChange = (event: React.ChangeEvent<HTMLFormElement>) => {
         setSubmitSuccessful(false);
         const fieldName = event.target.name;

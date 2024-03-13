@@ -1,6 +1,6 @@
 "use client";
 
-import {ReactNode, useEffect} from "react";
+import {ReactNode} from "react";
 import {useUser} from "@clerk/nextjs";
 import {AppContextProvider} from "@/ui/context/AppContext";
 import {BottomNavigation} from "lib/ui/components/Layout/BottomNavigation";
@@ -18,8 +18,6 @@ interface Props {
 export const ClientRootLayout = ({children}: Props) => {
     const {isLoaded, isSignedIn, user} = useUser();
     const canShowBottomNavigation = Boolean(isLoaded && isSignedIn && user);
-
-
     return (
         <AppContextProvider>
             <MaterialProvider>
