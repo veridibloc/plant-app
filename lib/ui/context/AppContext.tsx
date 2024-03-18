@@ -3,7 +3,7 @@
 import { FC, createContext } from "react";
 import type { ChildrenProps } from "@/types/childrenProps";
 import { LedgerService } from "@/common/ledgerService";
-import { Config } from "../../common/config";
+import { Config } from "@/common/config";
 
 type AddressPrefixType = "TS" | "S";
 type SignaPrefixType = "TSIGNA" | "SIGNA";
@@ -14,7 +14,8 @@ export interface AppContextType {
     AddressPrefix: AddressPrefixType;
     SignaPrefix: SignaPrefixType;
     Hosts: string[];
-    PollingInterval: number;
+    PollingInterval: number
+    ExplorerUrl: string;
     Service: LedgerService;
   };
   Tokens: {
@@ -27,6 +28,7 @@ const config: AppContextType = {
     ...Config.Ledger,
     AddressPrefix: Config.Ledger.IsTestNet ? "TS" : "S",
     SignaPrefix: Config.Ledger.IsTestNet ? "TSIGNA" : "SIGNA",
+    ExplorerUrl: Config.Ledger.ExplorerUrl,
     Service: new LedgerService({
       nodeHost: Config.Ledger.Hosts[0],
       vericleanTokenId: Config.Tokens.Vericlean,

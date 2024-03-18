@@ -8,7 +8,7 @@ interface LabeledId {
 export interface MetaInfo {
     role: "separator" | "recycler" | "converter",
     isCorporative: boolean,
-    collectible: LabeledId[],
+    collectibles: LabeledId[],
     stockContracts: LabeledId[]
 }
 export interface UserAccount extends MetaInfo {

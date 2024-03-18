@@ -10,11 +10,11 @@ export const fetchUserAccount = cache(async (user: User, withSeed = false): Prom
 
     const metaInfo = (user.publicMetadata as unknown as MetaInfo) ?? {};
     // being defensive
-    if(!metaInfo.collectible){
-        metaInfo.collectible = [];
+    if(!metaInfo.collectibles){
+        metaInfo.collectibles = [];
     }
     if(!metaInfo.stockContracts){
-        metaInfo.stockContracts= [];
+        metaInfo.stockContracts = [];
     }
 
     return {

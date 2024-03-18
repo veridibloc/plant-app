@@ -6,7 +6,7 @@ import {ChildrenProps} from "@/types/childrenProps";
 export const AccountContext = createContext<UserAccount>({
     publicKey: '',
     role: "separator",
-    collectible: [],
+    collectibles: [],
     stockContracts: [],
     isCorporative: false,
     email: '',

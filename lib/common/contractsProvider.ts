@@ -2,7 +2,7 @@ import {
     CertificateContractService,
     CollectorTokenContractService,
     StockContractService
-} from "@veridibloc/smart-contracts"
+} from "@veridibloc/smart-contracts";
 import {Ledger} from '@signumjs/core';
 import {Amount} from '@signumjs/util';
 import {getEnv} from './getEnv';
@@ -44,14 +44,16 @@ export class ContractsProvider {
             ledger: this.ledger,
             activationCosts: Amount.fromSigna(1.0),
             baseTransactionFee: Amount.fromSigna(0.01),
-            reference: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_REF"),
-            codeHash: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH")
+            reference: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_REF || "",
+            codeHash: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "",
+            // reference: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_REF"),
+            // codeHash: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH")
         })
     }
 
     async getStockContract(contractId: string) {
         const contract = await this.getStockContractService().with(contractId)
-        const expectedHash = getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH");
+        const expectedHash = process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "";
         if(contract.contract.machineCodeHashId !== expectedHash ) {
           throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
         }

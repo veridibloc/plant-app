@@ -61,7 +61,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
 
             <Select name="material" label={ti("select_material")} onChange={() => {}}>
                 <option value="0">-- {ti("select_material")} --</option>
-                {user.collectible.map(({label, id}) => <option key={id} value={id}>{tm(label)}</option>)}
+                {user.collectibles.map(({label, id}) => <option key={id} value={id}>{tm(label)}</option>)}
             </Select>
 
             <div className="inline-flex relative items-center w-full">

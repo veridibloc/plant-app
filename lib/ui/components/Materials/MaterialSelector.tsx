@@ -1,6 +1,6 @@
 import {MaterialCard} from "./MaterialCard";
 interface Props {
-    materials: {id: string, label: string, description: string}[];
+    materials: {id: string, label: string, description: string, weight?: number}[];
     onSelected: (materialId: string) => void
 }
 export function MaterialSelector({materials, onSelected} : Props) {
@@ -12,6 +12,7 @@ export function MaterialSelector({materials, onSelected} : Props) {
                     id={m.id}
                     label={m.label}
                     description={m.description}
+                    weight={m.weight}
                     onClick={onSelected}
                 />
             )}

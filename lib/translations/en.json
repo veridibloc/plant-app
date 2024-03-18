@@ -90,6 +90,9 @@
       "label": "Manage your account",
       "title": "Account & personalization"
     },
+    "account": {
+      "blockchain_address": "Blockchain Address"
+    },
     "language_card": {
       "description": "Change to your preferred language",
       "label": "Change language",

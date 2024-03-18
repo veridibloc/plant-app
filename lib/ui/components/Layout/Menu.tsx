@@ -22,6 +22,9 @@ export const Menu = () => {
     const router = useEnhancedRouter();
     const [isOpen, setIsOpen] = useState(false)
 
+    const toggleMenu = () => {
+        setIsOpen( prevState => !prevState)
+    }
     const logOut = () => signOut(() => router.push("/"));
 
     return (
@@ -29,7 +32,7 @@ export const Menu = () => {
 
             <div className="hs-dropdown relative inline-flex">
                 <motion.button id="hs-dropdown-default" type="button"
-                               onClick={() => setIsOpen(prevState => !prevState)}
+                               onClick={toggleMenu}
                                animate={isOpen ? "open" : "close"}
                                initial={false}
                                className="hs-dropdown-toggle highlight-off relative h-[48px] w-[48px] inline-flex items-center gap-x-2 text-sm rounded-full font-medium bg-transparent text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
@@ -69,7 +72,9 @@ export const Menu = () => {
                     aria-labelledby="hs-dropdown-default">
                     <Link
                         className="flex text-center items-center justify-center gap-x-3.5 py-4 px-3 rounded-lg text-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-                        href="/settings/account">
+                        href="/settings/account"
+                        onClick={toggleMenu}
+                    >
                         <div className="flex flex-col items-center gap-x-2 text-center">
                             <div className="w-[32px] h-[32px]">
                                 <Avatar>
@@ -82,7 +87,9 @@ export const Menu = () => {
                     <hr />
                     <Link
                         className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-                        href="/settings">
+                        href="/settings"
+                        onClick={toggleMenu}
+                    >
                         <div className="flex flex-row items-center gap-x-2">
                             <RiSettings2Line/>
                             {t("settings")}
@@ -90,7 +97,10 @@ export const Menu = () => {
                     </Link>
                     <hr/>
                     <button
-                        onClick={logOut}
+                        onClick={() => {
+                            toggleMenu();
+                            return logOut()
+                        }}
                         className="flex items-center w-full gap-x-3.5 py-2 px-3 rounded-lg text-lg text-red-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                     >
                         <div className="flex flex-row items-center gap-x-2 w-full">

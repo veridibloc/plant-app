@@ -1,15 +1,18 @@
 // @ts-ignore
 import ColorHash from "color-hash";
+import {useFormatter}  from "next-intl"
 
 interface Props {
     label: string;
     description: string;
     id: string;
+    weight?: number;
     onClick?: (id: string) => void;
 }
 
 const colorHash = new ColorHash()
-export const MaterialCard = ({label, id, description, onClick}: Props) => {
+export const MaterialCard = ({label, id, description, onClick, weight}: Props) => {
+    const {number} = useFormatter();
     const bgColor = colorHash.hex(label);
 
     const handleClick  = () => {
@@ -30,6 +33,11 @@ export const MaterialCard = ({label, id, description, onClick}: Props) => {
                     {id}
                 </small>
             </div>
+            {weight !== undefined && (
+            <div className="border rounded text-gray-700 font-medium">
+                {number(1000)} kg
+            </div>
+            )}
         </div>
     )
 }

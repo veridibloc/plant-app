@@ -5,18 +5,23 @@ import {Spinner} from "@/ui/components/Spinner";
 import {AnimatePresence, motion} from "framer-motion";
 
 export function RoutingIndicator() {
-    const [isRouting, setIsRouting] = useState(false)
+    const [isRouting, setIsRouting] = useState(-1)
 
     useEffect(() => {
 
         const handleRouteStarted = () => {
             setTimeout(() => {
-                setIsRouting(true);
+                setIsRouting((prevState) => {
+                    if(prevState === -1){
+                        return 1;
+                    }
+                    return 0
+                });
             }, 250)
         }
 
         const handleRouteFinished = () => {
-            setIsRouting(false);
+            setIsRouting(0);
         }
 
         window.addEventListener("routeStarted", handleRouteStarted)
@@ -31,7 +36,7 @@ export function RoutingIndicator() {
     return (
         <AnimatePresence>
             {
-                isRouting && (
+                isRouting === 1 && (
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
 
                         <section className="absolute top-2 right-2">

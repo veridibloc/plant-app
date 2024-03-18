@@ -90,6 +90,9 @@
       "label": "Gerencie sua conta",
       "title": "Conta e personalização"
     },
+    "account": {
+      "blockchain_address": "Endereço na Blockchain"
+    },
     "language_card": {
       "description": "Mude para o seu idioma preferido",
       "label": "Mudar idioma",
@@ -151,7 +154,8 @@
     "register": {
       "title": "Separar Material",
       "description": "Inserir quantidade e confirmar processo de separação",
-      "register_failed": "Falha no registro. Tente novamente ou solicite suporte."
+      "register_failed": "Falha no registro. Tente novamente ou solicite suporte.",
+      "enter_weight": "Digite o peso"
     }
   },
   "conversion": {
