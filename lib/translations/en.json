@@ -17,6 +17,10 @@
     "plastic": "Plastic",
     "glass": "Glass",
     "residue": "Residue",
+    "no_material_found": {
+      "title": "No Material Found",
+      "text": "There's no material available for selection."
+    },
     "pet": {
       "label": "PET",
       "description": "Polyethylene Terephthalate"
@@ -143,10 +147,21 @@
     }
   },
   "outgoing" : {
+      "no_stock": "No Stock",
       "select": {
         "title": "Create Lot",
         "description": "Select material to mount a lot"
-      }
+      },
+      "confirm": {
+        "title": "Create Lot",
+        "description": "Enter weight of the new lot/bale",
+        "enter_weight": "Enter weight of the lot",
+        "creation_failed": "Creation failed. Try again, or ask for support"
+      },
+    "lot": {
+      "title": "Create Lot",
+      "description": "The lot is being registered on the blockchain now. This is the QR Code which shall be printed and attached to the shipping documents and lot/bale."
+    }
   },
   "separation": {
     "select": {

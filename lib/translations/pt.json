@@ -17,6 +17,10 @@
     "plastic": "Plástico",
     "glass": "Vidro",
     "residue": "Resíduo",
+    "no_material_found": {
+      "title": "Material Não Encontrado",
+      "text": "Para a seleção atual nenhum material foi encontrado."
+    },
     "pet": {
       "label": "PET",
       "description": "Tereftalato de Polietileno"
@@ -141,9 +145,20 @@
     }
   },
   "outgoing" : {
+    "no_stock": "Sem estoque",
     "select": {
       "title": "Saída de Mercadoria",
       "description": "Selecionar material usado para criação de lote de mercardoria"
+    },
+    "confirm": {
+      "title": "Saída de Mercadoria",
+      "description": "Digite o peso do novo lote a ser criado",
+      "enter_weight": "Digite o peso do novo lote",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte."
+    },
+    "lot": {
+      "title": "Saída de Mercadoria",
+      "description": "O lote está sendo registrado na sistema agora. Este é o código QR que deve ser impresso e anexado aos documentos de envio e ao lote."
     }
   },
   "separation": {

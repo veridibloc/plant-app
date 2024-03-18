@@ -1,7 +1,13 @@
 "use client";
-import {ForwardedRef, forwardRef, HtmlHTMLAttributes, useEffect, useImperativeHandle, useRef, useState} from "react";
+import {
+    ForwardedRef,
+    forwardRef,
+    InputHTMLAttributes,
+    useEffect,
+    useRef,
+} from "react";
 
-interface Props extends Omit<HtmlHTMLAttributes<HTMLInputElement>, "onChange"> {
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
     name?: string;
     label?: string;
     step?: number;

@@ -772,20 +772,9 @@
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
 
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-0.0.9.tgz":
-  version "0.0.9"
-  resolved "./veridibloc-smart-contracts-0.0.9.tgz#28bb58a8938092dd184ab809c3de264cbd6719b1"
-  dependencies:
-    "@signumjs/contracts" "^1.0.0-rc.75"
-    "@signumjs/core" "^1.0.0-rc.75"
-    "@signumjs/crypto" "^1.0.0-rc.75"
-    "@signumjs/standards" "^1.0.0-rc.75"
-    "@signumjs/util" "^1.0.0-rc.75"
-    p-retry "4"
-
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.9.tgz":
-  version "0.0.9"
-  resolved "./veridibloc-smart-contracts-v0.0.9.tgz#59a4696fe556c4f86703d33f44413b91caed0673"
+"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.10.tgz":
+  version "0.0.10"
+  resolved "./veridibloc-smart-contracts-v0.0.10.tgz#848907a61d359fef932554f9ea3d9396a705ee0c"
   dependencies:
     "@signumjs/contracts" "^1.0.0-rc.75"
     "@signumjs/core" "^1.0.0-rc.75"
