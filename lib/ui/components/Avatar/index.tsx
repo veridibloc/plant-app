@@ -5,5 +5,8 @@ interface Props extends ChildrenProps {
     className?: string
 }
 export const Avatar = ({ size = 80, className = "", children }: Props) => {
-    return <div className={`p-1 w-[${size}px] ${className}`}>{children}</div>;
+    return <div className={`p-1 ${className}`} style={{
+        height: `${size}px`,
+        width: `${size}px`
+    }}>{children}</div>;
 };

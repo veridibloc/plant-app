@@ -34,9 +34,9 @@ export const Menu = () => {
                                onClick={toggleMenu}
                                animate={isOpen ? "open" : "close"}
                                initial={false}
-                               className="hs-dropdown-toggle highlight-off relative h-[48px] w-[48px] inline-flex items-center gap-x-2 text-sm rounded-full font-medium bg-transparent text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                               className="hs-dropdown-toggle highlight-off relative h-[48px] w-[48px] inline-flex items-center bg-white gap-x-2 text-sm rounded-full shadow-md font-medium bg-transparent text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                     <motion.div
-                        className="absolute left-[12px]"
+                        className="absolute left-[14px]"
                         variants={{
                             open: {
                                 opacity: 0,
@@ -51,7 +51,7 @@ export const Menu = () => {
                     </motion.div>
 
                     <motion.div
-                        className="absolute left-[12px]"
+                        className="absolute left-[14px]"
                         variants={{
                             open: {
                                 opacity: 1,
@@ -75,11 +75,9 @@ export const Menu = () => {
                         onClick={toggleMenu}
                     >
                         <div className="flex flex-col items-center gap-x-2 text-center">
-                            <div className="w-[32px] h-[32px]">
-                                <Avatar>
-                                    <AvatarImage src={user?.imageUrl || ""} alt={user?.firstName || ""}/>
+                                <Avatar size={48}>
+                                    <AvatarImage rounded={false} src={user?.imageUrl || ""} alt={user?.firstName || ""}/>
                                 </Avatar>
-                            </div>
                             <small className="text-sm text-gray-800">{user?.firstName}</small>
                         </div>
                     </Link>

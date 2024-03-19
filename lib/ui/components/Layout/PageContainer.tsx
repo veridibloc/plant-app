@@ -5,8 +5,13 @@ interface Props extends ChildrenProps {
 }
 
 export const PageContainer = ({className, children}: Props) => {
-    return <div className={`min-h-[85vh] pt-6 w-full ${className}`}>
-        <div className="flex flex-col items-start justify-start mx-4 gap-4">
+    return <div className={`pt-6 w-full overflow-y-auto ${className}`}
+                style={{
+                    height: "calc(100vh - 88px)",
+                    minHeight: "calc(100vh - 88px)"
+                }}
+    >
+        <div className="flex flex-col items-start justify-start mx-2 gap-4">
             {children}
         </div>
     </div>

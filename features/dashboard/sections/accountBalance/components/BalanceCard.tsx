@@ -1,31 +1,28 @@
 import { useFormatter } from "next-intl";
 import { BalanceInfo } from "@/types/balanceInfo";
 
+// @ts-ignore
+import ColorHash from "color-hash"
 import Image from "next/image";
+import {TokenBalance} from "@/types/tokenBalance";
+import {Amount, ChainValue} from "@signumjs/util";
 
+const colorHash = new ColorHash();
 interface Props {
-  balanceInfo: BalanceInfo;
+  balance: TokenBalance;
 }
 
-export const BalanceCard = ({ balanceInfo }: Props) => {
+export const BalanceCard = (props : Props) => {
   const { number } = useFormatter();
-  const { decimals, symbol, amount } = balanceInfo;
+  const { decimals, balance, tokenId, ticker } = props.balance;
+
+  const amount = Number(ChainValue.create(decimals).setAtomic(balance).getCompound());
+  const color = colorHash.hex(tokenId);
 
   return (
     <div className="flex items-center justify-between bg-white border rounded-xl p-4 w-full">
       <div className="flex items-center">
-        {symbol === "VERICLEAN" && (
-          <Image
-            src="/assets/vericlean_logo_main.svg"
-            width={40}
-            height={40}
-            alt="Vericlean Logo"
-            className="ml-1 mr-1.5"
-            unoptimized
-          />
-        )}
-
-        {symbol === "SIGNA" && (
+        {(ticker === "SIGNA" || ticker === "TSIGNA") && (
           <Image
             src="/assets/signum_logo_blue.svg"
             width={36}
@@ -35,12 +32,13 @@ export const BalanceCard = ({ balanceInfo }: Props) => {
             unoptimized
           />
         )}
+
         <h3 className="text-4xl font-bold text-gray-800"></h3>
         <h3 className="text-lg font-bold text-gray-800">
-          {number(Number(amount), { maximumFractionDigits: decimals })}
+          {number(amount, { maximumFractionDigits: decimals })}
         </h3>
       </div>
-      <p className="font-medium text-gray-500">{symbol.toUpperCase()}</p>
+      <p className="font-medium text-gray-500">{ticker.toUpperCase()}</p>
     </div>
   );
 };

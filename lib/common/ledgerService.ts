@@ -66,7 +66,7 @@ export class LedgerService {
 
   fetchAccount(accountId: string) {
     return withError(async () => {
-      return await this.ledger.account.getAccount({ accountId });
+      return await this.ledger.account.getAccount({ accountId, includeCommittedAmount:false });
     });
   }
 

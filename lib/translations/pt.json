@@ -78,7 +78,8 @@
     "paper": "Papel",
     "plastic": "Plástico",
     "glass": "Vidro",
-    "nothing_collected_yet": "Nada coletado ainda"
+    "nothing_collected_yet": "Nada coletado ainda",
+    "click_for_details": "Toque material para ver detalhes"
   },
   "exceptions": {
     "work_in_progress": "Estamos expandindo sua experiência veridibloc",

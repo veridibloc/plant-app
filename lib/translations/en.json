@@ -78,7 +78,8 @@
     "plastic": "Plastic",
     "glass": "Glass",
     "view_account_qr": "Account QR Code",
-    "nothing_collected_yet": "Nothing collected yet"
+    "nothing_collected_yet": "Nothing collected yet",
+    "click_for_details": "Touch material to see details"
   },
   "exceptions": {
     "work_in_progress": "We're expanding your veridibloc experience",
