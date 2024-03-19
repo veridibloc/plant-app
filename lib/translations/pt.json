@@ -58,6 +58,7 @@
     "confirm": "Confirmar",
     "cancel": "Cancelar",
     "success": "Sucesso",
+    "print": "Imprimir",
     "qr-code": {
       "scanning_error": "Não conseguiu ler o código QR",
       "device": "Dispositivo",

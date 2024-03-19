@@ -1,5 +1,5 @@
 export interface BaseButtonProps {
-    label: string
+    label: string | React.ReactNode;
     type?: "button" | "submit" | "reset"
     disabled?: boolean
     loading?: boolean

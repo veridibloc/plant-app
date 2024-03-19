@@ -29,7 +29,10 @@ export async function createLotByWeight(prevState: any, formData: FormData) {
 
         const txId = await contract.registerOutgoingMaterialByWeight(weight);
         console.info(`Created a lot of weight ${weight} kg for contract ${materialContractId}`);
-        return {success: txId!.transaction};
+        return {
+            success: true,
+            lotId: txId!.transaction
+        };
     } catch (e: any) {
         console.error("[Error mountLot]:", e.message);
         const boom = boomify(e);

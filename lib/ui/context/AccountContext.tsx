@@ -11,7 +11,8 @@ export const AccountContext = createContext<UserAccount>({
     isCorporative: false,
     email: '',
     firstName: '',
-    isActive: false
+    isActive: false,
+    logoUrl: ''
 });
 
 export const AccountProvider = ({account, children}: { account: UserAccount } & ChildrenProps) => (

@@ -14,6 +14,7 @@ export interface MetaInfo {
 export interface UserAccount extends MetaInfo {
     publicKey: string;
     email: string;
+    logoUrl: string;
     firstName: string;
     isActive: boolean;
     encryptedSeed?: string;

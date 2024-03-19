@@ -5,7 +5,7 @@ import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {useFormState} from "react-dom";
 import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {MaterialCard} from "@/ui/components/Materials";
 import {useSingleStockContract} from "@/ui/hooks/useSingleStockContract";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
@@ -32,23 +32,33 @@ export const LotByWeightForm = ({materialId, createLotAction}: Props) => {
     const router = useEnhancedRouter();
     const {stockContracts} = useUserAccount();
     const {isLoading, contract} = useSingleStockContract(materialId);
-    const [state, action] = useFormState<any>(createLotAction, {});
+    const [state, action] = useFormState(createLotAction, { success: false, lotId: "", error: ""});
     const [fieldValues, setFieldValues] = useState<{material: string, weight: number}>({material: materialId, weight: 0});
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
 
+
+    const handleSuccess = useCallback((lotId: string) => {
+        const weight = fieldValues.weight;
+        formRef.current?.reset();
+        setFieldValues(initialFormValues);
+        setSubmitSuccessful(true);
+        router.replace(`/outgoing/${materialId}/${lotId}?w=${weight}`);
+    }, [fieldValues.weight, materialId, router]);
+
+    const handleError = useCallback( (error: string) => {
+        console.error(state.error);
+        showError(to("creation_failed"))
+    }, [showError, state.error, to])
+
     useEffect(() => {
         if (state.success) {
-            formRef.current?.reset();
-            setFieldValues(initialFormValues);
-            setSubmitSuccessful(true);
-            // TODO: route to QR COde and print!
+            handleSuccess(state.lotId);
+        }
+        if (state.error) {
+            handleError(state.error);
         }
 
-        if (state.error) {
-            console.error(state.error);
-            showError(to("creation_failed"))
-        }
-    }, [state]);
+    }, [handleError, handleSuccess, state]);
 
 
     const canSubmit = Number(fieldValues.material) && Number(fieldValues.weight);

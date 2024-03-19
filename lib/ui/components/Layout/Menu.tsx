@@ -28,8 +28,7 @@ export const Menu = () => {
     const logOut = () => signOut(() => router.push("/"));
 
     return (
-        <section className="fixed w-full max-w-[768px] text-right p-4 pr-6 z-10">
-
+        <section className="print:hidden fixed w-full max-w-[768px] text-right p-4 pr-6 z-10">
             <div className="hs-dropdown relative inline-flex">
                 <motion.button id="hs-dropdown-default" type="button"
                                onClick={toggleMenu}

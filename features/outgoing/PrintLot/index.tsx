@@ -1,52 +1,40 @@
 "use client";
 
-import QRCode from "react-qr-code";
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
-import {MaterialCard} from "@/ui/components/Materials";
-import {useSingleStockContract} from "@/ui/hooks/useSingleStockContract";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {useTranslations} from "next-intl";
+import {DisplayablePrintableProps} from "./DisplayablePrintableProps";
+import {Printable} from "./Printable";
+import {Displayable} from "./Displayable";
 
 interface Props {
     lotId: string;
     stockContractId: string;
+    weight: number
 }
 
-export function PrintLot({lotId, stockContractId}: Props): JSX.Element {
+export function PrintLot({lotId, stockContractId, weight}: Props): JSX.Element {
     const {stockContracts} = useUserAccount();
-    const {contract, isLoading} = useSingleStockContract(stockContractId)
     const tm = useTranslations("materials");
 
     const identifier = new ScannableIdentifier({
         type: "vb",
-        parts: [stockContractId,lotId]
+        parts: [stockContractId, lotId]
     }).toString()
 
-    const materialLabel = (stockContracts.find( lstc => lstc.id === stockContractId)?.label ?? "").toLowerCase();
+    const materialLabel = (stockContracts.find(lstc => lstc.id === stockContractId)?.label ?? "").toLowerCase();
 
-    //  check if not existant
+    //  TODO: check if not existant -> just check the transaction
 
-    return (
-        <section className="mt-2 flex flex-col justify-between items-center w-full">
-            <section className="w-full">
-                <MaterialCard label={tm(`${materialLabel}.label`)} description={tm(`${materialLabel}.description`)}
-                              id={stockContractId} />
-            </section>
-            <div className="p-1 text-center">
-                <div>
-                    <QRCode
-                        size={256}
-                        style={{
-                            maxWidth: "100%",
-                            width: "100%",
-                            padding: "0.5rem",
-                        }}
-                        value={identifier}
-                        viewBox={`0 0 256 256`}
-                    />
-                </div>
-                <div className="text-sm">ID: {identifier}</div>
-            </div>
-        </section>
+    const props: DisplayablePrintableProps = {
+        stockContractId,
+        weight,
+        identifier,
+        materialLabel
+    }
+    return (<>
+            <Printable {...props}/>
+            <Displayable {...props}/>
+        </>
     )
 }

@@ -19,6 +19,7 @@ export const fetchUserAccount = cache(async (user: User, withSeed = false): Prom
 
     return {
         email: user.emailAddresses[0].emailAddress,
+        logoUrl: user.imageUrl,
         publicKey: account.publicKey,
         firstName: user.firstName ?? "",
         isActive: account.status === "Active",

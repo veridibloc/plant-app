@@ -4,7 +4,7 @@ import {useTranslations} from "next-intl";
 import {useEffect, useState} from "react";
 import {Scanner, useDeviceList} from "@yudiel/react-qr-scanner";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
-import {IconButton} from "@/ui/components/IconButton";
+import {IconButton} from "@/ui/components/Buttons/IconButton";
 import {RiCameraSwitchLine} from "react-icons/ri";
 import {useRouter} from "next/navigation";
 
@@ -53,9 +53,11 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     return (<div className="p-2 md:p-20 md:max-w-1/2 relative overflow-hidden">
         {videoDevices.length > 1 && (
             <section className="relative w-full text-right">
-                <IconButton onClick={handleOpenCameraSettings} Icon={RiCameraSwitchLine} iconSize={24} color="#9CA3AF">
-                    <small className="text-gray-400 text-sm">Change Camera</small>
-                </IconButton>
+                <IconButton
+                    onClick={handleOpenCameraSettings}
+                    icon={<RiCameraSwitchLine size={24} color="#9CA3AF"/>}
+                    label={<small className="text-gray-400 text-sm">Change Camera</small>}
+                />
             </section>
         )}
         <section className="relative py-2" onClick={() => setIsScanningEnabled(prevState => !prevState)}>

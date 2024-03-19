@@ -29,7 +29,7 @@ export const MaterialCard = ({label, id, description, onClick, weight, showWeigh
             <div className="flex flex-row space-x-2">
 
             <span
-                className="w-14 h-14 rounded-full flex justify-center items-center text-md font-bold text-gray-200"
+                className="w-10 h-10 lg:w-14 lg:h-14 rounded-full flex justify-center items-center text-md font-bold text-gray-200"
                 style={{backgroundColor: bgColor}}
             >
                 {label.toUpperCase()}
@@ -43,7 +43,7 @@ export const MaterialCard = ({label, id, description, onClick, weight, showWeigh
             </div>
             {showWeight && (
                 <div className="flex flex-grow justify-end space-x-2">
-                    <div className="border rounded text-gray-700 font-medium  text-xl px-2 py-1">
+                    <div className="border rounded text-gray-700 font-medium text-sm lg:text-xl px-2 py-1">
                         {weight !== undefined ? `${number(weight)} kg` : t("no_stock")}
                     </div>
                 </div>
