@@ -3,7 +3,7 @@ import {atom} from "jotai";
 import {withImmer} from "jotai-immer"
 import {TokenBalance} from "@/types/tokenBalance";
 
-export const accountBalancesAtom = withImmer(atomWithStorage<TokenBalance[]>('accountBalances', [] ));
+export const accountBalancesAtom = withImmer(atomWithStorage<TokenBalance[]>('accountBalances', [], undefined, {getOnInit: true}));
 
 export const singleAccountBalancesAtomWriter = atom(null, (_get, set, balance: TokenBalance) => {
     set(accountBalancesAtom, (tokenBalances) => {

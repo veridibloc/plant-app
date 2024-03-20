@@ -1,10 +1,11 @@
 import useSWR from "swr";
 import {useAtom, useSetAtom} from "jotai";
-import {accountBalancesAtom, singleAccountBalancesAtomWriter, TokenBalance} from "@/ui/states/accountBalancesAtom";
+import {accountBalancesAtom, singleAccountBalancesAtomWriter} from "@/ui/states/accountBalancesAtom";
 import * as process from "process";
 import {useLedgerService} from "@/ui/hooks/useLedgerService";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {Address} from "@signumjs/core";
+import {TokenBalance} from "@/types/tokenBalance";
 
 const SignaTokenId = "0";
 function createSignaBalance(planck: string): TokenBalance {

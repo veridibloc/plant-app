@@ -3,10 +3,12 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-import { IStaticMethods } from "preline/preline";
+import { IStaticMethods,HSDropdown } from "preline/preline";
+
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
+    HSDropdown: HSDropdown
   }
 }
 
@@ -22,7 +24,7 @@ export function PrelineScript() {
     if (isBrowser) {
       setTimeout(() => {
         window.HSStaticMethods.autoInit();
-      }, 5_000);
+      }, 100);
     }
   }, [path, isBrowser]);
 

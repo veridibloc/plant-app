@@ -72,14 +72,15 @@
     "earn_points_card_cta": "Let's help ecology together",
     "earn_points_card_title": "Earn VERICLEAN points through the disposal of discarded waste.",
     "hello": "Hello",
-    "material_collected": "Material Collected",
-    "material_collected_other": "Materials Collected",
+    "material": "Material",
+    "material_other": "Materials",
     "paper": "Paper",
     "plastic": "Plastic",
     "glass": "Glass",
     "view_account_qr": "Account QR Code",
-    "nothing_collected_yet": "Nothing collected yet",
-    "click_for_details": "Touch material to see details"
+    "nothing_registered_yet": "Nothing registered yet. Get in contact with VeridiBloc to register material!",
+    "click_for_details": "Touch material to see details",
+    "click_for_transfer": "Touch token to transfer"
   },
   "exceptions": {
     "work_in_progress": "We're expanding your veridibloc experience",

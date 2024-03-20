@@ -41,41 +41,43 @@ export const MaterialStocks = () => {
   }, [stockContracts, contracts, tm]);
 
 
-  const hasNothingCollectedYet = !isLoading && contracts.length === 0;
+  const hasNothingRegisteredYet = !isLoading && contracts.length === 0;
 
   const gotoMaterialStock = (id: string) => {
     router.push(`/stock/${id}`);
   }
 
   return (
-    <section className="flex justify-start items-start w-full px-4 flex-wrap">
-      <div className="flex flex-col mx-auto space-y-2 my-4 w-full">
-        {isLoading && (
-          <>
-            <MaterialCardSkeleton />
-            <MaterialCardSkeleton />
-            <MaterialCardSkeleton />
-          </>
-        )}
-        {!hasNothingCollectedYet &&
-          !isLoading && (
-             <>
-               {
-                 materialCardData.map((props) => (<MaterialCard key={props.id} onClick={gotoMaterialStock} {...props} />))
-               }
-                <small className="text-xs text-gray-400">{t("click_for_details")}</small>
-             </>
-            )
-        }
-        {hasNothingCollectedYet && (
-          <div className="flex flex-col justify-center items-center">
-            <div className="text-6xl">🗑️</div>
-            <div className="text-lg font-medium text-gray-400 mt-1">
-              {t("nothing_collected_yet")}
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
+      <section className="flex justify-start items-start w-full px-4 flex-wrap">
+        <p className="font-bold w-full text-start text-lg">{t("material_other")}</p>
+        <div className="flex flex-col mx-auto space-y-2 my-4 w-full">
+          {isLoading && (
+              <>
+                <MaterialCardSkeleton/>
+                <MaterialCardSkeleton/>
+                <MaterialCardSkeleton/>
+              </>
+          )}
+          {hasNothingRegisteredYet &&
+              !isLoading && (
+                  <>
+                    <small className="text-xs text-gray-400">{t("click_for_details")}</small>
+                    {
+                      materialCardData.map((props) => (
+                          <MaterialCard key={props.id} onClick={gotoMaterialStock} {...props} />))
+                    }
+                  </>
+              )
+          }
+          {!hasNothingRegisteredYet && (
+              <div className="flex flex-col justify-center items-center">
+                <div className="text-6xl">❕</div>
+                <div className="text-md font-medium text-gray-400 mt-2">
+                  {t("nothing_registered_yet")}
+                </div>
+              </div>
+          )}
+        </div>
+      </section>
   );
 };

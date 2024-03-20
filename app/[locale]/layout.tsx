@@ -30,7 +30,6 @@ export default function RootLayout({
 }) {
 
     const locale = params.locale
-    console.debug("RootLayout", params);
     return (
         <html lang={locale} className={inter.className}>
         <WithTranslations locale={locale}>

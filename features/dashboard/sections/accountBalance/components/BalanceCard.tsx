@@ -1,44 +1,59 @@
-import { useFormatter } from "next-intl";
-import { BalanceInfo } from "@/types/balanceInfo";
+"use client";
+import {useFormatter} from "next-intl";
 
 // @ts-ignore
 import ColorHash from "color-hash"
 import Image from "next/image";
 import {TokenBalance} from "@/types/tokenBalance";
-import {Amount, ChainValue} from "@signumjs/util";
+import {ChainValue} from "@signumjs/util";
+import {PureClientOnly} from "@/ui/components/PureClientOnly";
+import {generateNumberFromString} from "@/common/stringToNumber";
 
 const colorHash = new ColorHash();
+
 interface Props {
-  balance: TokenBalance;
+    balance: TokenBalance;
 }
 
-export const BalanceCard = (props : Props) => {
-  const { number } = useFormatter();
-  const { decimals, balance, tokenId, ticker } = props.balance;
+export const BalanceCard = (props: Props) => {
+    const {number} = useFormatter();
+    const {decimals, balance, tokenId, ticker} = props.balance;
 
-  const amount = Number(ChainValue.create(decimals).setAtomic(balance).getCompound());
-  const color = colorHash.hex(tokenId);
+    const amount = Number(ChainValue.create(decimals).setAtomic(balance).getCompound());
+    const id = "tokenId-sgfsdf-sgslknlsf";
+    const color = colorHash.hex(id);
+    const degree = generateNumberFromString(id, 360);
+    const isSigna = tokenId === "0";
 
-  return (
-    <div className="flex items-center justify-between bg-white border rounded-xl p-4 w-full">
-      <div className="flex items-center">
-        {(ticker === "SIGNA" || ticker === "TSIGNA") && (
-          <Image
-            src="/assets/signum_logo_blue.svg"
-            width={36}
-            height={36}
-            alt="Signum Logo"
-            className="mx-2"
-            unoptimized
-          />
-        )}
+    return (
+        <PureClientOnly>
+            <div className="flex items-center justify-between bg-white border rounded-xl p-4 w-full">
+                <div className="flex items-center space-x-1">
 
-        <h3 className="text-4xl font-bold text-gray-800"></h3>
-        <h3 className="text-lg font-bold text-gray-800">
-          {number(amount, { maximumFractionDigits: decimals })}
-        </h3>
-      </div>
-      <p className="font-medium text-gray-500">{ticker.toUpperCase()}</p>
-    </div>
-  );
+                    {isSigna ? (
+                        <Image
+                            src="/assets/signum_logo_blue.svg"
+                            width={40}
+                            height={49}
+                            alt="Signum Logo"
+                            className="mx-2"
+                            unoptimized
+                        />
+                    ) : (
+
+                        <div className="rounded-full h-[40px] w-[40px]" style={{
+                            background: `linear-gradient(${degree}deg, #22d3ee 20%, ${color} 100%)`
+                        }}/>
+                    )}
+
+                    <h3 className="text-4xl font-bold text-gray-800"></h3>
+                    <h3 className="text-lg font-bold text-gray-800">
+                        {number(amount, {maximumFractionDigits: decimals})}
+                    </h3>
+                </div>
+                <p className="font-medium text-gray-500">{ticker.toUpperCase()}</p>
+            </div>
+            {isSigna && (<hr className="w-full mt-1"/>)}
+        </PureClientOnly>
+    );
 };
