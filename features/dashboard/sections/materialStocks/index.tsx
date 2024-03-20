@@ -58,7 +58,7 @@ export const MaterialStocks = () => {
                 <MaterialCardSkeleton/>
               </>
           )}
-          {hasNothingRegisteredYet &&
+          {!hasNothingRegisteredYet &&
               !isLoading && (
                   <>
                     <small className="text-xs text-gray-400">{t("click_for_details")}</small>
@@ -69,7 +69,7 @@ export const MaterialStocks = () => {
                   </>
               )
           }
-          {!hasNothingRegisteredYet && (
+          {hasNothingRegisteredYet && (
               <div className="flex flex-col justify-center items-center">
                 <div className="text-6xl">❕</div>
                 <div className="text-md font-medium text-gray-400 mt-2">
