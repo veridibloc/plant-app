@@ -30,12 +30,11 @@ export function Outgoing() {
 
                 return {
                     id,
-                    label: tm(`${llabel}.label`),
-                    description: `${tm(`${llabel}.description`)}`,
+                    materialSlug: llabel,
                     weight
                 }
             }).filter( c => Boolean(c.weight))
-    }, [stockContracts, tm, contracts])
+    }, [stockContracts, contracts])
     const handleOnClick = (materialId: string) => {
         return router.push(`/outgoing/${materialId}`);
     }

@@ -2,7 +2,7 @@ import {MaterialCard} from "./MaterialCard";
 import {SimpleCard} from "@/ui/components/Cards/SimpleCard";
 import {useTranslations} from "next-intl";
 interface Props {
-    materials: {id: string, label: string, description: string, weight?: number}[];
+    materials: {id: string, materialSlug: string, weight?: number}[];
     showWeight?: boolean;
     onSelected: (materialId: string) => void
     notFoundComponent?: React.ReactNode
@@ -17,8 +17,7 @@ export function MaterialSelector({materials, onSelected, showWeight = false, not
                 <MaterialCard
                     key={`material-card-${m.id}`}
                     id={m.id}
-                    label={m.label}
-                    description={m.description}
+                    materialSlug={m.materialSlug}
                     weight={m.weight}
                     showWeight={showWeight}
                     onClick={onSelected}

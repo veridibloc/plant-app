@@ -24,7 +24,7 @@ export function PrelineScript() {
     if (isBrowser) {
       setTimeout(() => {
         window.HSStaticMethods.autoInit();
-      }, 100);
+      }, 500);
     }
   }, [path, isBrowser]);
 

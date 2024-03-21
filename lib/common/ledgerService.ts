@@ -86,6 +86,7 @@ export class LedgerService {
     return Promise.resolve(this.vericleanToken);
   }
 
+  // TODO: this transactions list needs to be adjusted for stock contract stuff.
   fetchRelevantAccountTransactions(accountId: string) {
     return withError(async () => {
       const [transactions, vericleanToken] = await Promise.all([
@@ -164,12 +165,6 @@ export class LedgerService {
       }
       return transactionsMap;
     });
-  }
-
-  fetchCollectedMaterialPerAccount(accountId: string) {
-    return withError(async () =>
-      this.fetchIncomingMaterialTransactionsPerCollector(accountId)
-    );
   }
 
   private async fetchIncomingMaterialTransactionsPerCollector(

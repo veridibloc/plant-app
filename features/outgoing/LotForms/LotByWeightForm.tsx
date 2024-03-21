@@ -5,11 +5,11 @@ import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {useFormState} from "react-dom";
 import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {MaterialCard} from "@/ui/components/Materials";
 import {useSingleStockContract} from "@/ui/hooks/useSingleStockContract";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
-import { notFound } from "next/navigation";
+import {notFound} from "next/navigation";
 import {useNotification} from "@/ui/hooks/useNotification";
 
 
@@ -36,29 +36,14 @@ export const LotByWeightForm = ({materialId, createLotAction}: Props) => {
     const [fieldValues, setFieldValues] = useState<{material: string, weight: number}>({material: materialId, weight: 0});
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
 
-
-    const handleSuccess = useCallback((lotId: string) => {
-        const weight = fieldValues.weight;
-        formRef.current?.reset();
-        setFieldValues(initialFormValues);
-        setSubmitSuccessful(true);
-        router.replace(`/outgoing/${materialId}/${lotId}?w=${weight}`);
-    }, [fieldValues.weight, materialId, router]);
-
-    const handleError = useCallback( (error: string) => {
-        console.error(state.error);
-        showError(to("creation_failed"))
-    }, [showError, state.error, to])
-
     useEffect(() => {
         if (state.success) {
-            handleSuccess(state.lotId);
+            router.replace(`/outgoing/${materialId}/${state.lotId}?w=${fieldValues.weight}`)
         }
         if (state.error) {
-            handleError(state.error);
+            showError(to("creation_failed"))
         }
-
-    }, [handleError, handleSuccess, state]);
+    }, [state]);
 
 
     const canSubmit = Number(fieldValues.material) && Number(fieldValues.weight);
@@ -71,12 +56,14 @@ export const LotByWeightForm = ({materialId, createLotAction}: Props) => {
     const materialLabel = (stockContracts.find( lstc => lstc.id === materialId)?.label ?? "").toLowerCase();
 
     return (
-        <form ref={formRef} className="flex flex-col gap-y-4 justify-evenly items-center w-full h-[40vh]" action={action}>
+        <form ref={formRef} className="flex flex-col gap-y-4 justify-evenly items-center w-full h-[40vh]"
+              action={action}
+        >
 
             <input name="materialId" defaultValue={materialId} hidden/>
 
             <section className="w-full">
-                <MaterialCard label={tm(`${materialLabel}.label`)} description={tm(`${materialLabel}.description`)} id={materialId} showWeight={true} weight={weight}/>
+                <MaterialCard materialSlug={materialLabel} id={materialId} showWeight={true} weight={weight}/>
             </section>
 
             <div className="inline-flex relative items-center w-full">
@@ -90,7 +77,7 @@ export const LotByWeightForm = ({materialId, createLotAction}: Props) => {
                             setSubmitSuccessful(false);
                             setFieldValues(prevState => ({
                                 ...prevState,
-                                weight: weight
+                                weight
                             }))
                         }}
                         withButtons={false}

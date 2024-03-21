@@ -17,7 +17,7 @@ export async function createSigner(ledger: Ledger, u: User | null = null) {
         }
     }
 
-    const userAccount = await fetchUserAccount(user, true)
+    const userAccount = await fetchUserAccount( user, true);
     if (!userAccount) {
         throw notFound("User Account not found!")
     }

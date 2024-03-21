@@ -17,7 +17,7 @@ export function Displayable({weight, materialLabel, identifier, stockContractId}
     return (
         <section className="print:hidden mt-2 flex flex-col justify-between items-center w-full h-[55vh]">
             <section className="w-full">
-                <MaterialCard label={tm(`${materialLabel}.label`)} description={tm(`${materialLabel}.description`)}
+                <MaterialCard materialSlug={materialLabel}
                               id={stockContractId} weight={weight} showWeight={true}/>
             </section>
             <div className="mt-2 p-1 text-center mx-auto">

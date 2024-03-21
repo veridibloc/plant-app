@@ -772,9 +772,9 @@
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
 
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.10.tgz":
-  version "0.0.10"
-  resolved "./veridibloc-smart-contracts-v0.0.10.tgz#848907a61d359fef932554f9ea3d9396a705ee0c"
+"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.13.tgz":
+  version "0.0.13"
+  resolved "./veridibloc-smart-contracts-v0.0.13.tgz#a1d92769ac00ca700584e05beb760c6e0b0c345a"
   dependencies:
     "@signumjs/contracts" "^1.0.0-rc.75"
     "@signumjs/core" "^1.0.0-rc.75"
@@ -3472,6 +3472,11 @@ url-parse@^1.4.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-debounce@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-10.0.0.tgz#5091b18d6c16292605f588bae3c0d2cfae756ff2"
+  integrity sha512-XRjvlvCB46bah9IBXVnq/ACP2lxqXyZj0D9hj4K5OzNroMDpTEBg8Anuh1/UfRTRs7pLhQ+RiNxxwZu9+MVl1A==
 
 use-intl@^3.9.1:
   version "3.9.1"

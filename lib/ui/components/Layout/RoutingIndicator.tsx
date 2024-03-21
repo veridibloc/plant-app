@@ -39,7 +39,7 @@ export function RoutingIndicator() {
                 isRouting === 1 && (
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
 
-                        <section className="absolute top-2 right-2">
+                        <section className="absolute top-2 left-2">
                             <Spinner className="text-gray-400"/>
                         </section>
                     </motion.div>

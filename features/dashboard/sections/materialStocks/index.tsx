@@ -29,16 +29,15 @@ export const MaterialStocks = () => {
       if(label){
         const {stockQuantity} = contract.getData()
         materialCardData.push({
-          description: tm(`${label.toLowerCase()}.description`),
           id: contract.contractId,
           weight: stockQuantity,
           showWeight: true,
-          label,
+          materialSlug: label,
         })
       }
     }
     return materialCardData
-  }, [stockContracts, contracts, tm]);
+  }, [stockContracts, contracts]);
 
 
   const hasNothingRegisteredYet = !isLoading && contracts.length === 0;

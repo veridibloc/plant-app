@@ -20,18 +20,16 @@ export const ClientRootLayout = ({children}: Props) => {
     const canShowBottomNavigation = Boolean(isLoaded && isSignedIn && user);
     return (
         <AppContextProvider>
-            <MaterialProvider>
-                <JotaiProvider>
-                    <main
-                        className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col justify-between items-center">
-                        <Notification/>
-                        <RoutingIndicator/>
-                        <Menu />
-                        {children}
-                        {canShowBottomNavigation ? <BottomNavigation/> : <div/>}
-                    </main>
-                </JotaiProvider>
-            </MaterialProvider>
+            <JotaiProvider>
+                <main
+                    className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col justify-between items-center">
+                    <Notification/>
+                    <RoutingIndicator/>
+                    <Menu/>
+                    {children}
+                    {canShowBottomNavigation ? <BottomNavigation/> : <div/>}
+                </main>
+            </JotaiProvider>
         </AppContextProvider>
     );
 };

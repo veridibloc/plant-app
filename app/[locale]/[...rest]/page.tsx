@@ -1,5 +1,5 @@
-import { NotFound } from "@/features/exceptions/notFound";
+import {notFound} from "next/navigation";
 
 export default function Page() {
-  return <NotFound />;
+  notFound();
 }

@@ -8,20 +8,17 @@ import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 
 export function SeparationMaterialSelector() {
     const t = useTranslations("separation")
-    const tm = useTranslations("materials")
     const {stockContracts, role} = useUserAccount();
     const router = useEnhancedRouter();
 
     const materials = useMemo(() => {
         return stockContracts.map(({id, label}) => {
-            const llabel = label.toLowerCase();
             return {
                 id,
-                label: tm(`${llabel}.label`),
-                description: tm(`${llabel}.description`)
+                materialSlug: label
             }
         })
-    }, [stockContracts, tm])
+    }, [stockContracts])
     const handleOnClick = (materialId: string) => {
         router.push(`/process/${role}/${materialId}`);
     }

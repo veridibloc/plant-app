@@ -17,6 +17,7 @@
     "plastic": "Plastic",
     "glass": "Glass",
     "residue": "Residue",
+    "no_stock": "No Stock",
     "no_material_found": {
       "title": "No Material Found",
       "text": "There's no material available for selection."
@@ -86,7 +87,8 @@
     "work_in_progress": "We're expanding your veridibloc experience",
     "work_in_progress_second_line": "Stay tuned to ecology updates",
     "page_not_found": "Oooops, you found a lost place",
-    "page_not_found_second_line": "This place seems not to be claimed by us yet. We apologize for this unpleasant event. We kindly ask you to return to the previous page.\nIf this problem persist, do not hesitate to contact us immediately."
+    "page_not_found_second_line": "This place seems not to be claimed by us yet. We apologize for this unpleasant event. We kindly ask you to return to the previous page.\nIf this problem persist, do not hesitate to contact us immediately.",
+    "back_to_home": "Back to Home"
   },
   "index": {
     "welcome_title": "Welcome, set up your account to continue your recycling journey"
@@ -150,7 +152,6 @@
     }
   },
   "outgoing" : {
-      "no_stock": "No Stock",
       "select": {
         "title": "Create Lot",
         "description": "Select material to mount a lot"
@@ -186,6 +187,16 @@
     "register": {
       "title": "Convert Material",
       "description": "Enter quantity and confirm conversion process"
+    }
+  },
+  "stock": {
+    "title": "Stock Details",
+    "description": "View details of your materials stock",
+    "search_lot": "Lot Id",
+    "enter_lot_id": "Enter Lot Id",
+    "lot": {
+      "title": "Lot Details",
+      "description": "View details of lot {{lotId}}"
     }
   }
 }

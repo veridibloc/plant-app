@@ -2,7 +2,6 @@
 
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
-import {useTranslations} from "next-intl";
 import {DisplayablePrintableProps} from "./DisplayablePrintableProps";
 import {Printable} from "./Printable";
 import {Displayable} from "./Displayable";
@@ -15,7 +14,6 @@ interface Props {
 
 export function PrintLot({lotId, stockContractId, weight}: Props): JSX.Element {
     const {stockContracts} = useUserAccount();
-    const tm = useTranslations("materials");
 
     const identifier = new ScannableIdentifier({
         type: "vb",

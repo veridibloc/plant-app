@@ -1,10 +1,15 @@
 import {cache} from 'react'
 import {MetaInfo, UserAccount} from '@/types/userAccount';
-import {MaterialInfo} from '@/types/materialInfo';
 import prisma from './prisma';
 import {User} from '@clerk/backend';
-export const fetchUserAccount = cache(async (user: User, withSeed = false): Promise<UserAccount | null> => {
-    const account = await prisma.account.findUnique({where: {userId: user.id}})
+
+const fetchAccountFromDatabase = cache( async (userId: string) => {
+    console.debug("Fetching account from database...", userId);
+    return prisma.account.findUnique({where: {userId}})
+});
+
+export async function fetchUserAccount(user: User, withSeed = false): Promise<UserAccount | null> {
+    const account = await fetchAccountFromDatabase(user.id);
 
     if (!account) return null;
 
@@ -26,4 +31,4 @@ export const fetchUserAccount = cache(async (user: User, withSeed = false): Prom
         encryptedSeed: withSeed ? account.encSeed : undefined,
         ...metaInfo,
     }
-})
+}
