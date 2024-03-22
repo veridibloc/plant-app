@@ -70,7 +70,7 @@ export function LotDetails({lotData, stockContractId, lotReceipt}: Props) {
         <hr className="w-full"/>
         <section className="border rounded border-gray-300 relative px-4 py-8 mt-4">
             <div
-                className="absolute text-xs top-[-8px] bg-white dark:bg-gray-800 text-gray-500 px-1">{t("lot-composition")}</div>
+                className="absolute text-xs top-[-8px] bg-white dark:bg-gray-800 text-gray-500 px-1">{t("composition")}</div>
 
             {/*<Table rows={rows} headers={*/}
             {/*    [*/}
