@@ -25,8 +25,7 @@ export const MaterialHeader = ({materialStockContractId, className}: Props) => {
         <section className={`w-full ${className}`}>
             <MaterialCard
                 id={stockContract.id}
-                materialSlug={tm(`${stockContract.label.toLowerCase()}.label`)}
-                description={tm(`${stockContract.label.toLowerCase()}.description`)}
+                materialSlug={stockContract.label}
                 onClick={() => router.push("/process")}
             />
         </section>

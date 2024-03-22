@@ -2,10 +2,8 @@ import {PageProps} from "@/types/pageProps";
 import {contractsProvider} from "@/common/contractsProvider";
 import {notFound} from "next/navigation";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
-import {Stock} from "@/features/stock";
-import {Header} from "@/ui/components/Layout/Header";
 import {cache} from "react";
-import {useTranslations} from "next-intl";
+import {StockDetails} from "@/features/stock/StockDetails";
 
 const fetchStockContract = cache(async (contractId: string) => {
     try {
@@ -23,6 +21,6 @@ export default async function Page({params: {stockContractId}}: PageProps<{ stoc
     }
 
     return <PageContainer>
-        <Stock contractId={stockContract.contract.at} contractData={stockContract.getData()}/>
+        <StockDetails contractId={stockContract.contract.at} contractData={stockContract.getData()}/>
     </PageContainer>
 }

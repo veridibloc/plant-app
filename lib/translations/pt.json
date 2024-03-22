@@ -194,8 +194,11 @@
     "search_lot": "Id do Lote",
     "enter_lot_id": "Digite o número do Lote",
     "lot": {
-      "title": "Detalhes to Lote",
-      "description": "Verifique os detalhes do lote {lotId}"
+      "title": "Detalhes do Lote",
+      "description": "Verifique os detalhes do lote {lotId}",
+      "creation_date": "Data de Criação",
+      "delivery_date": "Data de Envio",
+      "lot_composition": "Composição Lote"
     }
 
   }

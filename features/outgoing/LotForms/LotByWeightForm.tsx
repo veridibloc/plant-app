@@ -13,11 +13,6 @@ import {notFound} from "next/navigation";
 import {useNotification} from "@/ui/hooks/useNotification";
 
 
-const initialFormValues = {
-    material: "",
-    weight: 0
-}
-
 interface Props {
     materialId: string;
     createLotAction: any;

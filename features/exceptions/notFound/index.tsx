@@ -8,8 +8,8 @@ export const NotFound = () => {
         <div className="flex flex-col items-center justify-center min-h-[85vh] pt-6 px-8  w-full">
             <p className="text-6xl text-center my-4">😭</p>
 
-            <h3 className="text-lg font-bold text-justify">{t("page_not_found")}</h3>
-            <p className="text-justify whitespace-pre-line w-1/2">
+            <h3 className="text-lg font-bold text-justify my-4">{t("page_not_found")}</h3>
+            <p className="text-justify whitespace-pre-line w-full md:w-1/2">
                 {t("page_not_found_second_line")}
             </p>
             <Link className="mt-6" href={"/"}>
