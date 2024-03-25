@@ -198,7 +198,9 @@
       "description": "Verifique os detalhes do lote {lotId}",
       "creation_date": "Data de Criação",
       "delivery_date": "Data de Envio",
-      "composition": "Composição Lote"
+      "not_delivered_yet": "Ainda não enviado",
+      "composition": "Composição Lote",
+      "weight": "Peso"
     }
 
   }

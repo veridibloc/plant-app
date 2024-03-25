@@ -31,7 +31,7 @@ export const AccountInfoInjection = ({targetClass}: Props) => {
             setTimeout(() => {
                 target[0].appendChild(accountInfoRoot);
                 createRoot(accountInfoRoot).render(<AccountInfo userAccount={userAccount}/>);
-            }, 100)
+            }, 1_000)
         }
 
         return () => {

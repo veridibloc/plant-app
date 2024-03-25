@@ -196,9 +196,11 @@
     "enter_lot_id": "Enter Lot Id",
     "lot": {
       "title": "Lot Details",
-      "description": "View details of lot {{lotId}}",
+      "description": "View details of lot {lotId}",
       "creation_date": "Creation Date",
       "delivery_date": "Delivery Date",
+      "not_delivered_yet": "Not Delivered Yet",
+      "weight": "Weight",
       "composition": "Lot Composition"
     }
   }
