@@ -5,7 +5,7 @@ import {PageContainer} from "@/ui/components/Layout/PageContainer";
 
 export const Dashboard = () => {
     return (
-        <PageContainer>
+        <PageContainer hasBackButton={false}>
                 <MaterialStocks/>
                 <AccountBalances/>
         </PageContainer>

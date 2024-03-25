@@ -1,11 +1,16 @@
 "use client"
 
-import { NavigationLinks } from "./sections/navigationLinks";
+import {NavigationLinks} from "./sections/navigationLinks";
+import {PageContainer} from "@/ui/components/Layout/PageContainer";
+import {Header} from "@/ui/components/Layout/Header";
+import {useTranslations} from "next-intl";
 
 export const Settings = () => {
-  return (
-    <div className="flex flex-col items-start justify-start pt-10 mb-28 w-full gap-8">
-      <NavigationLinks />
-    </div>
-  );
+    const t = useTranslations("settings")
+    return (
+        <PageContainer>
+            <Header title={t("title")} description={t("description")}/>
+            <NavigationLinks/>
+        </PageContainer>
+    );
 };

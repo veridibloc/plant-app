@@ -39,7 +39,7 @@ export function Outgoing() {
         return router.push(`/outgoing/${materialId}`);
     }
 
-    return (<PageContainer>
+    return (<PageContainer hasBackButton={false}>
         <Header title={t("select.title")} description={t("select.description")}/>
         <MaterialSelector
             materials={materials}

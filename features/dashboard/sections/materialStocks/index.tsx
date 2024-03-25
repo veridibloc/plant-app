@@ -10,8 +10,7 @@ import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 
 export const MaterialStocks = () => {
   const t = useTranslations("dashboard");
-  const tm = useTranslations("materials");
-  const {publicKey, stockContracts} = useUserAccount();
+  const {stockContracts} = useUserAccount();
   const {isLoading, contracts = []} = useStockContracts();
   const router = useEnhancedRouter()
 
@@ -47,7 +46,7 @@ export const MaterialStocks = () => {
   }
 
   return (
-      <section className="flex justify-start items-start w-full px-4 flex-wrap">
+      <section className="flex justify-start items-start w-full px-2 flex-wrap">
         <p className="font-bold w-full text-start text-lg">{t("material_other")}</p>
         <div className="flex flex-col mx-auto space-y-2 my-4 w-full">
           {isLoading && (

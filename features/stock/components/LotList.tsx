@@ -35,12 +35,16 @@ export const LotList = ({contractId}: Props) => {
     }
 
     return <>
+        <section className="w-full mb-4">
             <LotSearchField onSearch={setSearchTerm}/>
+        </section>
 
         <section className="relative w-full">
             <hr className="w-full"/>
             <small className="absolute bg-white text-xs text-gray-400 px-1 right-2 top-[-6px] p-0 m-0">{filtered.length}/{lots?.length}</small>
         </section>
+        <section className="space-y-2 mt-4">
+
         {isLoading && (
             <>
                 <LotCardProxySkeleton/>
@@ -57,5 +61,6 @@ export const LotList = ({contractId}: Props) => {
                 onClick={handleLotCardClick}
             />)
         )}
+        </section>
     </>
 }

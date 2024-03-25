@@ -31,7 +31,7 @@ export const Incoming = () => {
         }
     };
 
-    return <PageContainer>
+    return <PageContainer hasBackButton={false}>
         <Header title={t("title")} description={t("description")}/>
         <div className={`mx-auto w-full h-full`}>
             <AudioPlayer ref={beepOkRef} src="/assets/beep_ok.mp3"/>

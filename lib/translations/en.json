@@ -63,7 +63,8 @@
     "qr-code": {
       "scanning_error": "Could not scan QR code",
       "device": "Device",
-      "touch_to_scan": "Touch to scan"
+      "touch_to_scan": "Touch to scan",
+      "change_camera": "Change Camera"
     }
   },
   "dashboard": {
@@ -94,6 +95,8 @@
     "welcome_title": "Welcome, set up your account to continue your recycling journey"
   },
   "settings": {
+    "title": "Settings",
+    "description": "Personalize your user experience",
     "account_settings_card": {
       "description": "Manage your account information, privacy, and security settings to enhance your Veridibloc experience.",
       "label": "Manage your account",
@@ -196,7 +199,7 @@
     "enter_lot_id": "Enter Lot Id",
     "lot": {
       "title": "Lot Details",
-      "description": "View details of lot {lotId}",
+      "description": "Lot Id: {lotId}",
       "creation_date": "Creation Date",
       "delivery_date": "Delivery Date",
       "not_delivered_yet": "Not Delivered Yet",

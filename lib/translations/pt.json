@@ -63,7 +63,8 @@
     "qr-code": {
       "scanning_error": "Não conseguiu ler o código QR",
       "device": "Dispositivo",
-      "touch_to_scan": "Toque para escanear"
+      "touch_to_scan": "Toque para escanear",
+      "change_camera": "Alterar Câmera"
     }
   },
   "dashboard": {

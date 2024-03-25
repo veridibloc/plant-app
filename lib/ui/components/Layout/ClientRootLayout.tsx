@@ -22,7 +22,7 @@ export const ClientRootLayout = ({children}: Props) => {
         <AppContextProvider>
             <JotaiProvider>
                 <main
-                    className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col justify-between items-center">
+                    className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col">
                     <Notification/>
                     <RoutingIndicator/>
                     <Menu/>

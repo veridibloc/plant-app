@@ -17,13 +17,17 @@ export function StockDetails({contractId, contractData}: Props) {
     const materialLabel = (stockContracts.find(lstc => lstc.id === contractId)?.label ?? "").toLowerCase();
 
     return <>
-        <Header title={t("title")} description={t("description")} />
-        <MaterialCard
-            id={contractId}
-            materialSlug={materialLabel}
-            weight={contractData.stockQuantity}
-            showWeight={true}
-        />
+        <Header title={t("title")} description={t("description")}/>
+        <section className="px-2 w-full">
+            <MaterialCard
+                id={contractId}
+                materialSlug={materialLabel}
+                weight={contractData.stockQuantity}
+                showWeight={true}
+            />
+        </section>
+        <section className="px-2 w-full">
         <LotList contractId={contractId}/>
+        </section>
     </>
 }

@@ -12,7 +12,7 @@ const fetchLotData = cache(async ( lotId: string, contractId: string) => {
         const stock = await contractsProvider.getStockContract(contractId);
         const [lotData, lotReceipt]  = await Promise.all([
             stock.getLotData(lotId),
-            stock.getSingleLotReceipt(lotId)
+            stock.getSingleLotReceipt(lotId),
             ])
         return {
             lotData,
@@ -34,6 +34,7 @@ export default async function Page({params: {stockContractId, lotId}}: Props) {
     if (!lotDetails) {
         notFound();
     }
+
     return <PageContainer>
         <LotDetails
             stockContractId={stockContractId}

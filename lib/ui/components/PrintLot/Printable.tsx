@@ -6,13 +6,16 @@ import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {Address} from "@signumjs/core";
 import {Avatar} from "@/ui/components/Avatar";
 import {AvatarImage} from "@/ui/components/Avatar/AvatarImage";
+import {ScannableIdentifier} from "@/common/scannableIdentifiers";
 
 export function Printable({identifier, stockContractId, weight, materialLabel}: DisplayablePrintableProps) {
     const tm = useTranslations("materials");
     const {publicKey, logoUrl} = useUserAccount()
 
+    materialLabel = materialLabel.toLowerCase();
+
     return (
-        <div className="screen:hidden mt-2 flex flex-col justify-evenly items-center w-full space-y-4 h-[90vh]">
+        <div className="screen:hidden mt-2 flex flex-col justify-evenly items-center w-full space-y-4 h-[80vh] overflow-y-hidden">
             <section className="p-1 text-center">
                 <div>
                     <QRCode
@@ -40,8 +43,6 @@ export function Printable({identifier, stockContractId, weight, materialLabel}: 
                         </div>
                     </div>
                 </SimpleCard>
-                {/*<MaterialCard label={tm(`${materialLabel}.label`)} description={tm(`${materialLabel}.description`)}*/}
-                {/*              id={stockContractId} weight={weight} showWeight={true}/>*/}
             </section>
         </div>
     )

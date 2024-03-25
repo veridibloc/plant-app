@@ -55,8 +55,8 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
             <section className="relative w-full text-right">
                 <IconButton
                     onClick={handleOpenCameraSettings}
-                    icon={<RiCameraSwitchLine size={24} color="#9CA3AF"/>}
-                    label={<small className="text-gray-400 text-sm">Change Camera</small>}
+                    icon={<RiCameraSwitchLine size={24}/>}
+                    label={t("change_camera")}
                 />
             </section>
         )}

@@ -8,7 +8,7 @@ export const AccountBalances = () => {
     const t = useTranslations("dashboard");
     const {accountBalances} = useAccountBalances();
     return (
-        <section className="flex justify-start items-start w-full flex-wrap px-4 gap-4">
+        <section className="flex justify-start items-start w-full flex-wrap px-2 gap-4">
             <p className="font-bold w-full text-start text-lg">{t("balance_other")}</p>
             <small className="text-xs text-gray-400">{t("click_for_transfer")}</small>
             {accountBalances.map((ab) => (

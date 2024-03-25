@@ -23,7 +23,7 @@ export function SeparationMaterialSelector() {
         router.push(`/process/${role}/${materialId}`);
     }
 
-    return (<PageContainer>
+    return (<PageContainer hasBackButton={false}>
         <Header title={t("select.title")} description={t("select.description")}/>
         <MaterialSelector materials={materials} onSelected={handleOnClick}/>
     </PageContainer>)
