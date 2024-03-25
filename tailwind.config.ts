@@ -10,6 +10,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        "veridibloc": "#38C400"
+      },
       screens: {
         print: { raw: 'print'},
         screen: { raw: 'screen'}
