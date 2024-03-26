@@ -17,7 +17,7 @@ const SeparatorLinks = [
         label: "incoming"
     },
     {
-        href: '/process',
+        href: '/separation',
         icon: RiLayoutColumnLine,
         label: "separation"
     },

@@ -17,7 +17,7 @@ export const MaterialHeader = ({materialStockContractId, className}: Props) => {
 
     if (!stockContract) {
         console.error(`Stock contract [${materialStockContractId}] for user [${email}] not found. Forgot to configure it?`);
-        router.replace("/process");
+        router.replace("/separation");
         return null;
     }
 
@@ -26,7 +26,7 @@ export const MaterialHeader = ({materialStockContractId, className}: Props) => {
             <MaterialCard
                 id={stockContract.id}
                 materialSlug={stockContract.label}
-                onClick={() => router.push("/process")}
+                onClick={() => router.push("/separation")}
             />
         </section>
     )

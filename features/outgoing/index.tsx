@@ -39,7 +39,7 @@ export function Outgoing() {
         return router.push(`/outgoing/${materialId}`);
     }
 
-    const href = role === "separator" ? {url: "/process", label: ts("register.title")} : undefined;
+    const href = role === "separator" ? {url: "/separation", label: ts("register.title")} : undefined;
 
     return (<PageContainer hasBackButton={false}>
         <Header title={t("select.title")} description={t("select.description")}/>
