@@ -42,8 +42,6 @@ export default async function Page({params : {lotId, collectorOrContractId} } : 
     notFound();
   }
 
-  console.log("lot info", lotInfo);
-
   return <IncomingLotConfirmation
       contractId={collectorOrContractId}
       materialSlug={lotInfo.materialSlug}

@@ -33,8 +33,7 @@ export function LotDetails ({ lotData, stockContractId, materialSlug }: Props) {
             />
             <small className="text-xs dark:text-gray-300 text-gray-500 mx-auto">{identifier}</small>
         </section>
-        <section className="w-full">
-            <div className="flex flex-col w-full gap-2 border-gray-300 border rounded p-4">
+        <section className="w-full flex flex-col w-full gap-2 border-gray-300 border rounded p-4 bg-white dark:bg-gray-600">
                 <div>
                     <LabeledTextItem label={t("weight")} text={`${number(lotData.totalQuantity)} kg`}/>
                 </div>
@@ -62,8 +61,6 @@ export function LotDetails ({ lotData, stockContractId, materialSlug }: Props) {
                 {/*                         text={t("not_delivered_yet")}/>*/}
                 {/*    </div>*/}
                 {/*)}*/}
-            </div>
         </section>
-
     </>
 }

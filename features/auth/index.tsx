@@ -4,6 +4,9 @@ import {useTranslations} from "next-intl";
 import {useAuth, SignIn as ClerkSignIn} from "@clerk/nextjs";
 import {Spinner} from "@/ui/components/Spinner";
 import {useEffect, useRef} from "react";
+import {Logo} from "@/ui/components/Logo";
+import Link from "next/link";
+import Image from "next/image";
 
 // dirty hack to remove signup links
 function disableSignUp() {
@@ -30,7 +33,13 @@ export const SignIn = () => {
 
     return (
         <section className="flex flex-col items-center justify-center h-[75vh] mt-4 pt-4 overflow-x-hidden">
-            <h1 className="text-center text-4xl font-bold mb-4">♻️ Veridibloc</h1>
+            <div className="flex flex-row justify-center items-center w-full mb-4">
+                    <Image src="/assets/veridibloc_logo.svg" alt="Veridibloc logo" width={48} height={48}/>
+                    <div className="relative">
+                        <h1 className="text-center text-4xl font-bold ml-2">VeridiBloc</h1>
+                        <small className="absolute top-8 text-xs text-veridibloc">Recycling 4.0</small>
+                    </div>
+            </div>
             <p className="text-center text-neutral-500 max-w-xs font-medium mb-4">
                 {t("welcome_title")}
             </p>
