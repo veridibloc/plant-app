@@ -10,7 +10,7 @@ export const PageContainer = ({hasBackButton = true, className, children}: Props
     return <div className={`relative pt-6 w-full overflow-y-auto ${className}`}
                 style={{
                     height: "calc(100vh - 88px)",
-                    minHeight: "calc(100vh - 88px)"
+                    minHeight: "calc(100vh - 88px)",
                 }}
     >
         {hasBackButton && <BackButton/>}

@@ -30,7 +30,7 @@ export const NavigationLinks = () => {
                 description={t("language_card.description")}
                 ctaLabel={t("language_card.label")}
             />
-            {devices.length > 1 && (
+            {devices.length >= 1 && (
 
                 <LinkCard
                     href="/settings/device"

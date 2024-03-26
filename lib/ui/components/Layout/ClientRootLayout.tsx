@@ -20,8 +20,7 @@ export const ClientRootLayout = ({children}: Props) => {
     return (
         <AppContextProvider>
             <JotaiProvider>
-                <main
-                    className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col">
+                <main className="container mx-auto relative overflow-y-auto max-w-3xl flex flex-col">
                     <Watermark />
                     <Notification/>
                     <RoutingIndicator/>

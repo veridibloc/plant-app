@@ -16,14 +16,14 @@ export const DeviceCard = ({label, deviceId, onClick, isActive}: Props) => {
     return (
         <div className={`flex flex-row border shadow-sm rounded-xl p-4 justify-start items-center space-x-2 hover:bg-gray-200 ${activeStyle}`} onClick={onClick.bind(null, deviceId)}>
             <span
-                className="w-10 h-10 rounded-full flex justify-center items-center"
+                className="min-w-[48px] min-h-[48px] lg:min-w-[64px] lg:min-h-[64px] rounded-full flex-grow flex justify-center items-center text-md font-bold text-gray-200"
                 style={{backgroundColor: bgColor}}
             >
               <RiCamera2Fill size={28} color="#eee"/>
             </span>
             <div className="truncate">
                 <h3 className="text-lg font-bold text-gray-700 mb-0.5 truncate">{label}</h3>
-                <small className="font-small text-gray-500 text-justify">
+                <small className="font-small text-xs text-gray-500 text-justify">
                     {deviceId}
                 </small>
             </div>
