@@ -1,23 +1,24 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 import {Spinner} from "@/ui/components/Spinner";
 import {AnimatePresence, motion} from "framer-motion";
 
 export function RoutingIndicator() {
     const [isRouting, setIsRouting] = useState(-1)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         const handleRouteStarted = () => {
-            setTimeout(() => {
-                setIsRouting((prevState) => {
-                    if(prevState === -1){
-                        return 1;
-                    }
-                    return 0
-                });
-            }, 250)
+            setIsRouting(1);
+            // setTimeout(() => {
+            //     setIsRouting((prevState) => {
+            //         if(prevState === -1){
+            //             return 1;
+            //         }
+            //         return 0
+            //     });
+            // }, 100)
         }
 
         const handleRouteFinished = () => {
@@ -38,9 +39,8 @@ export function RoutingIndicator() {
             {
                 isRouting === 1 && (
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-
-                        <section className="absolute top-2 left-2">
-                            <Spinner className="text-gray-400"/>
+                        <section className="absolute top-8 left-7 w-4 h-4">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-veridibloc opacity-75"/>
                         </section>
                     </motion.div>
                 )

@@ -24,27 +24,28 @@ export const AccountInfoInjection = ({targetClass}: Props) => {
             return;
         }
 
-        const target = document.getElementsByClassName(targetClass);
-        if (target.length) {
+        const timeout = setInterval(() => {
+            const target = document.getElementsByClassName(targetClass);
+            if (!target.length) return;
+            clearTimeout(timeout);
             const accountInfoRoot = document.createElement('div')
             accountInfoRoot.setAttribute('id', InjectedElementId);
-            setTimeout(() => {
-                target[0].appendChild(accountInfoRoot);
-                createRoot(accountInfoRoot).render(<AccountInfo userAccount={userAccount}/>);
-            }, 1_000)
-        }
+            target[0].appendChild(accountInfoRoot);
+            createRoot(accountInfoRoot).render(<AccountInfo userAccount={userAccount}/>);
+        }, 100)
 
         return () => {
+            clearInterval(timeout);
             const root = document.getElementById(InjectedElementId);
             root?.parentNode?.removeChild(root);
         }
     }, [userAccount, targetClass]);
 
-    return null
+    return null;
 };
 
 
-function AccountInfo({userAccount} : {userAccount: UserAccount}) {
+function AccountInfo({userAccount}: { userAccount: UserAccount }) {
 
     const {Ledger: {ExplorerUrl}} = useAppContext();
     const address = Address.fromPublicKey(userAccount.publicKey);

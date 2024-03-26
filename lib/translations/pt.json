@@ -194,6 +194,7 @@
     "description": "Vide detalhes desse material em estoque",
     "search_lot": "Id do Lote",
     "enter_lot_id": "Digite o número do Lote",
+    "no_lots_found": "Lotes não encontrados",
     "lot": {
       "title": "Detalhes do Lote",
       "description": "Verifique os detalhes do lote {lotId}",

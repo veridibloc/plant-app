@@ -7,17 +7,19 @@ import {LotCardProxySkeleton} from "@/features/stock/components/LotCardProxySkel
 import {LotSearchField} from "@/features/stock/components/LotSearchField";
 import {useState} from "react";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
+import {useTranslations} from "next-intl";
 
 async function fetchLots(contractId: string) {
     const contract = await contractsProvider.getStockContract(contractId);
     return (await contract.getAllLotIds()) || []
-   }
+}
 
 interface Props {
     contractId: string;
 }
 
 export const LotList = ({contractId}: Props) => {
+    const t = useTranslations("stock")
     const [searchTerm, setSearchTerm] = useState("")
     const router = useEnhancedRouter();
 
@@ -30,7 +32,7 @@ export const LotList = ({contractId}: Props) => {
         filtered = lots.filter(({lotId}) => lotId.indexOf(searchTerm) !== -1);
     }
 
-    const handleLotCardClick = (lotId:string) => {
+    const handleLotCardClick = (lotId: string) => {
         router.push(`/stock/${contractId}/${lotId}`);
     }
 
@@ -41,26 +43,32 @@ export const LotList = ({contractId}: Props) => {
 
         <section className="relative w-full">
             <hr className="w-full"/>
-            <small className="absolute bg-white text-xs text-gray-400 px-1 right-2 top-[-6px] p-0 m-0">{filtered.length}/{lots?.length}</small>
+            <small
+                className="absolute bg-white text-xs text-gray-400 px-1 right-2 top-[-6px] p-0 m-0">{filtered.length}/{lots?.length}</small>
         </section>
         <section className="space-y-2 mt-4">
 
-        {isLoading && (
-            <>
-                <LotCardProxySkeleton/>
-                <LotCardProxySkeleton/>
-                <LotCardProxySkeleton/>
-            </>
-        )}
-        {!isLoading && filtered.length && (
-            filtered.map(({lotId, sold}) => <LotCardProxy
-                key={lotId}
-                contractId={contractId}
-                lotId={lotId}
-                sold={sold}
-                onClick={handleLotCardClick}
-            />)
-        )}
+            {isLoading && (
+                <>
+                    <LotCardProxySkeleton/>
+                    <LotCardProxySkeleton/>
+                    <LotCardProxySkeleton/>
+                </>
+            )}
+            {!isLoading && filtered.length > 0 && (
+                filtered.map(({lotId, sold}) => <LotCardProxy
+                    key={lotId}
+                    contractId={contractId}
+                    lotId={lotId}
+                    sold={sold}
+                    onClick={handleLotCardClick}
+                />)
+            )}
+            {!isLoading && filtered.length === 0 && (
+                <section className="w-full mt-8 text-center">
+                    <p className="text-gray-400 text-lg">{t("no_lots_found")}</p>
+                </section>
+            )}
         </section>
     </>
 }
