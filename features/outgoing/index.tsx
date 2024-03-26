@@ -33,11 +33,13 @@ export function Outgoing() {
                     materialSlug: llabel,
                     weight
                 }
-            }).filter( c => Boolean(c.weight))
+            }).filter(c => Boolean(c.weight))
     }, [stockContracts, contracts])
     const handleOnClick = (materialId: string) => {
         return router.push(`/outgoing/${materialId}`);
     }
+
+    const href = role === "separator" ? {url: "/process", label: ts("register.title")} : undefined;
 
     return (<PageContainer hasBackButton={false}>
         <Header title={t("select.title")} description={t("select.description")}/>
@@ -45,12 +47,11 @@ export function Outgoing() {
             materials={materials}
             onSelected={handleOnClick}
             showWeight={true}
-            notFoundComponent={ <SimpleCard title={tm("no_material_found.title")} href={{url:"/process", label:ts("register.title")}}>
+            notFoundComponent={<SimpleCard title={tm("no_material_found.title")} href={href}>
                 <p className="mt-2 text-gray-500 dark:text-gray-400">
                     {tm("no_material_found.text")}
                 </p>
             </SimpleCard>
-
             }
         />
     </PageContainer>)

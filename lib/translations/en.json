@@ -46,6 +46,10 @@
       "label": "PS",
       "description": "Polystyrene"
     },
+    "pcr": {
+      "label": "PCR",
+      "description": "Post Consumer Resin"
+    },
     "other": {
       "label": "XX",
       "description": "Other"

@@ -40,11 +40,6 @@ const ConverterLinks = [
         label: "incoming"
     },
     {
-        href: '/process',
-        icon: RiSwapLine,
-        label: "conversion"
-    },
-    {
         href: '/outgoing',
         icon: RiUpload2Fill,
         label: "outgoing"
@@ -57,7 +52,7 @@ export const BottomNavigation = () => {
     const links = role === "separator" ? SeparatorLinks : ConverterLinks;
     return (
         <div
-            className="bg-white fixed left-0 right-0 bottom-0 w-full h-20 max-w-[768px] mx-auto print:hidden grid grid-cols-4 gap-4 border-t-2 pt-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+            className={`bg-white fixed left-0 right-0 bottom-0 w-full h-20 max-w-[768px] mx-auto print:hidden grid grid-cols-${links.length} gap-4 border-t-2 pt-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
             {links.map(({icon, label, href}) =>
                 <NavigationLink
                     key={`navigation-link-${href}`}

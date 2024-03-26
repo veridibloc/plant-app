@@ -20,7 +20,7 @@ export function SeparationMaterialSelector() {
         })
     }, [stockContracts])
     const handleOnClick = (materialId: string) => {
-        router.push(`/process/${role}/${materialId}`);
+        router.push(`/separation/${materialId}`);
     }
 
     return (<PageContainer hasBackButton={false}>

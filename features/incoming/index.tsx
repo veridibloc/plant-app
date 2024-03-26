@@ -8,10 +8,11 @@ import {AudioPlayer, ImperativeAudioRef} from "@/ui/components/Audio";
 import {createRef} from "react";
 import {useRouter} from "next/navigation";
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
+import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 
 export const Incoming = () => {
     const t = useTranslations("incoming")
-    const {push} = useRouter(); // enhanced router is causing issues... not sure why
+    const {push} = useEnhancedRouter(); // enhanced router is causing issues... not sure why
     const beepOkRef = createRef<ImperativeAudioRef>();
     const beepErrorRef = createRef<ImperativeAudioRef>();
 
