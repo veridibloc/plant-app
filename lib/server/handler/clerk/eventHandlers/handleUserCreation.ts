@@ -1,11 +1,11 @@
 import {UserWebhookEvent, UserJSON} from '@clerk/nextjs/server'
 import {generateMasterKeys} from '@signumjs/crypto';
-import {Address, AttachmentMessage, LedgerClientFactory} from '@signumjs/core';
-import {getEnv} from '../../../../common/getEnv';
+import {Address, AttachmentMessage} from '@signumjs/core';
+import {getEnv} from '@/common/getEnv';
 import {createBip39Seed, encrypt} from '../../../crypto';
 import db from '../../../prisma'
 import {Amount} from '@signumjs/util';
-import {getLedgerClient} from '../../../../common/getLedgerClient';
+import {getLedgerClient} from '@/common/getLedgerClient';
 import {PrismaClientKnownRequestError} from '@prisma/client/runtime/library';
 
 
@@ -89,7 +89,7 @@ async function activateLedgerAccount(address: Address) {
     const ledger = getLedgerClient();
     const {publicKey, signPrivateKey} = generateMasterKeys(getEnv('VERIDIBLOC_ACTIVATION_ACCOUNT_SEED'))
     return ledger.transaction.sendAmountToSingleRecipient({
-        amountPlanck: Amount.fromSigna(getEnv('ACTIVATION_AMOUNT_SIGNA') || '0.01').getPlanck(),
+        amountPlanck: Amount.fromSigna(getEnv('VERIDIBLOC_ACTIVATION_ACCOUNT_AMOUNT') || '0.01').getPlanck(),
         feePlanck: Amount.fromSigna(0.02).getPlanck(),
         recipientId: address.getNumericId(),
         recipientPublicKey: address.getPublicKey(),

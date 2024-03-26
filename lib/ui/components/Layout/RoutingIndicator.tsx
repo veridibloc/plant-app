@@ -1,7 +1,6 @@
 "use client"
 
-import {useEffect, useLayoutEffect, useState} from "react";
-import {Spinner} from "@/ui/components/Spinner";
+import {useLayoutEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 
 export function RoutingIndicator() {
@@ -11,14 +10,6 @@ export function RoutingIndicator() {
 
         const handleRouteStarted = () => {
             setIsRouting(1);
-            // setTimeout(() => {
-            //     setIsRouting((prevState) => {
-            //         if(prevState === -1){
-            //             return 1;
-            //         }
-            //         return 0
-            //     });
-            // }, 100)
         }
 
         const handleRouteFinished = () => {
