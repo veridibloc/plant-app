@@ -1,3 +1,4 @@
+"use client";
 // @ts-ignore
 import ColorHash from "color-hash";
 import {useFormatter, useTranslations} from "next-intl"

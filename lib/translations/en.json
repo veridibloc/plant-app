@@ -154,7 +154,11 @@
       },
       "lot": {
         "title": "Confirm Lot Receipt",
-        "description": "Please, confirm the receipt of the goods."
+        "description": "Please, confirm the receipt of the goods.",
+        "weight": "Weight",
+        "creation_date": "Creation Date",
+        "delivery_date": "Delivery Date",
+        "not_delivered_yet": "Not Delivered Yet"
       }
     }
   },
