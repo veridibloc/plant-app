@@ -1,8 +1,8 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {useEffect, useState} from "react";
-import {Scanner, useDeviceList} from "@yudiel/react-qr-scanner";
+import {useEffect, useRef, useState} from "react";
+import {QrScanner, useMediaDevices} from "@yudiel/react-qr-scanner";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
 import {IconButton} from "@/ui/components/Buttons/IconButton";
 import {RiCameraSwitchLine} from "react-icons/ri";
@@ -14,13 +14,19 @@ interface Props {
 }
 
 export const QrCodeScanner = ({onResult, onError}: Props) => {
+    const timeout = useRef<NodeJS.Timeout>();
     const router = useRouter();
     const t = useTranslations("common.qr-code")
     const [isScanningEnabled, setIsScanningEnabled] = useState(true)
     const [hasError, setHasError] = useState(false)
-    const videoDevices = useDeviceList().filter(device => device.kind === "videoinput");
+    const videoDevices = useMediaDevices();
     const {userSettings, updateUserSettings} = useUserSettings();
 
+    useEffect(() => {
+        return () => {
+            clearTimeout(timeout.current)
+        }
+    }, []);
 
     useEffect(() => {
         if (userSettings.deviceId) {
@@ -36,14 +42,20 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     const handleResult = (payload: string) => {
         setHasError(false);
         setIsScanningEnabled(false);
-        onResult(payload);
+        clearTimeout(timeout.current);
+        timeout.current = setTimeout(() => {
+            onResult(payload);
+        }, 500)
     }
 
     const handleError = (e: Error) => {
         console.error("[QRCodeScanner] - Error while scanning", e.message);
         setHasError(true);
         setIsScanningEnabled(false);
-        onError && onError(e);
+        clearTimeout(timeout.current);
+        timeout.current = setTimeout(() => {
+            onError && onError(e);
+        }, 500)
     }
 
     const handleOpenCameraSettings = () => {
@@ -69,20 +81,14 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
             </div>
             }
             {isScanningEnabled &&
-                <Scanner
-                    styles={{video: {objectFit: "cover"}}}
-                    onResult={handleResult}
+                <QrScanner
+                    tracker={false}
+                    // deviceId={userSettings.deviceId}
                     onError={handleError}
-                    enabled={Boolean(isScanningEnabled)}
-                    options={{
-                        deviceId: userSettings.deviceId ?? undefined
-                    }}
-                    components={{
-                        audio: false,
-                        onOff: true,
-                        tracker: isScanningEnabled
-                    }}
-                />
+                    onDecode={handleResult}
+                    audio={false}
+                    stopDecoding={Boolean(!isScanningEnabled)}
+                    />
             }
             {hasError && <small className="text-center text-red-500">{t("scanning_error")}</small>}
         </section>

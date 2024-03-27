@@ -6,7 +6,6 @@ import {Header} from "@/ui/components/Layout/Header";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 import {AudioPlayer, ImperativeAudioRef} from "@/ui/components/Audio";
 import {createRef} from "react";
-import {useRouter} from "next/navigation";
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 

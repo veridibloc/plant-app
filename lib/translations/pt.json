@@ -143,11 +143,20 @@
     "confirmation": {
       "collection": {
         "title": "Recebimento da Coleta",
-        "description": "Por favor, confirme o recebimento do material coletado."
+        "description": "Por favor, confirme o recebimento do material coletado.",
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte."
       },
       "lot": {
         "title": "Recebimento de Mercadoria",
-        "description": "Por favor, confirme o recebimento da mercadoria."
+        "description": "Por favor, confirme o recebimento da mercadoria.",
+        "lot": "Lote",
+        "lot_registered": "Lote Registrado",
+        "register_more": "Cadastra Mais",
+        "announced_weight": "Peso Anunciado",
+        "enter_actual_weight": "Digite o peso atual em kg",
+        "creation_date": "Data de Criação",
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte.",
+        "registration_success": "O registro foi feito com sucesso e está sendo processado pela rede."
       }
     }
   },

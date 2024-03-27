@@ -15,8 +15,8 @@ export async function fetchUserAccount(user: User, withSeed = false): Promise<Us
 
     const metaInfo = (user.publicMetadata as unknown as MetaInfo) ?? {};
     // being defensive
-    if(!metaInfo.collectibles){
-        metaInfo.collectibles = [];
+    if(!metaInfo.collectible){
+        metaInfo.collectible = [];
     }
     if(!metaInfo.stockContracts){
         metaInfo.stockContracts = [];

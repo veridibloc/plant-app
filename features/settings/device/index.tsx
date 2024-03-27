@@ -1,7 +1,7 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {useDeviceList} from "@yudiel/react-qr-scanner";
+import {useMediaDevices} from "@yudiel/react-qr-scanner";
 import {memo} from "react";
 import {DeviceCard} from "@/features/settings/device/DeviceCard";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
@@ -10,7 +10,7 @@ import {RiCameraOffFill} from "react-icons/ri";
 export const DeviceSettings = memo(function DeviceSettings() {
     const t = useTranslations("settings");
     const {updateUserSettings, userSettings} = useUserSettings()
-    const videoDevices = useDeviceList().filter(({kind}) => kind === "videoinput");
+    const videoDevices = useMediaDevices().filter(device => !!device.deviceId);
     const handleDeviceSelected = (deviceId: string) => {
         updateUserSettings({deviceId})
     }
@@ -27,10 +27,10 @@ export const DeviceSettings = memo(function DeviceSettings() {
                     <h2 className="text-center font-bold text-lg text-gray-600">{t("device_card.no_device_found")}</h2>
                 </div>
                 )}
-                {videoDevices.map(({deviceId, label}) => <DeviceCard
+                {videoDevices.map(({deviceId,facingMode}) => <DeviceCard
                     key={`dcard-${deviceId}`}
-                    label={label}
-                    deviceId={deviceId}
+                    label={facingMode!}
+                    deviceId={deviceId!}
                     onClick={handleDeviceSelected}
                     isActive={userSettings.deviceId === deviceId}
                 />)}

@@ -37,7 +37,7 @@ export const SignIn = () => {
                     <Image src="/assets/veridibloc_logo.svg" alt="Veridibloc logo" width={48} height={48}/>
                     <div className="relative">
                         <h1 className="text-center text-4xl font-bold ml-2">VeridiBloc</h1>
-                        <small className="absolute top-8 text-xs text-veridibloc">Recycling 4.0</small>
+                        <small className="absolute top-10 text-xs text-veridibloc right-0">Recycling 4.0</small>
                     </div>
             </div>
             <p className="text-center text-neutral-500 max-w-xs font-medium mb-4">

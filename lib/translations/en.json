@@ -150,15 +150,24 @@
     "confirmation": {
       "collection": {
         "title": "Confirm Collection Receipt",
-        "description": "Please, confirm the receipt of the collected material."
+        "description": "Please, confirm the receipt of the collected material.",
+        "registration_failed": "Snap, registration failed. Try again or contact support."
       },
       "lot": {
         "title": "Confirm Lot Receipt",
         "description": "Please, confirm the receipt of the goods.",
-        "weight": "Weight",
+        "lot": "Lot",
+        "lot_registered": "Lot Registered",
+        "register_more": "Register More",
+        "announced_weight": "Announced Weight",
+        "enter_actual_weight": "Enter actual weight in kg",
         "creation_date": "Creation Date",
-        "delivery_date": "Delivery Date",
-        "not_delivered_yet": "Not Delivered Yet"
+        "registration_failed": "Snap, registration failed. Try again or contact support.",
+        "registration_success": "Registration successful. It's being processed by the network now.",
+        "lot_registered_already": {
+          "title": "Lot Already Registered",
+          "description": "This lot was already registered and cannot be registered again. If you think this is wrong contact the support."
+        }
       }
     }
   },

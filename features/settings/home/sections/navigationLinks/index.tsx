@@ -3,11 +3,13 @@
 import {useTranslations} from "next-intl";
 import {RiAccountPinCircleFill, RiCameraLine, RiTranslate} from "react-icons/ri";
 import {LinkCard} from "./components/LinkCard";
-import {useDeviceList} from "@yudiel/react-qr-scanner";
+import {useMediaDevices} from "@yudiel/react-qr-scanner";
 
 export const NavigationLinks = () => {
     const t = useTranslations("settings");
-    const devices = useDeviceList()
+    const devices = useMediaDevices()
+
+    console.log(devices);
 
     return (
         <section className="flex flex-col justify-start items-center w-full px-8 gap-4">

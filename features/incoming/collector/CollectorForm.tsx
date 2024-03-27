@@ -7,6 +7,7 @@ import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
 import {Select} from "@/ui/components/Select";
 import {useEffect, useRef, useState} from "react";
+import {useNotification} from "@/ui/hooks/useNotification";
 
 
 const initialFormValues = {
@@ -25,6 +26,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
     const ti = useTranslations("incoming");
     const tm = useTranslations("materials");
     const user = useUserAccount();
+    const {showError} = useNotification()
     const [state, action] = useFormState<any>(registerAction, {});
     const [fieldValues, setFieldValues] = useState(initialFormValues);
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
@@ -38,6 +40,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
         })
     }
 
+
     useEffect(() => {
         if (state.success) {
             formRef.current?.reset();
@@ -47,9 +50,8 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
 
         if (state.error) {
             console.error(state.error);
+            showError(ti("confirmation.collection.registration_failed"))
         }
-
-        // # todo toast on error
     }, [state]);
 
 
@@ -61,7 +63,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
 
             <Select name="material" label={ti("select_material")} onChange={() => {}}>
                 <option value="0">-- {ti("select_material")} --</option>
-                {user.collectibles.map(({label, id}) => <option key={id} value={id}>{tm(label)}</option>)}
+                {user.collectible.map(({label, id}) => <option key={id} value={id}>{tm(label)}</option>)}
             </Select>
 
             <div className="inline-flex relative items-center w-full">
