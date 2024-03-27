@@ -3,13 +3,11 @@
 import {useTranslations} from "next-intl";
 import {RiAccountPinCircleFill, RiCameraLine, RiTranslate} from "react-icons/ri";
 import {LinkCard} from "./components/LinkCard";
-import {useMediaDevices} from "@yudiel/react-qr-scanner";
+import {useCameraDevices} from "@/ui/hooks/useCameraDevices";
 
 export const NavigationLinks = () => {
     const t = useTranslations("settings");
-    const devices = useMediaDevices()
-
-    console.log(devices);
+    const {devices} = useCameraDevices()
 
     return (
         <section className="flex flex-col justify-start items-center w-full px-8 gap-4">
@@ -32,8 +30,7 @@ export const NavigationLinks = () => {
                 description={t("language_card.description")}
                 ctaLabel={t("language_card.label")}
             />
-            {devices.length >= 1 && (
-
+            {devices.length > 1 && (
                 <LinkCard
                     href="/settings/device"
                     Icon={RiCameraLine}

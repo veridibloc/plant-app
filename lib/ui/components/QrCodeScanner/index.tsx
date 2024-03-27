@@ -2,11 +2,12 @@
 
 import {useTranslations} from "next-intl";
 import {useEffect, useRef, useState} from "react";
-import {QrScanner, useMediaDevices} from "@yudiel/react-qr-scanner";
+import {QrScanner} from "@yudiel/react-qr-scanner";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
 import {IconButton} from "@/ui/components/Buttons/IconButton";
 import {RiCameraSwitchLine} from "react-icons/ri";
 import {useRouter} from "next/navigation";
+import {useCameraDevices} from "@/ui/hooks/useCameraDevices";
 
 interface Props {
     onResult: (qrCode: string) => void;
@@ -19,7 +20,7 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     const t = useTranslations("common.qr-code")
     const [isScanningEnabled, setIsScanningEnabled] = useState(true)
     const [hasError, setHasError] = useState(false)
-    const videoDevices = useMediaDevices();
+    const {devices} = useCameraDevices();
     const {userSettings, updateUserSettings} = useUserSettings();
 
     useEffect(() => {
@@ -30,13 +31,13 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
 
     useEffect(() => {
         if (userSettings.deviceId) {
-            const found = videoDevices.find(device => device.deviceId === userSettings.deviceId);
-            if (!found && videoDevices.length) {
-                updateUserSettings({deviceId: videoDevices[0].deviceId})
+            const found = devices.find(device => device.deviceId === userSettings.deviceId);
+            if (!found && devices.length) {
+                updateUserSettings({deviceId: devices[0].deviceId})
             }
         }
 
-    }, [userSettings.deviceId, videoDevices, updateUserSettings]);
+    }, [userSettings.deviceId, devices, updateUserSettings]);
 
 
     const handleResult = (payload: string) => {
@@ -63,7 +64,7 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     }
 
     return (<div className="p-2 md:p-20 md:max-w-1/2 relative overflow-hidden">
-        {videoDevices.length > 1 && (
+        {devices.length > 1 && (
             <section className="relative w-full text-right">
                 <IconButton
                     onClick={handleOpenCameraSettings}
@@ -83,11 +84,14 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
             {isScanningEnabled &&
                 <QrScanner
                     tracker={false}
-                    // deviceId={userSettings.deviceId}
+                    deviceId={userSettings.deviceId}
                     onError={handleError}
                     onDecode={handleResult}
                     audio={false}
-                    stopDecoding={Boolean(!isScanningEnabled)}
+                    stopDecoding={!isScanningEnabled}
+                    videoStyle={{
+                        objectFit: "cover"
+                    }}
                     />
             }
             {hasError && <small className="text-center text-red-500">{t("scanning_error")}</small>}
