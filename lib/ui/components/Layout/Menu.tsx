@@ -86,13 +86,13 @@ export const Menu = () => {
                 </motion.button>
 
                 <div
-                    className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 my-2 space-y-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                    className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-90 bg-white shadow-md rounded-lg p-2 my-2 space-y-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
                     aria-labelledby="hs-dropdown-default">
                     <Link
                         className="flex text-center items-center justify-center gap-x-3.5 py-4 px-3 rounded-lg text-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
                         href="/settings/account"
                     >
-                        <div className="flex flex-col items-center gap-x-2 text-center">
+                        <div className="flex flex-col items-center gap-x-2 text-center min-w-[168px]">
                                 <Avatar size={48}>
                                     <AvatarImage rounded={false} src={user?.imageUrl || ""} alt={user?.firstName || ""}/>
                                 </Avatar>

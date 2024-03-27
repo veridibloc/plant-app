@@ -64,21 +64,22 @@ function PageContent({lotInfo, contractId}: { contractId: string, lotInfo: Stock
         <>
             <Header title={t("title")} description={t("description")}/>
             <LotInfo materialSlug={lotInfo.materialSlug} stockContractId={contractId} lotData={lotData}/>
-            {/*{lotInfo.hasReceiptAlready ?*/}
-            {/*    (<SimpleCard title={t("lot_registered_already.title")} href={{url: "/incoming", label: t("register_more")}}>*/}
-            {/*            <div className="flex flex-row gap-x-2 justify-center items-center w-full">*/}
-            {/*                <RiCheckboxCircleFill color="green" size={48}/>*/}
-            {/*                <p>{t("lot_registered_already.description")}</p>*/}
-            {/*            </div>*/}
-            {/*        </SimpleCard>*/}
-            {/*    ) : (*/}
+            {lotInfo.hasReceiptAlready ?
+                (<SimpleCard title={t("lot_registered_already.title")}
+                             href={{url: "/incoming", label: t("register_more")}}>
+                        <div className="flex flex-row gap-x-2 justify-center items-center w-full">
+                            <RiCheckboxCircleFill color="green" size={48}/>
+                            <p>{t("lot_registered_already.description")}</p>
+                        </div>
+                    </SimpleCard>
+                ) : (
                     <LotReceiptForm
                         contractId={contractId}
                         lotId={lotData.id}
                         registerLotAction={registerLot}
                         quantity={lotData.totalQuantity}
                     />
-                {/*)}*/}
+                )}
         </>
     )
 }
