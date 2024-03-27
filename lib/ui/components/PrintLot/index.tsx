@@ -25,7 +25,7 @@ export function PrintLot({lotId, stockContractId, weight}: Props): JSX.Element {
     //  TODO: check if not existant -> just check the transaction
 
     const props: DisplayablePrintableProps = {
-        stockContractId,
+        stockContractId: recyclerContractId,
         weight,
         identifier,
         materialLabel

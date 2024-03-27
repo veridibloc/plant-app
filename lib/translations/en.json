@@ -147,6 +147,7 @@
     "cancel": "Cancel",
     "enter_weight": "Enter weight in kg",
     "select_material": "Select Material",
+    "select_target_stock": "Select Target Stock",
     "confirmation": {
       "collection": {
         "title": "Confirm Collection Receipt",

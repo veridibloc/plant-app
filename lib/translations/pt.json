@@ -140,6 +140,7 @@
     "scan": "Escanear Código QR",
     "enter_weight": "Digite o peso em kg",
     "select_material": "Seleciona Material",
+    "select_target_stock": "Select Target Stock",
     "confirmation": {
       "collection": {
         "title": "Recebimento da Coleta",
