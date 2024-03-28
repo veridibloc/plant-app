@@ -2,7 +2,7 @@
 
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
-import {IncomingScanner} from "@/features/incoming/IncomingScanner";
+import {QrCodeScanner} from "@/ui/components/QrCodeScanner";
 
 export const SeparatorIncoming = () => {
     const {push} = useEnhancedRouter(); // enhanced router is causing issues... not sure why
@@ -17,6 +17,6 @@ export const SeparatorIncoming = () => {
         return false;
     };
 
-    return <IncomingScanner onScan={handleOnScan} />
+    return <QrCodeScanner onScan={handleOnScan} />
 
 }

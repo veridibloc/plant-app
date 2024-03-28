@@ -1,102 +1,31 @@
-"use client";
+"use client"
 
-import {useTranslations} from "next-intl";
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
-import {QrScanner} from "@yudiel/react-qr-scanner";
-import {useUserSettings} from "@/ui/hooks/useUserSettings";
-import {IconButton} from "@/ui/components/Buttons/IconButton";
-import {RiCameraSwitchLine} from "react-icons/ri";
-import {useRouter} from "next/navigation";
-import {useCameraDevices} from "@/ui/hooks/useCameraDevices";
+import {AudioPlayer, ImperativeAudioRef} from "@/ui/components/Audio";
+import {createRef} from "react";
+import {RawQrCodeScanner} from "@/ui/components/QrCodeScanner/RawQrCodeScanner";
 
 interface Props {
-    onResult: (qrCode: string) => void;
-    onError?: (error: Error) => void;
+    onScan: (value: string) => boolean,
+    keepScanning?: boolean
 }
+export const QrCodeScanner = ({onScan, keepScanning = false} : Props) => {
+    const beepOkRef = createRef<ImperativeAudioRef>();
+    const beepErrorRef = createRef<ImperativeAudioRef>();
 
-export const QrCodeScanner = ({onResult, onError}: Props) => {
-    const timeout = useRef<NodeJS.Timeout>();
-    const router = useRouter();
-    const t = useTranslations("common.qr-code")
-    const [isScanningEnabled, setIsScanningEnabled] = useState(true)
-    const [hasError, setHasError] = useState(false)
-    const {devices} = useCameraDevices();
-    const {userSettings, updateUserSettings} = useUserSettings();
-
-    useEffect(() => {
-        return () => {
-            clearTimeout(timeout.current)
+    const handleOnResult = (text: string) => {
+        try {
+            (onScan(text) ? beepOkRef : beepErrorRef).current?.play()
+        } catch (_: any) {
+            console.debug("Invalid Code Format");
+            beepErrorRef.current?.play()
         }
-    }, []);
+    };
 
-    useEffect(() => {
-        if (userSettings.deviceId) {
-            const found = devices.find(device => device.deviceId === userSettings.deviceId);
-            if (!found && devices.length) {
-                updateUserSettings({deviceId: devices[0].deviceId})
-            }
-        }
-
-    }, [userSettings.deviceId, devices, updateUserSettings]);
-
-
-    console.log("userSettings", userSettings)
-
-    const handleResult = (payload: string) => {
-        setHasError(false);
-        setIsScanningEnabled(false);
-        clearTimeout(timeout.current);
-        timeout.current = setTimeout(() => {
-            onResult(payload);
-        }, 500)
-    }
-
-    const handleError = (e: Error) => {
-        console.error("[QRCodeScanner] - Error while scanning", e.message);
-        setHasError(true);
-        setIsScanningEnabled(false);
-        clearTimeout(timeout.current);
-        timeout.current = setTimeout(() => {
-            onError && onError(e);
-        }, 500)
-    }
-
-    const handleOpenCameraSettings = () => {
-        router.push("/settings/device");
-    }
-
-    return (<div className="p-2 lg:p-20 lg:max-w-1/2 relative overflow-hidden">
-        {devices.length > 1 && (
-            <section className="relative w-full text-right">
-                <IconButton
-                    onClick={handleOpenCameraSettings}
-                    icon={<RiCameraSwitchLine size={24}/>}
-                    label={t("change_camera")}
-                />
-            </section>
-        )}
-        <section className="relative py-2" onClick={() => setIsScanningEnabled(prevState => !prevState)}>
-            {!isScanningEnabled &&
-            <div className="w-full h-[40vh] md:h-[50vh] border-2 rounded border-gray-300">
-                <h2 className="w-1/2 left-[25%] text-center top-[40%] text-xl lg:text-2xl font-bold text-gray-400 absolute">
-                    {t("touch_to_scan")}
-                </h2>
-            </div>
-            }
-            {isScanningEnabled &&
-                <QrScanner
-                    tracker={false}
-                    deviceId={userSettings.deviceId}
-                    onError={handleError}
-                    onDecode={handleResult}
-                    audio={false}
-                    stopDecoding={!isScanningEnabled}
-                    videoStyle={{
-                        objectFit: "cover"
-                    }}
-                    />
-            }
-            {hasError && <small className="text-center text-red-500">{t("scanning_error")}</small>}
-        </section>
-    </div>)
+    return <>
+        <div className={`mx-auto w-full h-full`}>
+            <AudioPlayer ref={beepOkRef} src="/assets/beep_ok.mp3"/>
+            <AudioPlayer ref={beepErrorRef} src="/assets/beep_error.mp3"/>
+            <RawQrCodeScanner onResult={handleOnResult} keepScanning={keepScanning}/>
+        </div>
+    </>
 }

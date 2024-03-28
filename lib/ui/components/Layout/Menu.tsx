@@ -16,6 +16,8 @@ import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {Avatar} from "@/ui/components/Avatar";
 import {AvatarImage} from "@/ui/components/Avatar/AvatarImage";
 import {HSDropdown} from "preline";
+import {userSettingsAtomResetter} from "@/ui/states/userSettingsAtom";
+import {useSetAtom} from "jotai";
 
 export const Menu = () => {
     const ref = createRef<HTMLDivElement>();
@@ -23,6 +25,7 @@ export const Menu = () => {
     const {signOut, user} = useClerk();
     const router = useEnhancedRouter();
     const [isOpen, setIsOpen] = useState(false)
+    const resetUserSettings = useSetAtom(userSettingsAtomResetter);
 
     useEffect(() => {
 
@@ -45,7 +48,10 @@ export const Menu = () => {
         }
     }, [ref]);
 
-    const logOut = () => signOut(() => router.push("/"));
+    const logOut = () => signOut(() =>{
+            resetUserSettings();
+            router.push("/")
+    });
 
     return (
         <section className="print:hidden fixed w-full max-w-[768px] text-right p-4 pr-6 z-10">

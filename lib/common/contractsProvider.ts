@@ -46,8 +46,6 @@ export class ContractsProvider {
             baseTransactionFee: Amount.fromSigna(0.01),
             reference: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_REF || "",
             codeHash: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "",
-            // reference: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_REF"),
-            // codeHash: getEnv("NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH")
         })
     }
 
@@ -58,6 +56,15 @@ export class ContractsProvider {
           throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
         }
         return contract;
+    }
+
+    async getLotDetails(contractId: string, lotId: string) {
+        const stockContract = await this.getStockContract(contractId);
+        return stockContract.getLotData(lotId)
+    }
+    async getLotReceiptData(contractId: string, lotId: string) {
+        const stockContract = await this.getStockContract(contractId);
+        return stockContract.getSingleLotReceipt(lotId);
     }
 
     getManyStockContracts(contractIds: string[]){

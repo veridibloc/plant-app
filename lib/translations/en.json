@@ -172,17 +172,21 @@
       }
     }
   },
-  "outgoing" : {
-      "select": {
-        "title": "Create Lot",
-        "description": "Select material to mount a lot"
-      },
-      "confirm": {
-        "title": "Create Lot",
-        "description": "Enter weight of the new lot/bale",
-        "enter_weight": "Enter weight of the lot",
-        "creation_failed": "Creation failed. Try again, or ask for support"
-      },
+  "outgoing": {
+    "select": {
+      "title": "Create Lot",
+      "description": "Select material to mount a lot"
+    },
+    "select_by_lot": {
+      "title": "Create Lot",
+      "description": "Scan codes from material lots to be used for new lot"
+    },
+    "confirm": {
+      "title": "Create Lot",
+      "description": "Enter weight of the new lot/bale",
+      "enter_weight": "Enter weight of the lot",
+      "creation_failed": "Creation failed. Try again, or ask for support"
+    },
     "lot": {
       "title": "Create Lot",
       "description": "The lot is being registered on the blockchain now. This is the QR Code which shall be printed and attached to the shipping documents and lot/bale."

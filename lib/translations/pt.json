@@ -166,6 +166,10 @@
       "title": "Saída de Mercadoria",
       "description": "Selecionar material usado para criação de lote de mercardoria"
     },
+    "select_by_lot": {
+      "title": "Saída de Mercadoria",
+      "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria"
+    },
     "confirm": {
       "title": "Saída de Mercadoria",
       "description": "Digite o peso do novo lote a ser criado",
