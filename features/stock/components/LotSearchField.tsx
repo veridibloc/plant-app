@@ -12,7 +12,6 @@ export function LotSearchField({onSearch}: Props) {
     const [value, setValue] = useState("")
 
     return <section className="relative w-full my-2">
-
         <TextInput
             label={t("search_lot")}
             placeholder={t("enter_lot_id")}

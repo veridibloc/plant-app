@@ -61,7 +61,7 @@ export function LotDetails({lotData, stockContractId, lotReceiptData}: Props) {
                     className="bg-transparent text-blue-600 text-sm font-semibold rounded-lg border border-transparent hover:!bg-blue-100 hover:text-blue-800 focus:!ring-0 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:!bg-blue-100/30 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:!ring-0"
                 />
             </section>
-            <section className="flex flex-col w-full gap-2 border-gray-300 border rounded p-4 bg-white dark:bg-gray-600">
+            <section className="flex flex-col w-full gap-1 border-gray-300 border rounded p-4 bg-white dark:bg-gray-600">
                     <div>
                         <LabeledTextItem label={t("weight")} text={`${number(lotData.totalQuantity)} kg`}/>
                     </div>

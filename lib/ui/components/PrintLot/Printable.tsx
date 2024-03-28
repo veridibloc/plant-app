@@ -6,8 +6,7 @@ import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {Address} from "@signumjs/core";
 import {Avatar} from "@/ui/components/Avatar";
 import {AvatarImage} from "@/ui/components/Avatar/AvatarImage";
-import {ScannableIdentifier} from "@/common/scannableIdentifiers";
-
+import {Logo} from "@/ui/components/Logo";
 export function Printable({identifier, stockContractId, weight, materialLabel}: DisplayablePrintableProps) {
     const tm = useTranslations("materials");
     const {publicKey, logoUrl} = useUserAccount()
@@ -16,6 +15,9 @@ export function Printable({identifier, stockContractId, weight, materialLabel}: 
 
     return (
         <div className="screen:hidden mt-2 flex flex-col justify-evenly items-center w-full space-y-4 h-[80vh] overflow-y-hidden">
+            <section>
+                <Logo />
+            </section>
             <section className="p-1 text-center">
                 <div>
                     <QRCode

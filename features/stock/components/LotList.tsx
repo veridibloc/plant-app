@@ -21,16 +21,19 @@ interface Props {
 export const LotList = ({contractId}: Props) => {
     const t = useTranslations("stock")
     const [searchTerm, setSearchTerm] = useState("")
+    const [showDelivered, setShowDelivered] = useState(false)
     const router = useEnhancedRouter();
 
     const {isLoading, data: lots} = useSWR(`stock/${contractId}/lots`, async () => fetchLots(contractId), {
         refreshInterval: 120_000
     })
 
-    let filtered = lots ?? [];
-    if (searchTerm.length && lots) {
-        filtered = lots.filter(({lotId}) => lotId.indexOf(searchTerm) !== -1);
-    }
+    const filtered = lots?.filter(({lotId, sold}) => {
+        if(showDelivered) {
+            return lotId.indexOf(searchTerm) !== -1
+        }
+        return lotId.indexOf(searchTerm) !== -1 && !sold
+    }) || [];
 
     const handleLotCardClick = (lotId: string) => {
         router.push(`/stock/${contractId}/${lotId}`);
@@ -39,6 +42,16 @@ export const LotList = ({contractId}: Props) => {
     return <>
         <section className="w-full mb-4">
             <LotSearchField onSearch={setSearchTerm}/>
+
+            <div className="flex">
+                <input type="checkbox"
+                       className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                       id="hs-checked-checkbox"
+                       checked={showDelivered}
+                       onChange={e => setShowDelivered(e.target.checked)}
+                />
+                <label htmlFor="hs-checked-checkbox" className="text-sm text-gray-500 ms-3 dark:text-gray-400">{t("show_delivered")}</label>
+            </div>
         </section>
 
         <section className="relative w-full">

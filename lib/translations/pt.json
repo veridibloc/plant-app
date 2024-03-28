@@ -203,6 +203,7 @@
     "title": "Estoque",
     "description": "Vide detalhes desse material em estoque",
     "search_lot": "Id do Lote",
+    "show_delivered": "Mostrar Lotes enviados",
     "enter_lot_id": "Digite o número do Lote",
     "no_lots_found": "Lotes não encontrados",
     "lot": {
@@ -212,9 +213,9 @@
       "delivery_date": "Data de Envio",
       "not_delivered_yet": "Ainda não enviado",
       "composition": "Composição Lote",
-      "weight": "Peso"
+      "weight": "Peso",
+      "confirmed_weight": "Peso Confirmado"
     }
-
   }
 
 }

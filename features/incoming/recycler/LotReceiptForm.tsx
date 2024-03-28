@@ -13,7 +13,7 @@ import {useUserAccount} from "@/ui/hooks/useUserAccount";
 
 const initialFormValues = {
     recyclerContractId: "",
-    quantity: 0
+    quantity: ""
 }
 
 interface Props {

@@ -214,6 +214,7 @@
     "title": "Stock Details",
     "description": "View details of your materials stock",
     "search_lot": "Lot Id",
+    "show_delivered": "Show Delivered",
     "enter_lot_id": "Enter Lot Id",
     "no_lots_found": "No Lots found",
     "lot": {
@@ -223,6 +224,7 @@
       "delivery_date": "Delivery Date",
       "not_delivered_yet": "Not Delivered Yet",
       "weight": "Weight",
+      "confirmed_weight": "Confirmed Weight",
       "composition": "Lot Composition"
     }
   }

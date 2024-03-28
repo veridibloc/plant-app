@@ -1,7 +1,7 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {QrScanner} from "@yudiel/react-qr-scanner";
 import {useUserSettings} from "@/ui/hooks/useUserSettings";
 import {IconButton} from "@/ui/components/Buttons/IconButton";
@@ -40,6 +40,8 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
     }, [userSettings.deviceId, devices, updateUserSettings]);
 
 
+    console.log("userSettings", userSettings)
+
     const handleResult = (payload: string) => {
         setHasError(false);
         setIsScanningEnabled(false);
@@ -63,7 +65,7 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
         router.push("/settings/device");
     }
 
-    return (<div className="p-2 md:p-20 md:max-w-1/2 relative overflow-hidden">
+    return (<div className="p-2 lg:p-20 lg:max-w-1/2 relative overflow-hidden">
         {devices.length > 1 && (
             <section className="relative w-full text-right">
                 <IconButton
@@ -75,7 +77,7 @@ export const QrCodeScanner = ({onResult, onError}: Props) => {
         )}
         <section className="relative py-2" onClick={() => setIsScanningEnabled(prevState => !prevState)}>
             {!isScanningEnabled &&
-            <div className="w-full h-[50vh] md:h-[60vh] border-2 rounded border-gray-300">
+            <div className="w-full h-[40vh] md:h-[50vh] border-2 rounded border-gray-300">
                 <h2 className="w-1/2 left-[25%] text-center top-[40%] text-xl lg:text-2xl font-bold text-gray-400 absolute">
                     {t("touch_to_scan")}
                 </h2>

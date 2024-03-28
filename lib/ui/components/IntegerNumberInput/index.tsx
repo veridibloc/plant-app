@@ -14,7 +14,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> 
     min?: number;
     max?: number;
     withButtons?: boolean;
-    value?: number,
+    value?: number | string,
     autocompletion?: string;
     onChange: (value: number) => void;
 }

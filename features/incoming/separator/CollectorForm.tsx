@@ -12,7 +12,7 @@ import {useNotification} from "@/ui/hooks/useNotification";
 
 const initialFormValues = {
     material: "",
-    quantity: 0
+    quantity: ""
 }
 
 interface Props {
