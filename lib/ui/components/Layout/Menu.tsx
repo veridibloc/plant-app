@@ -1,23 +1,22 @@
 "use client"
 
 import {useTranslations} from "next-intl";
-import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {
     RiLogoutBoxLine,
     RiMenuFoldLine,
     RiMenuLine,
     RiSettings2Line
 } from "react-icons/ri";
-import React, {createRef, useEffect, useRef, useState} from "react";
+import React, {createRef, useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import Link from "next/link";
 import {useClerk} from "@clerk/nextjs";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {Avatar} from "@/ui/components/Avatar";
 import {AvatarImage} from "@/ui/components/Avatar/AvatarImage";
-import {HSDropdown} from "preline";
 import {userSettingsAtomResetter} from "@/ui/states/userSettingsAtom";
 import {useSetAtom} from "jotai";
+import {accountBalancesAtomResetter} from "@/ui/states/accountBalancesAtom";
 
 export const Menu = () => {
     const ref = createRef<HTMLDivElement>();
@@ -26,6 +25,7 @@ export const Menu = () => {
     const router = useEnhancedRouter();
     const [isOpen, setIsOpen] = useState(false)
     const resetUserSettings = useSetAtom(userSettingsAtomResetter);
+    const resetAccountBalances = useSetAtom(accountBalancesAtomResetter);
 
     useEffect(() => {
 
@@ -50,6 +50,7 @@ export const Menu = () => {
 
     const logOut = () => signOut(() =>{
             resetUserSettings();
+            resetAccountBalances();
             router.push("/")
     });
 

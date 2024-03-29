@@ -1,6 +1,6 @@
 "use client";
-// @ts-ignore
-import ColorHash from "color-hash";
+    // @ts-ignore
+    import ColorHash from "color-hash";
 import {useFormatter, useTranslations} from "next-intl"
 
 export interface MaterialCardProps {

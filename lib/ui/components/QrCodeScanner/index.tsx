@@ -1,18 +1,19 @@
 "use client"
 
 import {AudioPlayer, ImperativeAudioRef} from "@/ui/components/Audio";
-import {createRef} from "react";
-import {RawQrCodeScanner} from "@/ui/components/QrCodeScanner/RawQrCodeScanner";
+import {createRef, memo} from "react";
+import {RawQrCodeScanner} from "./RawQrCodeScanner";
 
 interface Props {
     onScan: (value: string) => boolean,
     keepScanning?: boolean
 }
-export const QrCodeScanner = ({onScan, keepScanning = false} : Props) => {
+export const QrCodeScanner = memo( function QrCodeScanner({onScan, keepScanning = false} : Props){
     const beepOkRef = createRef<ImperativeAudioRef>();
     const beepErrorRef = createRef<ImperativeAudioRef>();
 
     const handleOnResult = (text: string) => {
+
         try {
             (onScan(text) ? beepOkRef : beepErrorRef).current?.play()
         } catch (_: any) {
@@ -28,4 +29,4 @@ export const QrCodeScanner = ({onScan, keepScanning = false} : Props) => {
             <RawQrCodeScanner onResult={handleOnResult} keepScanning={keepScanning}/>
         </div>
     </>
-}
+})

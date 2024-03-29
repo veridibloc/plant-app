@@ -46,7 +46,7 @@ export function Notification() {
     return (
         <AnimatePresence>
             {notification && (
-                <section className="absolute top-0 z-20 h-0 w-full w-max-[768px] px-2">
+                <section className="absolute left-2 top-0 z-20 h-0 w-full w-max-[768px] px-2">
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1, y: 16}} exit={{opacity: 0, y: 0}}>
                         <div
                             className={`max-w-sm border text-sm rounded-lg shadow-xl ${bgColor}`}

@@ -68,6 +68,7 @@
       "scanning_error": "Could not scan QR code",
       "device": "Device",
       "touch_to_scan": "Touch to scan",
+      "touch_to_not_scan": "Touch to close camera",
       "change_camera": "Change Camera"
     }
   },
@@ -179,7 +180,16 @@
     },
     "select_by_lot": {
       "title": "Create Lot",
-      "description": "Scan codes from material lots to be used for new lot"
+      "description": "Scan codes from material lots to be used for new lot",
+      "create": "Create",
+      "reset": "Reset",
+      "waiting": "Waiting for scanned lot",
+      "selected_lots": "Selected Lots",
+      "lot_count": "Selected Lot Count",
+      "weight": "Total Weight",
+      "invalid_lot_receipt": "Lot Receipt not found.",
+      "inconsistent_lot_receipt": "Lot is of different material.",
+      "already_added_lot_receipt": "Lot already added."
     },
     "confirm": {
       "title": "Create Lot",

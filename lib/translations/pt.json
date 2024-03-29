@@ -64,6 +64,7 @@
       "scanning_error": "Não conseguiu ler o código QR",
       "device": "Dispositivo",
       "touch_to_scan": "Toque para escanear",
+      "touch_to_not_scan": "Toque para fechar a câmera",
       "change_camera": "Alterar Câmera"
     }
   },
@@ -168,7 +169,16 @@
     },
     "select_by_lot": {
       "title": "Saída de Mercadoria",
-      "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria"
+      "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria",
+      "create": "Criar",
+      "reset": "Resetar",
+      "selected_lots": "Lotes selecionados",
+      "waiting": "Aguardando escaneamento de lotes",
+      "invalid_lot_receipt": "Lote não registrado ou encontrado!",
+      "inconsistent_lot_receipt": "Lote é de material diferente!",
+      "already_added_lot_receipt": "Lote já adicionado!",
+      "lot_count": "Número de lotes selecionados",
+      "weight": "Peso total"
     },
     "confirm": {
       "title": "Saída de Mercadoria",
