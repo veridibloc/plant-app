@@ -22,7 +22,6 @@ export const LotByWeightForm = ({materialId, createLotAction}: Props) => {
     const formRef = useRef<any>();
     const t = useTranslations("common");
     const to = useTranslations("outgoing.confirm");
-    const tm = useTranslations("materials");
     const {showError} = useNotification();
     const router = useEnhancedRouter();
     const {stockContracts} = useUserAccount();

@@ -186,6 +186,12 @@
       "enter_weight": "Digite o peso do novo lote",
       "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte."
     },
+    "confirm_multilot": {
+      "title": "Saída de Mercadoria",
+      "description": "Confirmar os dados antes de submeter o novo lote",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte."
+    },
+
     "lot": {
       "title": "Saída de Mercadoria",
       "description": "O lote está sendo registrado na sistema agora. Este é o código QR que deve ser impresso e anexado aos documentos de envio e ao lote."

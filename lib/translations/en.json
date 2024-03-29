@@ -197,6 +197,17 @@
       "enter_weight": "Enter weight of the lot",
       "creation_failed": "Creation failed. Try again, or ask for support"
     },
+    "confirm_multilot": {
+      "title": "Create Lot",
+      "description": "Confirm the data before submitting the new lot",
+      "creation_failed": "Creation failed. Try again, or ask for support",
+      "lot_receipt_info": {
+        "lot": "Lot Id",
+        "weight": "Weight",
+        "creation_date": "Creation Date",
+        "delivery_date": "Delivery Date"
+      }
+    },
     "lot": {
       "title": "Create Lot",
       "description": "The lot is being registered on the blockchain now. This is the QR Code which shall be printed and attached to the shipping documents and lot/bale."

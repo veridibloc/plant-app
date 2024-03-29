@@ -37,15 +37,19 @@ interface LotMaterial {
 
 const queue = new AsyncQueue();
 
+// TODO: this component should be a material selector.... the scanning comes in a 2nd step
+
 export function RecyclerOutgoing() {
     const t = useTranslations("outgoing.select_by_lot");
     const {showError, showWarning} = useNotification()
     const router = useEnhancedRouter();
     const [material, setMaterial] = useState<LotMaterial|null>(null)
     const [lotReceipts, setLotReceipts] = useState<LotReceiptData[]>([]);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     const fetchLotReceipts = useCallback(async (identifier: ScannableIdentifier) => {
         console.debug("Fetching Lot Receipts for ", identifier.toString())
+        setIsProcessing(true);
         const stockContract = await contractsProvider.getStockContract(identifier.stockContractId);
         const lotReceipt = await stockContract.getSingleLotReceipt(identifier.lotId);
         if (!lotReceipt) {
@@ -80,6 +84,8 @@ export function RecyclerOutgoing() {
             return [...receipts, lotReceipt]
         });
 
+        setIsProcessing(false);
+
     }, [showError, showWarning, t]);
 
     const handleOnResult =  (code: string) => {
@@ -95,6 +101,7 @@ export function RecyclerOutgoing() {
     }
 
     const handleCreateLot = () => {
+        router.push(`/outgoing/${material?.id}/`);
         console.log("Create Lot")
     }
 
@@ -132,6 +139,7 @@ export function RecyclerOutgoing() {
                     onClick={handleCreateLot}
                     icon={<RiArchive2Line size={24}/>}
                     label={t("create")}
+                    loading={isProcessing}
                     disabled={lotReceipts.length === 0}
                 />
             </div>
