@@ -12,6 +12,7 @@ import {LotReceiptForm} from "@/features/incoming/recycler/LotReceiptForm";
 import {registerLot} from "./actions"
 import {SimpleCard} from "@/ui/components/Cards/SimpleCard";
 import {RiCheckboxCircleFill} from "react-icons/ri";
+import {getMaterialSlugFromContractDescriptor} from "@/common/getMaterialSlugFromContractDescriptor";
 
 interface StockLotInfo {
     materialSlug: string;
@@ -28,10 +29,8 @@ const fetchStockContractLotInfo = cache(async (contractId: string, lotId: string
             contract.getSingleLotReceipt(lotId)
         ])
 
-        const contractDescriptor = DescriptorData.parse(contract.contract.description)
-
         return {
-            materialSlug: (contractDescriptor.getCustomField("x-mat") as string ?? "other").toLowerCase(),
+            materialSlug: (getMaterialSlugFromContractDescriptor(contract.contract.description) as string ?? "other").toLowerCase(),
             lotData: lotData,
             hasReceiptAlready: Boolean(lotReceipt)
         }

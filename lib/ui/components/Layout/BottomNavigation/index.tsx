@@ -22,7 +22,7 @@ const SeparatorLinks = [
         label: "separation"
     },
     {
-        href: '/outgoing',
+        href: '/outgoing/s',
         icon: RiUpload2Fill,
         label: "outgoing"
     }
@@ -40,7 +40,7 @@ const ConverterLinks = [
         label: "incoming"
     },
     {
-        href: '/outgoing',
+        href: '/outgoing/r',
         icon: RiUpload2Fill,
         label: "outgoing"
     }

@@ -1,6 +1,6 @@
 "use client";
-    // @ts-ignore
-    import ColorHash from "color-hash";
+// @ts-ignore
+import ColorHash from "color-hash";
 import {useFormatter, useTranslations} from "next-intl"
 
 export interface MaterialCardProps {
@@ -8,12 +8,11 @@ export interface MaterialCardProps {
     id: string;
     weight?: number;
     showWeight?: boolean;
-    isLoading?: boolean;
     onClick?: (id: string) => void;
 }
 
 const colorHash = new ColorHash()
-export const MaterialCard = ({materialSlug, id, onClick, weight, showWeight = false, isLoading = false}: MaterialCardProps) => {
+export const MaterialCard = ({materialSlug, id, onClick, weight, showWeight = false}: MaterialCardProps) => {
     const {number} = useFormatter();
     const tm = useTranslations("materials");
     const material = materialSlug.toLowerCase();

@@ -178,7 +178,7 @@
       "title": "Create Lot",
       "description": "Select material to mount a lot"
     },
-    "select_by_lot": {
+    "scan_lots": {
       "title": "Create Lot",
       "description": "Scan codes from material lots to be used for new lot",
       "create": "Create",
@@ -199,13 +199,15 @@
     },
     "confirm_multilot": {
       "title": "Create Lot",
-      "description": "Confirm the data before submitting the new lot",
+      "description": "Confirm the composition of your new lot and submit if all is correct.",
       "creation_failed": "Creation failed. Try again, or ask for support",
+      "creation_success": "Creation of the lot successful.",
       "lot_receipt_info": {
         "lot": "Lot Id",
         "weight": "Weight",
         "creation_date": "Creation Date",
-        "delivery_date": "Delivery Date"
+        "sender": "Sender",
+        "receipt_id": "Receipt Id"
       }
     },
     "lot": {

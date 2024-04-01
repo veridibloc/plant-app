@@ -35,7 +35,7 @@ export function SeparatorOutgoing() {
             }).filter(c => Boolean(c.weight))
     }, [stockContracts, contracts])
     const handleOnClick = (materialId: string) => {
-        return router.push(`/outgoing/${materialId}`);
+        return router.push(`/outgoing/s/${materialId}`);
     }
 
     const href = role === "separator" ? {url: "/separation", label: ts("register.title")} : undefined;

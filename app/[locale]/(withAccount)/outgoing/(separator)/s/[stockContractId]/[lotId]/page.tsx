@@ -1,7 +1,7 @@
 import {useTranslations} from "next-intl";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 import {Header} from "@/ui/components/Layout/Header";
-import {PrintLot} from "lib/ui/components/PrintLot";
+import {PrintLot} from "@/ui/components/PrintLot";
 import {PageProps} from "@/types/pageProps";
 
 type Props = PageProps<{

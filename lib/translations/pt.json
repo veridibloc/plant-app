@@ -167,7 +167,7 @@
       "title": "Saída de Mercadoria",
       "description": "Selecionar material usado para criação de lote de mercardoria"
     },
-    "select_by_lot": {
+    "scan_lots": {
       "title": "Saída de Mercadoria",
       "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria",
       "create": "Criar",
@@ -188,8 +188,17 @@
     },
     "confirm_multilot": {
       "title": "Saída de Mercadoria",
-      "description": "Confirmar os dados antes de submeter o novo lote",
-      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte."
+      "description": "Confirme a composição de seu novo lote e envie se tudo estiver correto.",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte.",
+      "creation_success": "Sucesso na criação do lote",
+      "lot_receipt_info": {
+        "lot": "Id Lote",
+        "weight": "Peso",
+        "creation_date": "Data de Entrega",
+        "sender": "Contrato de Envio",
+        "receipt_id": "Id Recibo"
+      }
+
     },
 
     "lot": {
