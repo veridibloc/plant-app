@@ -23,7 +23,6 @@ export function useAccountBalances() {
     const setAccountBalance = useSetAtom(singleAccountBalancesAtomWriter);
     const ledgerService = useLedgerService()
 
-
     useSWR(`accountBalances/${publicKey}`, async () => {
         const {unconfirmedAssetBalances, unconfirmedBalanceNQT} = await ledgerService.fetchAccount(Address.fromPublicKey(publicKey).getNumericId());
         setAccountBalance(createSignaBalance(unconfirmedBalanceNQT));

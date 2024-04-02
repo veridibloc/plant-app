@@ -1,6 +1,5 @@
-export interface TokenBalance {
-    ticker: string;
-    tokenId: string;
-    decimals: number;
+import {TokenInfo} from "./tokenInfo";
+
+export interface TokenBalance extends TokenInfo{
     balance: string;
 }
