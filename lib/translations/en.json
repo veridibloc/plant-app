@@ -187,7 +187,10 @@
       "selected_lots": "Selected Lots",
       "lot_count": "Selected Lot Count",
       "weight": "Total Weight",
-      "invalid_lot_receipt": "Lot Receipt not found.",
+      "invalid_lot_receipt": {
+        "not_exists": "Lot Receipt not found.",
+        "not_in_contract": "Lot not registered for this material."
+      },
       "inconsistent_lot_receipt": "Lot is of different material.",
       "already_added_lot_receipt": "Lot already added."
     },
@@ -205,7 +208,8 @@
       "lot_receipt_info": {
         "lot": "Lot Id",
         "weight": "Weight",
-        "creation_date": "Creation Date",
+        "initial_weight": "Claimed Weight",
+        "delivery_date": "Delivery Date",
         "sender": "Sender",
         "receipt_id": "Receipt Id"
       }

@@ -8,7 +8,7 @@ import {useCallback, useState} from "react";
 import {ScannableIdentifier} from "@/common/scannableIdentifiers";
 import {contractsProvider} from "@/common/contractsProvider";
 import {useNotification} from "@/ui/hooks/useNotification";
-import {LotReceiptData} from "@veridibloc/smart-contracts";
+import {LotReceiptData, StockContract} from "@veridibloc/smart-contracts";
 import {AsyncQueue} from "@/common/asyncQueue";
 import {IconButton} from "@/ui/components/Buttons/IconButton";
 import {RiArchive2Line, RiCloseLine} from "react-icons/ri";
@@ -37,43 +37,63 @@ export function LotsScanner({stockContractId}: Props) {
     const fetchLotReceipt = useCallback(async (identifier: ScannableIdentifier) => {
         console.debug("Fetching Lot Receipts for ", identifier.toString())
         setIsProcessing(true);
-        const stockContract = await contractsProvider.getStockContract(identifier.stockContractId);
-        const lotReceipt = await stockContract.getSingleLotReceipt(identifier.lotId);
+        const [stockContract, separatorContract] = await Promise.all([
+            contractsProvider.getStockContract(stockContractId),
+            contractsProvider.getStockContract(identifier.stockContractId)]);
+
+        const [incomingLotId, lotReceipt] = await Promise.all([
+            stockContract.getKeyMapValue(StockContract.Maps.KeyIncomingMaterial.toString(), identifier.lotId),
+            separatorContract.getSingleLotReceipt(identifier.lotId)]
+        );
+
+        let errorMessage = "";
+        // checks if separator really sent that lot to someone - i.e. globally exists
         if (!lotReceipt) {
             console.warn("Lot Receipt not found", identifier.toString())
-            showError(t("invalid_lot_receipt"))
+            errorMessage = "invalid_lot_receipt.not_exists"
+        }
+
+        // checks if recycler registered the lot for this contract/material
+        if(!incomingLotId || incomingLotId.value === "0"){
+            console.warn("Lot Receipt not registered for this contract", identifier.toString())
+            errorMessage = "invalid_lot_receipt.not_in_contract"
+        }
+
+        if(errorMessage){
+            showError(t(errorMessage))
+            setIsProcessing(false);
             return;
         }
 
         setMaterial( (material) => {
             if(!material){
-                const slug = getMaterialSlugFromContractDescriptor(stockContract.contract.description)
+                const slug = getMaterialSlugFromContractDescriptor(separatorContract.contract.description)
                 if(!slug) return null;
 
                 return {
                     slug,
-                    id: stockContract.contractId
+                    id: separatorContract.contractId
                 }
             }
             return material;
         })
 
         setLotReceipts((receipts) => {
-            if(receipts.some( ({contractId}) => contractId !== lotReceipt.contractId)){
+            if(receipts.some( ({contractId}) => contractId !== lotReceipt!.contractId)){
                 showError(t("inconsistent_lot_receipt"))
                 return receipts;
             }
 
-            if (receipts.some(({lotId}) => lotId === lotReceipt.lotId)){
+            if (receipts.some(({lotId}) => lotId === lotReceipt!.lotId)){
                 showWarning(t("already_added_lot_receipt"))
                 return receipts;
             }
-            return [...receipts, lotReceipt]
+            return [...receipts, lotReceipt!]
         });
 
         setIsProcessing(false);
 
-    }, [showError, showWarning, t]);
+    }, [showError, showWarning, stockContractId, t]);
 
     const handleOnResult =  (code: string) => {
         try {

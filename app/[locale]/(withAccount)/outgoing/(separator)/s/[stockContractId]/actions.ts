@@ -1,7 +1,7 @@
 'use server'
-import {z, ZodError} from 'zod'
+import {z} from 'zod'
 import {contractsProvider} from '@/common/contractsProvider';
-import {badRequest, boomify, notFound, unauthorized} from '@hapi/boom';
+import {boomify, unauthorized} from '@hapi/boom';
 import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
 
@@ -17,6 +17,11 @@ export async function createLotByWeight(prevState: any, formData: FormData) {
             materialContractId: formData.get("materialId"),
             weight: Number(formData.get("weight")),
         })
+
+        const user = await ensureAuthenticatedUser();
+        if (user.publicMetadata.role !== 'separator') {
+            throw unauthorized("You are not authorized to perform this action");
+        }
 
         const {materialContractId, weight} = parsedData
         const contract = await contractsProvider.getStockContract(materialContractId);// check if exists!

@@ -174,7 +174,11 @@
       "reset": "Resetar",
       "selected_lots": "Lotes selecionados",
       "waiting": "Aguardando escaneamento de lotes",
-      "invalid_lot_receipt": "Lote não registrado ou encontrado!",
+      "invalid_lot_receipt": {
+        "not_exists": "Recibo de Lote não existe!",
+        "not_in_contract": "Lote não registrado para este material!"
+      },
+
       "inconsistent_lot_receipt": "Lote é de material diferente!",
       "already_added_lot_receipt": "Lote já adicionado!",
       "lot_count": "Número de lotes selecionados",
@@ -194,7 +198,8 @@
       "lot_receipt_info": {
         "lot": "Id Lote",
         "weight": "Peso",
-        "creation_date": "Data de Entrega",
+        "initial_weight": "Peso Anunciado",
+        "delivery_date": "Data de Entrega",
         "sender": "Contrato de Envio",
         "receipt_id": "Id Recibo"
       }

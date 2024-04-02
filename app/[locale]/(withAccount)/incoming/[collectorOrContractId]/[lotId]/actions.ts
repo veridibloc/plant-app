@@ -45,7 +45,7 @@ export async function registerLot(prevState: any, formData: FormData) {
 
         const recyclerContract = await contractsProvider.getStockContract(recyclerContractId);
         recyclerContract.signer = signer
-        const txId = await recyclerContract.registerIncomingMaterial(quantity,receiptTxId?.fullHash)
+        const txId = await recyclerContract.registerIncomingMaterial(quantity, lotId, receiptTxId?.fullHash)
         console.info("Material registered for stock...", txId);
 
         return {success: txId!.transaction};

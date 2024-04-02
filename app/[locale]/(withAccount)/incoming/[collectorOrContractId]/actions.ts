@@ -1,7 +1,7 @@
 'use server'
-import {z, ZodError} from 'zod'
+import {z} from 'zod'
 import {contractsProvider} from '@/common/contractsProvider';
-import {badRequest, boomify, notFound, unauthorized} from '@hapi/boom';
+import {boomify, notFound, unauthorized} from '@hapi/boom';
 import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
 

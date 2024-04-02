@@ -36,6 +36,7 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
 
     useEffect(() => {
         if (state.success) {
+            setSubmitSuccessful(true);
             router.replace(`/outgoing/s/${stockContractId}/${state.lotId}?w=${fieldValues.weight}`)
         }
         if (state.error) {
@@ -92,7 +93,7 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
                 <div className="mx-auto w-full h-20 flex items-center justify-center">
                     <FormSubmitButton
                         className={`w-1/2 lg:w-1/3 transition-all ease-in ${submitSuccessful ? "hover:bg-green-600 bg-green-500" : ""}`}
-                        label={submitSuccessful ? t("success") : t("confirm")} disabled={!canSubmit}/>
+                        label={submitSuccessful ? t("success") : t("confirm")} disabled={!canSubmit || submitSuccessful}/>
                 </div>
             </form>
         </>

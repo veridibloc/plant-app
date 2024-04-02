@@ -1,7 +1,7 @@
 import {useTranslations} from "next-intl";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 import {Header} from "@/ui/components/Layout/Header";
-import {LotByWeightForm} from "@/features/outgoing/components/LotByWeightForm";
+import {LotByWeightForm} from "@/features/outgoing/separator/LotByWeightForm";
 import {createLotByWeight} from "./actions"
 import {PageProps} from "@/types/pageProps";
 

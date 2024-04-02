@@ -6,17 +6,11 @@ import {LotReceiptData} from "@veridibloc/smart-contracts";
 import {cache} from "react";
 import {contractsProvider} from "@/common/contractsProvider";
 import {notFound} from "next/navigation";
-import {MultiLotsConfirmationForm} from "@/features/outgoing/components/MultiLotsConfirmationForm";
+import {MultiLotsConfirmationForm} from "@/features/outgoing/recycler/MultiLotsConfirmationForm";
 import {createLotByLotIds} from "./actions";
 import {LotReceiptsInfo} from "@/types/lotReceiptsInfo";
 import {StockInfo} from "@/types/stockInfo";
 import {getMaterialSlugFromContractDescriptor} from "@/common/getMaterialSlugFromContractDescriptor";
-
-// FIXME: we need to consider/distinguish: material contract (PP, PET,PVC) and produced contract (PCR) - the routes `stockContractId` should be the produced contract and not -like now- the material contract.
-// TODO: 1. Select the target contract _before_ scanning -> change 'RecyclerOutgoing" component - check
-// TODO: 2. From 'RecyclerOutgoing" component redirect to confirmation form /outgoing/{producerContractId}/lots?lotIds=1234,5345345,4654457,56856856856&materialId=35346436
-// TODO: 3. In confirmation form call creation, we need to use two contract Ids: PCR and used material (PP, PET, PVC)
-
 
 const fetchMaterialLotsData = cache(async (materialId: string, lotIds: string): Promise<LotReceiptsInfo | null> => {
     try {

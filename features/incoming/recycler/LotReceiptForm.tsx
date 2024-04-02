@@ -46,7 +46,7 @@ export const LotReceiptForm = ({contractId, lotId, quantity: nominalQuantity, re
     useEffect(() => {
         if (state.success) {
             setSubmitSuccessful(true);
-            showSuccess(ti("confirmation.lot.registration_successful"));
+            showSuccess(ti("confirmation.lot.registration_success"));
         }
 
         if (state.error) {

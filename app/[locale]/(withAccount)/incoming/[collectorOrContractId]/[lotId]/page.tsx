@@ -3,7 +3,6 @@ import {contractsProvider} from "@/common/contractsProvider";
 import {PageProps} from "@/types/pageProps";
 import {LotData} from "@veridibloc/smart-contracts";
 import {notFound} from "next/navigation";
-import {DescriptorData} from "@signumjs/standards";
 import {useTranslations} from "next-intl";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
 import {Header} from "@/ui/components/Layout/Header";
