@@ -72,7 +72,6 @@ export class ContractsProvider {
         const contractRequests = contractIds.map( id => service.with(id));
         return Promise.all(contractRequests);
     }
-
 }
 
 export const contractsProvider = new ContractsProvider(getLedgerClient())

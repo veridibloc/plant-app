@@ -60,6 +60,12 @@
     "cancel": "Cancelar",
     "success": "Sucesso",
     "print": "Imprimir",
+    "invalid_account_format": "Formato inválido, deve ser o identificador numérico ou endereço tipo {prefix}-BY64-7FHD-...",
+    "account_found": "Conta encontrada",
+    "account_not_found": "Conta não encontrada",
+    "invalid_amount": "Valor inválido",
+    "not_enough_balance": "Saldo insuficiente",
+    "minimum_amount_is": "Valor mínimo permitido é {amount}",
     "qr-code": {
       "scanning_error": "Não conseguiu ler o código QR",
       "device": "Dispositivo",
@@ -103,7 +109,7 @@
       "title": "Conta e personalização"
     },
     "account": {
-      "blockchain_address": "Endereço na Blockchain"
+      "touch_open_explorer": "Toque para ver no Explorer"
     },
     "language_card": {
       "description": "Mude para o seu idioma preferido",
@@ -250,6 +256,16 @@
       "weight": "Peso",
       "confirmed_weight": "Peso Confirmado"
     }
-  }
+  },
+  "transfer": {
+    "title": "Transferir Token",
+    "description": "Preencher o formulário e transferir tokens para seu parceiro",
+    "recipient": "Beneficiário",
+    "submitting_title": "Enviando",
+    "submitting_description": "A solicitação de transferência está sendo enviada.",
+    "submitted_title": "Envio sucedido",
+    "submitted_description": "A transferência foi enviada com sucesso para a rede. Demora alguns instantes para ser concluida.",
+    "see_in_explorer": "Ver no explorador"
 
+  }
 }

@@ -2,7 +2,7 @@
 
 import {useTranslations} from "next-intl";
 import {useAccountBalances} from "@/ui/hooks/useAccountBalances";
-import {BalanceCard} from "./components/BalanceCard";
+import {BalanceCard} from "@/ui/components/BalanceCard";
 
 export const AccountBalances = () => {
     const t = useTranslations("dashboard");

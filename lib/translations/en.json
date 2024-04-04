@@ -64,6 +64,12 @@
     "cancel": "Cancel",
     "success": "Success",
     "print": "Print",
+    "invalid_account_format": "Invalid Account Format, must be numeric id or address, i.e. {prefix}-BY64-7FHD-...",
+    "account_found": "Found Account",
+    "account_not_found": "Unknown Account",
+    "invalid_amount": "Invalid Amount",
+    "not_enough_balance": "Not enough balance",
+    "minimum_amount_is": "Minimum Amount is {amount}",
     "qr-code": {
       "scanning_error": "Could not scan QR code",
       "device": "Device",
@@ -108,7 +114,7 @@
       "title": "Account & personalization"
     },
     "account": {
-      "blockchain_address": "Blockchain Address"
+      "touch_open_explorer": "Touch to see in Explorer"
     },
     "language_card": {
       "description": "Change to your preferred language",
@@ -258,5 +264,17 @@
       "confirmed_weight": "Confirmed Weight",
       "composition": "Lot Composition"
     }
+  },
+  "transfer": {
+      "title": "Transfer Token",
+      "description": "Fill out form to transfer token to your business partner",
+      "recipient": "Recipient",
+      "submitting_title": "Submitting",
+      "submitting_description": "Submitting the transfer request to the network.",
+      "submitted_title": "Submission Successful",
+      "submitted_description": "The transfer was submitted successfully to the network. It takes a few moments to be settled.",
+      "see_in_explorer": "See in Explorer",
+      "transfer_success": "Successfully submitted transaction",
+      "transfer_failed": "Oh, no. Transfer failed. Try again or contact support."
   }
 }

@@ -30,14 +30,12 @@ export async function registerCollection(prevState: any, formData: FormData) {
         const contract = await contractsProvider.getCollectorTokenContractSingleton();// check if exists!
         const {materialId, quantity, collectorId} =  parsedData.data;
 
-        const collectorAccount = await contractsProvider.ledger.account.getAccount({
+        // checks if account exists, if not throws
+        await contractsProvider.ledger.account.getAccount({
             accountId: collectorId,
             includeCommittedAmount: false,
             includeEstimatedCommitment: false,
         })
-        if (!collectorAccount) {
-            throw notFound(`Collector ${collectorId} not found!`)
-        }
         contract.signer = await createSigner(contractsProvider.ledger, user);
         const txId = await contract.grantCollectorToken(materialId, quantity, collectorId);
         console.info("Collection registered and collector token granted...", txId);

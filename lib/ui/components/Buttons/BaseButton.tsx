@@ -1,4 +1,6 @@
-export interface BaseButtonProps {
+import {HTMLAttributes} from "react";
+
+export interface BaseButtonProps extends HTMLAttributes<HTMLButtonElement> {
     label: string | React.ReactNode;
     type?: "button" | "submit" | "reset"
     disabled?: boolean

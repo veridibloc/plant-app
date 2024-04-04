@@ -1,7 +1,7 @@
 "use client";
 
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
-import {createRef, Fragment, useEffect, useLayoutEffect, useRef} from "react";
+import {useLayoutEffect} from "react";
 import {createRoot} from "react-dom/client";
 import Link from "next/link"
 import QRCode from "react-qr-code";
@@ -47,12 +47,13 @@ export const AccountInfoInjection = ({targetClass}: Props) => {
 
 function AccountInfo({userAccount}: { userAccount: UserAccount }) {
 
-    const {Ledger: {ExplorerUrl}} = useAppContext();
-    const address = Address.fromPublicKey(userAccount.publicKey);
+    const {Ledger: {ExplorerUrl, AddressPrefix}} = useAppContext();
+    const address = Address.fromPublicKey(userAccount.publicKey, AddressPrefix);
 
     return (
         <section className="flex flex-col justify-between items-center w-full">
             <hr className="w-full mb-2"/>
+            <small className="text-xs text-gray-400">Touch to see in explorer</small>
             <Link href={`${ExplorerUrl}/address/${address.getNumericId()}`}
                   className="hover:bg-gray-100 p-1 rounded text-center" target="_blank" rel="noopener noreferrer">
                 <div>

@@ -17,7 +17,6 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> 
 }
 
 export const TextInput = forwardRef(({
-                                         value = 0,
                                          onChange,
                                          label,
                                          name,
