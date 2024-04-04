@@ -15,15 +15,15 @@ export function LotSearchField({onSearch}: Props) {
         <TextInput
             label={t("search_lot")}
             placeholder={t("enter_lot_id")}
-            value={value}
-            debounceDelay={0}
             autocompletion="off"
+            value={value}
             type="number"
-            onChange={v => {
-                v = v.replace(/\D/g, "")
+            onChange={value => {
+                const v = value.replace(/\D/g, "")
                 setValue(v);
                 onSearch(v);
-            }}/>
+            }}
+        />
         <div className="absolute top-[32px] right-2">
             <RiSearchLine color="#e5e7eb" size={24} />
         </div>

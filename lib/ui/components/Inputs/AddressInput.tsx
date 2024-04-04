@@ -5,9 +5,11 @@ import dynamic from "next/dynamic";
 import {useLayoutEffect, useState} from "react";
 import {useTranslations} from "next-intl";
 import {useLedgerService} from "@/ui/hooks/useLedgerService";
-import {Address} from "@signumjs/core";
+import {Address, Ledger} from "@signumjs/core";
 import {useAppContext} from "@/ui/hooks/useAppContext";
 import {Spinner} from "@/ui/components/Spinner";
+import {AsyncQueue} from "@/common/asyncQueue";
+import {useDebouncedCallback} from "use-debounce";
 
 const HashIcon = dynamic(() => import("@emeraldpay/hashicon-react").then(m => m.Hashicon), {ssr: false})
 
@@ -41,6 +43,8 @@ interface Props {
     addressOrId?: string;
 }
 
+const queue = new AsyncQueue();
+
 export function AddressInput({label, onChange, addressOrId}: Props) {
     const t = useTranslations("common");
     const ledgerService = useLedgerService();
@@ -48,7 +52,8 @@ export function AddressInput({label, onChange, addressOrId}: Props) {
     const [address, setAddress] = useState<AddressValue>(InitialAddress)
     const [fetching, setFetching] = useState(false);
 
-    const handleOnChange = async (value: string) => {
+    const debouncedEnqueue = useDebouncedCallback(queue.enqueue.bind(queue) , 500)
+    async function fetchAccount(value: string){
         let s = {
             ...InitialAddress,
             raw: value
@@ -72,6 +77,15 @@ export function AddressInput({label, onChange, addressOrId}: Props) {
             setFetching(false)
             onChange(s.id, s.error)
         }
+
+    }
+
+    const handleOnChange = (value: string) => {
+        setAddress({
+            ...InitialAddress,
+            raw: value
+        })
+        debouncedEnqueue(() => fetchAccount(value))
     }
 
     useLayoutEffect(() => {
@@ -86,13 +100,13 @@ export function AddressInput({label, onChange, addressOrId}: Props) {
     }, [addressOrId]);
 
 
+
     return <div className="relative">
         <TextInput
             label={label}
             placeholder={`${AddressPrefix}-BY64-7FHD-..., 4790365424565431`}
             value={address.raw}
             onChange={handleOnChange}
-            debounceDelay={500}
         />
         <div className="absolute top-8 right-4">
             {fetching && (<Spinner/>)}
