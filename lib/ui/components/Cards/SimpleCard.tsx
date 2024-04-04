@@ -3,7 +3,7 @@ import {ChildrenProps} from "@/types/childrenProps";
 
 interface SimpleCardProps extends ChildrenProps {
     title: string;
-    href?: { url: string, label: string }
+    href?: { url: string, label: string, inNewTab?:boolean }
 }
 
 export function SimpleCard({href, children, title}: SimpleCardProps) {
@@ -18,7 +18,7 @@ export function SimpleCard({href, children, title}: SimpleCardProps) {
                 {href && (
                     <Link
                         className="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        href={href.url}>
+                        href={href.url} target={href.inNewTab ? "_blank" : "_self"} rel={href.inNewTab ? "noopener noreferrer" : ""}>
                         {href.label}
                         <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                              height="24"

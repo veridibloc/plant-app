@@ -28,8 +28,6 @@ export async function transferToken(formData: FormData) {
         const user = await ensureAuthenticatedUser();
         const ledger = contractsProvider.ledger;
 
-        await new Promise(resolve => setTimeout(resolve, 2000))
-
         // checks if account exists
         const recipient = await ledger.account.getAccount({
             accountId: recipientId,
@@ -40,17 +38,16 @@ export async function transferToken(formData: FormData) {
             throw badRequest("Recipient has no public key");
         }
 
-        // const signer = await createSigner(ledger, user);
-        // const senderPublicKey =  await signer.getPublicKey();
-        // const unsignedTx = await ledger.asset.transferAsset({
-        //     recipientId,
-        //     quantity,
-        //     feePlanck: Amount.fromPlanck(0.02).getPlanck(),
-        //     senderPublicKey,
-        //     assetId: tokenId,
-        // })
-        // const txId = await signer.signTransaction(unsignedTx.unsignedTransactionBytes);
-        const txId = { transaction: "txId" }
+        const signer = await createSigner(ledger, user);
+        const senderPublicKey =  await signer.getPublicKey();
+        const unsignedTx = await ledger.asset.transferAsset({
+            recipientId,
+            quantity,
+            feePlanck: Amount.fromSigna(0.02).getPlanck(),
+            senderPublicKey,
+            assetId: tokenId,
+        })
+        const txId = await signer.signTransaction(unsignedTx.unsignedTransactionBytes);
         console.info(`Transfer of ${quantity} of token ${tokenId} submitted...`, txId);
         return {success: txId!.transaction};
     } catch (e: any) {

@@ -2,7 +2,7 @@
 
 import {TokenInfo} from "@/types/tokenInfo";
 import {useAccountBalances} from "@/ui/hooks/useAccountBalances";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useNotification} from "@/ui/hooks/useNotification";
 import {transferToken} from "../../app/[locale]/(withAccount)/transfer/[tokenId]/actions";
 import {BalanceCard} from "@/ui/components/BalanceCard";
@@ -68,7 +68,6 @@ export function TransferForm({tokenInfo, recipient = "", quantity = ""}: Props) 
             transferToken(form)
                 .then(result => {
                     const hasError = !!result.error;
-                    console.log(result);
                     if (hasError) {
                         console.log(result.error)
                         showError(t("transfer_failed"))
@@ -87,8 +86,9 @@ export function TransferForm({tokenInfo, recipient = "", quantity = ""}: Props) 
     }, [confirmationCount]);
 
 
-    const handleConfirmStart = (e: any) => {
+    const handleConfirmStart = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        e.stopPropagation();
         stopTimer();
         setConfirmationCount(1);
         timerRef.current = setInterval(() => {
@@ -108,7 +108,7 @@ export function TransferForm({tokenInfo, recipient = "", quantity = ""}: Props) 
             <BalanceCard balance={currentBalance}/>
         </section>
         {/* highly customized form */}
-        <form className="w-full h-[40vh] flex flex-col justify-center gap-y-4">
+        <form className="w-full flex flex-col justify-center gap-y-4">
             <AddressInput onChange={setAccountId}
                           label={t("recipient")}
                           addressOrId={recipient}
@@ -135,7 +135,7 @@ export function TransferForm({tokenInfo, recipient = "", quantity = ""}: Props) 
                 )}
                 {isSubmitting && !submissionResult.success && (
                     <SimpleCard title={t("submitting_title")}>
-                        <div className="flex flex-col justify-center">
+                        <div className="flex flex-row gap-x-1 justify-center items-center w-full">
                             <Spinner/>
                             <p>{t("submitting_description")}</p>
                         </div>
@@ -143,7 +143,7 @@ export function TransferForm({tokenInfo, recipient = "", quantity = ""}: Props) 
                 )}
                 {!isSubmitting && submissionResult.success && (
                     <SimpleCard title={t("submitted_title")}
-                                href={{label: t("see_in_explorer"), url: `${ExplorerUrl}/tx/${submissionResult.txId}`}}>
+                                href={{label: t("see_in_explorer"), url: `${ExplorerUrl}/tx/${submissionResult.txId}`, inNewTab:true}}>
                         <div className="flex flex-row gap-x-1 justify-center items-center w-full">
                             <RiCheckboxCircleFill color="green" size={64}/>
                             <p>{t("submitted_description")}</p>
