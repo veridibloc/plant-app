@@ -46,6 +46,30 @@
       "label": "PS",
       "description": "Poliestireno"
     },
+    "rpet": {
+      "label": "rPET",
+      "description": "PCR - Tereftalato de Polietileno"
+    },
+    "rhdpe": {
+      "label": "rHDPE",
+      "description": "PCR - Polietileno de Alta Densidade"
+    },
+    "rpvc": {
+      "label": "rPVC",
+      "description": "PCR - Policloreto de Vinila"
+    },
+    "rldpe": {
+      "label": "rLDPE",
+      "description": "PCR - Polietileno de Baixa Densidade"
+    },
+    "rpp": {
+      "label": "rPP",
+      "description": "PCR - Polipropileno"
+    },
+    "rps": {
+      "label": "PS",
+      "description": "PCR - Poliestireno"
+    },
     "other": {
       "label": "OTH",
       "description": "Outros"

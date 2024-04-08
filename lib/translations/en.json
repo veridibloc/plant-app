@@ -46,6 +46,30 @@
       "label": "PS",
       "description": "Polystyrene"
     },
+    "rpet": {
+      "label": "rPET",
+      "description": "PCR - Polyethylene Terephthalate"
+    },
+    "rhdpe": {
+      "label": "rHDPE",
+      "description": "PCR - High-Density Polyethylene"
+    },
+    "rpvc": {
+      "label": "rPVC",
+      "description": "PCR - Polyvinyl Chloride"
+    },
+    "rldpe": {
+      "label": "rHDPE",
+      "description": "PCR - Low-Density Polyethylene"
+    },
+    "rpp": {
+      "label": "rPP",
+      "description": "PCR - Polypropylene"
+    },
+    "rps": {
+      "label": "rPS",
+      "description": "PCR - Polystyrene"
+    },
     "pcr": {
       "label": "PCR",
       "description": "Post Consumer Resin"
