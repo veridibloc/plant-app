@@ -26,7 +26,7 @@ export async function registerCollection(prevState: any, formData: FormData) {
         if(user.publicMetadata.role !== 'separator'){
             throw unauthorized("You are not authorized to perform this action");
         }
-
+        
         const contract = await contractsProvider.getCollectorTokenContractSingleton();// check if exists!
         const {materialId, quantity, collectorId} =  parsedData.data;
 

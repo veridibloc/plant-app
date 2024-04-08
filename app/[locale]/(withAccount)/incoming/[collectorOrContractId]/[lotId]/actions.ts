@@ -26,20 +26,21 @@ export async function registerLot(prevState: any, formData: FormData) {
         }
 
         const user = await ensureAuthenticatedUser();
-        if (user.publicMetadata.role !== 'recycler') {
+        if (user.publicMetadata.role === 'separator') {
             throw unauthorized("You are not authorized to perform this action");
         }
         console.info("Incoming Lot Receipt...", parsedData.data);
 
         const {lotId, quantity, separatorContractId, recyclerContractId} = parsedData.data;
-        const signer = await createSigner(contractsProvider.ledger, user);
         const separatorContract = await contractsProvider.getStockContract(separatorContractId);
-        separatorContract.signer = signer
 
         const lotReceipt = await separatorContract.getSingleLotReceipt(lotId);
         if (lotReceipt) {
             throw notAcceptable(`The lot ${lotId} was already confirmed`);
         }
+
+        const signer = await createSigner(contractsProvider.ledger, user);
+        separatorContract.signer = signer
         const receiptTxId = await separatorContract.confirmLotReceipt(lotId, quantity);
         console.info("Lot Receipt confirmed...", receiptTxId);
 

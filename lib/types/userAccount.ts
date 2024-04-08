@@ -7,7 +7,7 @@ interface LabeledId {
 }
 export interface MetaInfo {
     role: "separator" | "recycler" | "converter",
-    isCorporative: boolean,
+    isIntermediate: boolean,
     collectible: LabeledId[],
     stockContracts: LabeledId[]
 }

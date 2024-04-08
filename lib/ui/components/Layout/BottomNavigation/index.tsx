@@ -4,6 +4,7 @@ import {
 } from "react-icons/ri";
 import {NavigationLink} from "./components/NavigationLink";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
+import {UserAccount} from "@/types/userAccount";
 
 const SeparatorLinks = [
     {
@@ -28,7 +29,26 @@ const SeparatorLinks = [
     }
 ]
 
-const ConverterLinks = [
+const IntermediateSeparatorLinks = [
+    {
+        href: '/dashboard',
+        icon: RiDashboardLine,
+        label: "home"
+    },
+    {
+        href: '/separation',
+        icon: RiLayoutColumnLine,
+        label: "separation"
+    },
+    {
+        href: '/outgoing/s',
+        icon: RiUpload2Fill,
+        label: "outgoing"
+    }
+]
+
+
+const RecyclerLinks = [
     {
         href: '/dashboard',
         icon: RiDashboardLine,
@@ -46,10 +66,17 @@ const ConverterLinks = [
     }
 ]
 
+function getLinks({role, isIntermediate}: UserAccount) {
+    if(role === "separator" ){
+        return isIntermediate ? IntermediateSeparatorLinks : SeparatorLinks;
+    }
+    return RecyclerLinks
+}
+
 export const BottomNavigation = () => {
     const t = useTranslations("navigation");
-    const {role} = useUserAccount();
-    const links = role === "separator" ? SeparatorLinks : ConverterLinks;
+    const userAccount = useUserAccount();
+    const links = getLinks(userAccount);
     return (
         <div
             className="bg-white fixed left-0 right-0 bottom-0 w-full h-20 max-w-[768px] mx-auto print:hidden grid gap-4 border-t-2 pt-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"

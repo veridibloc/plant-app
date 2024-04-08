@@ -8,7 +8,7 @@ export const AccountContext = createContext<UserAccount>({
     role: "separator",
     collectible: [],
     stockContracts: [],
-    isCorporative: false,
+    isIntermediate: false,
     email: '',
     firstName: '',
     isActive: false,
