@@ -300,5 +300,13 @@
       "see_in_explorer": "See in Explorer",
       "transfer_success": "Successfully submitted transaction",
       "transfer_failed": "Oh, no. Transfer failed. Try again or contact support."
+  },
+  "transaction" : {
+    "pending":{
+      "title": "Pending Transaction",
+      "description": "A transaction is being processed by the network. It should be settled in a few moments.",
+      "see_in_explorer": "Watch Transaction in Explorer",
+      "est_settlement": "Estimated time to settlement"
+    }
   }
 }

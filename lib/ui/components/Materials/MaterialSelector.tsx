@@ -9,7 +9,6 @@ interface Props {
 }
 export function MaterialSelector({materials, onSelected, showWeight = false, notFoundComponent = null} : Props) {
     const t = useTranslations("materials");
-    const ts = useTranslations("separation");
 
     return (
         <section className="w-full space-y-4">

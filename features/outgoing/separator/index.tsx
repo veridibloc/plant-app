@@ -8,6 +8,7 @@ import {useMemo} from "react";
 import {useStockContracts} from "@/ui/hooks/useStockContracts";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {SimpleCard} from "@/ui/components/Cards/SimpleCard";
+import {PendingSeparatedMaterial} from "@/features/outgoing/separator/PendingSeparatedMaterial";
 
 export function SeparatorOutgoing() {
     const ts = useTranslations("separation")
@@ -34,6 +35,7 @@ export function SeparatorOutgoing() {
                 }
             }).filter(c => Boolean(c.weight))
     }, [stockContracts, contracts])
+
     const handleOnClick = (materialId: string) => {
         return router.push(`/outgoing/s/${materialId}`);
     }
@@ -42,6 +44,7 @@ export function SeparatorOutgoing() {
 
     return (<>
         <Header title={t("select.title")} description={t("select.description")}/>
+        <PendingSeparatedMaterial />
         <MaterialSelector
             materials={materials}
             onSelected={handleOnClick}

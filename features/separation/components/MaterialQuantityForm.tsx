@@ -4,12 +4,12 @@ import {IntegerNumberInput} from "@/ui/components/IntegerNumberInput";
 import {useFormState} from "react-dom";
 import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {useNotification} from "@/ui/hooks/useNotification";
 
 
 const initialFormValues = {
-    quantity: 0
+    quantity: ""
 }
 
 interface Props {
@@ -19,6 +19,7 @@ interface Props {
 
 export const MaterialQuantityForm = ({materialId, registerAction}: Props) => {
     const formRef = useRef<any>();
+    const inputRef = useRef<any>();
     const t = useTranslations("common");
     const ts = useTranslations("separation.register");
     const [state, action] = useFormState<any>(registerAction, {});
@@ -34,6 +35,12 @@ export const MaterialQuantityForm = ({materialId, registerAction}: Props) => {
             [fieldName]: fieldValue
         })
     }
+
+    useLayoutEffect(() => {
+        if(inputRef.current){
+            inputRef.current.focus();
+        }
+    }, [])
 
     useEffect(() => {
         if (state.success) {
@@ -60,6 +67,7 @@ export const MaterialQuantityForm = ({materialId, registerAction}: Props) => {
             <div className="inline-flex relative items-center w-full">
                 <div className="grow">
                     <IntegerNumberInput
+                        ref={inputRef}
                         label={ts("enter_weight")}
                         placeholder={ts("enter_weight")}
                         name="quantity"

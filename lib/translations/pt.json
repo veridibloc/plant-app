@@ -289,7 +289,17 @@
     "submitting_description": "A solicitação de transferência está sendo enviada.",
     "submitted_title": "Envio sucedido",
     "submitted_description": "A transferência foi enviada com sucesso para a rede. Demora alguns instantes para ser concluida.",
-    "see_in_explorer": "Ver no explorador"
-
+    "see_in_explorer": "Ver no explorador",
+    "transfer_success": "Transação submetida com sucesso",
+    "transfer_failed": "Oh, não. A transferência falhou. Tente novamente ou entre em contato com o suporte."
+  },
+  "transaction" : {
+    "pending":{
+      "title": "Transação Pendente",
+      "description": "Uma transação está sendo processada pela rede. Ela deverá ser finalizada em alguns instantes.",
+      "see_in_explorer": "Ver transação no explorador",
+      "est_settlement": "Tempo estimado até finalização"
+    }
   }
+
 }

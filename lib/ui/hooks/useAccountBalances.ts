@@ -6,6 +6,7 @@ import {useLedgerService} from "@/ui/hooks/useLedgerService";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
 import {Address} from "@signumjs/core";
 import {TokenBalance} from "@/types/tokenBalance";
+import {useAppContext} from "@/ui/hooks/useAppContext";
 
 const SignaTokenId = "0";
 function createSignaBalance(planck: string): TokenBalance {
@@ -22,6 +23,8 @@ export function useAccountBalances() {
     const [accountBalances] = useAtom(accountBalancesAtom);
     const setAccountBalance = useSetAtom(singleAccountBalancesAtomWriter);
     const ledgerService = useLedgerService()
+    const {Ledger : {PollingInterval}} = useAppContext()
+
 
     useSWR(`accountBalances/${publicKey}`, async () => {
         const {unconfirmedAssetBalances, unconfirmedBalanceNQT} = await ledgerService.fetchAccount(Address.fromPublicKey(publicKey).getNumericId());
@@ -47,7 +50,7 @@ export function useAccountBalances() {
         }
 
     }, {
-        refreshInterval: 120_000
+        refreshInterval: PollingInterval
     })
 
     return {accountBalances};

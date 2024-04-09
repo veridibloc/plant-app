@@ -8,6 +8,7 @@ import {LotSearchField} from "@/features/stock/components/LotSearchField";
 import {useState} from "react";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {useTranslations} from "next-intl";
+import {useAppContext} from "@/ui/hooks/useAppContext";
 
 async function fetchLots(contractId: string) {
     const contract = await contractsProvider.getStockContract(contractId);
@@ -23,9 +24,10 @@ export const LotList = ({contractId}: Props) => {
     const [searchTerm, setSearchTerm] = useState("")
     const [showDelivered, setShowDelivered] = useState(false)
     const router = useEnhancedRouter();
+    const {Ledger : {PollingInterval}} = useAppContext()
 
     const {isLoading, data: lots} = useSWR(`stock/${contractId}/lots`, async () => fetchLots(contractId), {
-        refreshInterval: 120_000
+        refreshInterval: PollingInterval
     })
 
     const filtered = lots?.filter(({lotId, sold}) => {
