@@ -1,9 +1,13 @@
 'use server'
 import {z} from 'zod'
 import {contractsProvider} from '@/common/contractsProvider';
-import {boomify, unauthorized, notAcceptable} from '@hapi/boom';
+import {boomify, notAcceptable, unauthorized} from '@hapi/boom';
 import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
+import {PartnerSelector, StockContract} from "@veridibloc/smart-contracts";
+import {fetchUserAccount} from "@/server/fetchUserAccount";
+import {User} from "@clerk/backend";
+import {Address} from "@signumjs/core";
 
 const schema = z.object({
     separatorContractId: z.string(),
@@ -29,11 +33,12 @@ export async function registerLot(prevState: any, formData: FormData) {
         if (user.publicMetadata.role === 'separator') {
             throw unauthorized("You are not authorized to perform this action");
         }
-        console.info("Incoming Lot Receipt...", parsedData.data);
 
         const {lotId, quantity, separatorContractId, recyclerContractId} = parsedData.data;
         const separatorContract = await contractsProvider.getStockContract(separatorContractId);
+        await ensureRecyclerIsAuthorizedPartner(user, separatorContract);
 
+        console.info("Incoming Lot Receipt...", parsedData.data);
         const lotReceipt = await separatorContract.getSingleLotReceipt(lotId);
         if (lotReceipt) {
             throw notAcceptable(`The lot ${lotId} was already confirmed`);
@@ -58,3 +63,16 @@ export async function registerLot(prevState: any, formData: FormData) {
 }
 
 
+async function ensureRecyclerIsAuthorizedPartner(user: User, separatorContract: StockContract) {
+    const [authorizedPartners, account] = await Promise.all([
+        separatorContract.getPartners(PartnerSelector.Authorized),
+        fetchUserAccount(user)]
+    )
+    if(!account){
+        throw unauthorized();
+    }
+    const recyclerAccountId = Address.fromPublicKey(account.publicKey).getNumericId();
+    if (!authorizedPartners.some(({accountId}) => recyclerAccountId === accountId)){
+        throw unauthorized();
+    }
+}
