@@ -21,6 +21,7 @@ interface Props {
 
 export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
     const formRef = useRef<any>();
+    const inputRef = useRef<any>();
     const t = useTranslations("common");
     const to = useTranslations("outgoing.confirm");
     const {showError} = useNotification();
@@ -28,11 +29,17 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
     const {stockContracts} = useUserAccount();
     const {isLoading, contract} = useSingleStockContract(stockContractId);
     const [state, action] = useFormState(createLotAction, {success: false, lotId: "", error: ""});
-    const [fieldValues, setFieldValues] = useState<{ material: string, weight: number }>({
+    const [fieldValues, setFieldValues] = useState<{ material: string, weight: string }>({
         material: stockContractId,
-        weight: 0
+        weight: ""
     });
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
+
+    useEffect(() => {
+        if(inputRef.current){
+            inputRef.current.focus();
+        }
+    }, []);
 
     useEffect(() => {
         if (state.success) {
@@ -69,6 +76,7 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
                 <div className="inline-flex relative items-center w-full">
                     <div className="grow">
                         <IntegerNumberInput
+                            ref={inputRef}
                             label={to("enter_weight")}
                             placeholder={to("enter_weight")}
                             name="weight"
@@ -77,7 +85,7 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
                                 setSubmitSuccessful(false);
                                 setFieldValues(prevState => ({
                                     ...prevState,
-                                    weight
+                                    weight: weight.toString()
                                 }))
                             }}
                             withButtons={false}
