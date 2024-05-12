@@ -42,6 +42,10 @@
       "label": "PP",
       "description": "Polypropylene"
     },
+    "ppf": {
+      "label": "PPF",
+      "description": "Polypropylene Film"
+    },
     "ps": {
       "label": "PS",
       "description": "Polystyrene"
@@ -73,6 +77,14 @@
     "pcr": {
       "label": "PCR",
       "description": "Post Consumer Resin"
+    },
+    "sku132":{
+      "label": "s132",
+      "description": "SKU-132"
+    },
+    "sku275":{
+      "label": "s275",
+      "description": "SKU-275"
     },
     "other": {
       "label": "XX",

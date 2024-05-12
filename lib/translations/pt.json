@@ -42,6 +42,10 @@
       "label": "PP",
       "description": "Polipropileno"
     },
+    "ppf": {
+      "label": "PPF",
+      "description": "Polipropileno Filme"
+    },
     "ps": {
       "label": "PS",
       "description": "Poliestireno"
@@ -67,8 +71,16 @@
       "description": "PCR - Polipropileno"
     },
     "rps": {
-      "label": "PS",
+      "label": "rPS",
       "description": "PCR - Poliestireno"
+    },
+    "sku132":{
+      "label": "s132",
+      "description": "SKU-132"
+    },
+    "sku275":{
+      "label": "s275",
+      "description": "SKU-275"
     },
     "other": {
       "label": "OTH",
