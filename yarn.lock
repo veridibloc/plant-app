@@ -772,9 +772,9 @@
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
 
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.20.tgz":
-  version "0.0.20"
-  resolved "./veridibloc-smart-contracts-v0.0.20.tgz#d594bc16d3061ab1d5e41ad5b35ba3dcd90714fb"
+"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.21.tgz":
+  version "0.0.21"
+  resolved "./veridibloc-smart-contracts-v0.0.21.tgz#ac6100a3a9d2e3d21efce59096b4ab5b721de75e"
   dependencies:
     "@signumjs/contracts" "^1.0.0-rc.75"
     "@signumjs/core" "^1.0.0-rc.75"
@@ -1103,15 +1103,10 @@ camelcase@^5.3.1:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-caniuse-lite@^1.0.30001538, caniuse-lite@^1.0.30001541:
-  version "1.0.30001549"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001549.tgz#7d1a3dce7ea78c06ed72c32c2743ea364b3615aa"
-  integrity sha512-qRp48dPYSCYaP+KurZLhDYdVE+yEyht/3NlmcJgVQ2VMGt6JL36ndQ/7rgspdZsJuxDPFIo/OzBT2+GmIJ53BA==
-
-caniuse-lite@^1.0.30001579:
-  version "1.0.30001589"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001589.tgz#7ad6dba4c9bf6561aec8291976402339dc157dfb"
-  integrity sha512-vNQWS6kI+q6sBlHbh71IIeC+sRwK2N3EDySc/updIGhIee2x5z00J4c1242/5/d6EpEMdOnk/m+6tuk4/tcsqg==
+caniuse-lite@^1.0.30001538, caniuse-lite@^1.0.30001541, caniuse-lite@^1.0.30001579:
+  version "1.0.30001618"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001618.tgz"
+  integrity sha512-p407+D1tIkDvsEAPS22lJxLQQaG8OTBEqo0KhzfABGk0TU4juBNDSfH0hyAp/HRyx+M8L17z/ltyhxh27FTfQg==
 
 chalk@^4.0.0:
   version "4.1.2"

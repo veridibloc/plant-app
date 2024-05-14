@@ -4,7 +4,7 @@ import {contractsProvider} from '@/common/contractsProvider';
 import {boomify, notAcceptable, unauthorized} from '@hapi/boom';
 import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
-import {PartnerSelector, StockContract} from "@veridibloc/smart-contracts";
+import {BusinessPartnerSelector, StockContract} from "@veridibloc/smart-contracts";
 import {fetchUserAccount} from "@/server/fetchUserAccount";
 import {User} from "@clerk/backend";
 import {Address} from "@signumjs/core";
@@ -65,7 +65,7 @@ export async function registerLot(prevState: any, formData: FormData) {
 
 async function ensureRecyclerIsAuthorizedPartner(user: User, separatorContract: StockContract) {
     const [authorizedPartners, account] = await Promise.all([
-        separatorContract.getPartners(PartnerSelector.Authorized),
+        separatorContract.getBusinessPartners(BusinessPartnerSelector.Authorized),
         fetchUserAccount(user)]
     )
     if(!account){
