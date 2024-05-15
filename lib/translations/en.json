@@ -30,6 +30,18 @@
       "label": "HDPE",
       "description": "High-Density Polyethylene"
     },
+    "hdpec": {
+      "label": "HDPEc",
+      "description": "High-Density Polyethylene - Colored"
+    },
+    "hdpeb": {
+      "label": "HDPEb",
+      "description": "High-Density Polyethylene - Black"
+    },
+    "hdpen": {
+      "label": "HDPEn",
+      "description": "High-Density Polyethylene - Natural/White"
+    },
     "pvc": {
       "label": "PVC",
       "description": "Polyvinyl Chloride"
@@ -43,8 +55,20 @@
       "description": "Polypropylene"
     },
     "ppf": {
-      "label": "PPF",
-      "description": "Polypropylene Film"
+      "label": "PPf",
+      "description": "Polypropylene - Film"
+    },
+    "ppr": {
+      "label": "PPr",
+      "description": "Polypropylene - Raffia"
+    },
+    "ppm": {
+      "label": "PPm",
+      "description": "Polypropylene - Mineral"
+    },
+    "ppb": {
+      "label": "PPb",
+      "description": "Polypropylene - Bucket/Bowl"
     },
     "ps": {
       "label": "PS",
