@@ -27,7 +27,7 @@
       "description": "Tereftalato de Polietileno"
     },
     "hdpe": {
-      "label": "HDPE",
+      "label": "PEAD",
       "description": "Polietileno de Alta Densidade"
     },
     "hdpec": {
@@ -47,7 +47,7 @@
       "description": "Policloreto de Vinila"
     },
     "ldpe": {
-      "label": "LDPE",
+      "label": "PEBD",
       "description": "Polietileno de Baixa Densidade"
     },
     "pp": {
@@ -79,7 +79,7 @@
       "description": "PCR - Tereftalato de Polietileno"
     },
     "rhdpe": {
-      "label": "rHDPE",
+      "label": "rPEAD",
       "description": "PCR - Polietileno de Alta Densidade"
     },
     "rpvc": {
@@ -87,7 +87,7 @@
       "description": "PCR - Policloreto de Vinila"
     },
     "rldpe": {
-      "label": "rLDPE",
+      "label": "rPEBD",
       "description": "PCR - Polietileno de Baixa Densidade"
     },
     "rpp": {

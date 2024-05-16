@@ -29,21 +29,21 @@ export const MaterialCard = ({materialSlug, id, onClick, weight, showWeight = fa
             onClick={handleClick}>
             <div className="flex flex-row space-x-2 items-center truncate justify-start">
                 <span
-                    className="min-w-[48px] min-h-[48px] lg:min-w-[64px] lg:min-h-[64px] rounded-full flex-grow flex justify-center items-center text-md font-bold text-gray-200"
+                    className="min-w-[54px] min-h-[54px] lg:min-w-[64px] lg:min-h-[64px] rounded-full flex-grow flex justify-center items-center text-sm font-bold text-gray-200"
                     style={{backgroundColor: bgColor}}
                 >
                     {tm(`${material}.label`).toUpperCase()}
                 </span>
                 <div className="truncate flex-shrink">
-                    <h3 className="text-lg font-bold text-gray-700 mb-0.5 truncate">{tm(`${material}.description`)}</h3>
-                    <small className="font-small text-gray-500 text-justify">
-                        {id}
+                    <p className="text-md font-bold text-gray-700 mb-0.5 truncate" style={{fontSize: showWeight ? '12px' : '14px'}}>{tm(`${material}.description`)}</p>
+                    <small className="text-[10px] text-gray-500 text-justify">
+                        ID: {id}
                     </small>
                 </div>
             </div>
             {showWeight && (
                 <div className="flex flex-grow justify-end space-x-2">
-                    <div className="border rounded text-gray-700 font-medium text-center text-sm lg:text-xl px-2 py-1 w-[80px] lg:w-[128px]">
+                <div className="border rounded text-gray-700 font-medium text-center text-sm lg:text-xl px-2 py-1 w-[80px] lg:w-[128px]">
                         {weight !== undefined ? `${number(weight)} kg` : tm("no_stock")}
                     </div>
                 </div>
