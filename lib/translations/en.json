@@ -55,8 +55,8 @@
       "description": "Polypropylene"
     },
     "ppf": {
-      "label": "PPf",
-      "description": "Polypropylene - Film"
+      "label": "PPF",
+      "description": "Polypropylene - Flexible"
     },
     "ppr": {
       "label": "PPr",
