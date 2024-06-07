@@ -60,7 +60,7 @@ export async function handleUserCreation(event: UserWebhookEvent) {
     const encryptedSeed = encrypt(seed, getEnv('AES_SECRET')) as string;
     const {publicKey} = generateMasterKeys(seed);
     const address = Address.fromPublicKey(publicKey);
-    console.info("Creating account: ", user.email_addresses[0].email_address, user.id);
+    console.info("Creating account: ", user.email_addresses.length ? user.email_addresses[0].email_address : user.username, user.id);
     try {
         await db.account.create({
             data: {
