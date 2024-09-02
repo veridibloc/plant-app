@@ -11,14 +11,23 @@ import {useSingleStockContract} from "@/ui/hooks/useSingleStockContract";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {notFound} from "next/navigation";
 import {useNotification} from "@/ui/hooks/useNotification";
+import useSWR from "swr";
+import {contractsProvider} from "@/common/contractsProvider";
 
 
 interface Props {
     stockContractId: string;
+    lotId: string;
     createLotAction: any;
 }
 
-export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
+async function fetchLots(contractId: string, lotId: string) {
+    const contract = await contractsProvider.getStockContract(contractId);
+    return contract.getLotData(lotId)
+    return (await contract.getAllLotIds()) || []
+}
+
+export const LotByIdAndWeightForm = ({stockContractId, lotId, createLotAction}: Props) => {
     const formRef = useRef<any>();
     const inputRef = useRef<any>();
     const t = useTranslations("common");
@@ -26,16 +35,17 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
     const {showError} = useNotification();
     const router = useEnhancedRouter();
     const {stockContracts} = useUserAccount();
-    const {isLoading, contract} = useSingleStockContract(stockContractId);
-    const [state, createLot] = useFormState(createLotAction, {success: false, lotId: "", error: ""});
-    const [fieldValues, setFieldValues] = useState<{ material: string, weight: string }>({
+    const {isLoading: isLoadingStockContract, contract} = useSingleStockContract(stockContractId);
+    const [state, action] = useFormState(createLotAction, {success: false, lotId: "", error: ""});
+    const [fieldValues, setFieldValues] = useState<{ material: string, weight: string, lotId: string }>({
         material: stockContractId,
-        weight: ""
+        weight: "",
+        lotId: ""
     });
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
 
     useEffect(() => {
-        if(inputRef.current){
+        if (inputRef.current) {
             inputRef.current.focus();
         }
     }, []);
@@ -43,17 +53,27 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
     useEffect(() => {
         if (state.success) {
             setSubmitSuccessful(true);
-            router.replace(`/outgoing/s/${stockContractId}/${state.lotId}?w=${fieldValues.weight}`)
+            router.replace(`/outgoing/c/${stockContractId}/${state.lotId}?w=${fieldValues.weight}`)
         }
         if (state.error) {
             showError(to("creation_failed"))
         }
     }, [state, stockContractId]);
 
+    const {
+        isLoading: isLoadingLot,
+        data: lot
+    } = useSWR(contract ? `stock/${contract.contractId}/lot/${lotId}` : null, async () => {
+        if (!contract) {
+            return null;
+
+        }
+        return contract.getLotData(lotId);
+    })
 
     const canSubmit = Number(fieldValues.material) && Number(fieldValues.weight);
 
-    if (!isLoading && !contract) {
+    if (!isLoadingStockContract && !contract) {
         return notFound();
     }
 
@@ -63,7 +83,7 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
     return (
         <>
             <form ref={formRef} className="flex flex-col gap-y-4 justify-evenly items-center w-full h-[40vh]"
-                  action={createLot}
+                  action={action}
             >
 
                 <input name="materialId" defaultValue={stockContractId} hidden/>
@@ -100,7 +120,8 @@ export const LotByWeightForm = ({stockContractId, createLotAction}: Props) => {
                 <div className="mx-auto w-full h-20 flex items-center justify-center">
                     <FormSubmitButton
                         className={`w-1/2 lg:w-1/3 transition-all ease-in ${submitSuccessful ? "hover:bg-green-600 bg-green-500" : ""}`}
-                        label={submitSuccessful ? t("success") : t("confirm")} disabled={!canSubmit || submitSuccessful}/>
+                        label={submitSuccessful ? t("success") : t("confirm")}
+                        disabled={!canSubmit || submitSuccessful}/>
                 </div>
             </form>
         </>

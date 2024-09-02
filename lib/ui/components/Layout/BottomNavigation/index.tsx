@@ -66,11 +66,33 @@ const RecyclerLinks = [
     }
 ]
 
+const ConverterLinks = [
+    {
+        href: '/dashboard',
+        icon: RiDashboardLine,
+        label: "home"
+    },
+    {
+        href: '/incoming',
+        icon: RiDownload2Fill,
+        label: "incoming"
+    },
+    {
+        href: '/outgoing/c',
+        icon: RiUpload2Fill,
+        label: "outgoing"
+    }
+]
+
 function getLinks({role, isIntermediate}: UserAccount) {
     if(role === "separator" ){
         return isIntermediate ? IntermediateSeparatorLinks : SeparatorLinks;
     }
-    return RecyclerLinks
+    if(role === "recycler"){
+        return RecyclerLinks
+    }
+
+    return ConverterLinks
 }
 
 export const BottomNavigation = () => {

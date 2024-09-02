@@ -9,15 +9,34 @@ import Link from "next/link";
 import Image from "next/image";
 
 // dirty hack to remove signup links
+// function disableSignUp() {
+//     if (!document) return;
+//     // TODO: use MutationObserver
+//     setTimeout(() => {
+//             const footer = document.getElementsByClassName("cl-footer");
+//             for (let e of footer) {
+//                 e.remove();
+//             }
+//         }, 1_000
+//     )
+// }
+
 function disableSignUp() {
     if (!document) return;
-    setTimeout(() => {
-            const footer = document.getElementsByClassName("cl-footer");
-            for (let e of footer) {
-                e.remove();
+
+    const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList') {
+                const footer = document.getElementsByClassName("cl-footer");
+                for (let e of footer) {
+                    e.remove();
+                }
+                observer.disconnect();
             }
-        }, 1_000
-    )
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
 export const SignIn = () => {
