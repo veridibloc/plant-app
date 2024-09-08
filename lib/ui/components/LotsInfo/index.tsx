@@ -9,7 +9,7 @@ interface Props {
     lotsInfo: LotReceiptsInfoType
 }
 
-export function _MultiLotsInfo({lotsInfo : {materialSlug, materialId, receipts}}: Props) {
+export function _LotsInfo({lotsInfo : {materialSlug, materialId, receipts}}: Props) {
 
     let totalWeight = 0;
     const items: AccordionItemType[] = [];
@@ -29,4 +29,4 @@ export function _MultiLotsInfo({lotsInfo : {materialSlug, materialId, receipts}}
     </>
 }
 
-export const MultiLotsInfo = memo(_MultiLotsInfo);
+export const LotsInfo = memo(_LotsInfo);

@@ -26,7 +26,7 @@ const queue = new AsyncQueue();
 interface Props {
     stockContractId: string
 }
-export function LotScanner({stockContractId}: Props) {
+export function SingleLotScanner({stockContractId}: Props) {
     const t = useTranslations("outgoing.scan_lot");
     const {showError, showWarning} = useNotification()
     const router = useEnhancedRouter();
@@ -96,6 +96,7 @@ export function LotScanner({stockContractId}: Props) {
     }
 
     const handleCreateLot = () => {
+        console.log("handleCreateLot", stockContractId, lotReceipt?.lotId, material?.id)
         router.push(`/outgoing/c/${stockContractId}/lot?lotId=${lotReceipt?.lotId}&materialId=${material?.id}`);
     }
 

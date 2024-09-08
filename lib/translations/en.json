@@ -102,11 +102,11 @@
       "label": "PCR",
       "description": "Post Consumer Resin"
     },
-    "sku132":{
+    "sku132": {
       "label": "s132",
       "description": "SKU-132"
     },
-    "sku275":{
+    "sku275": {
       "label": "s275",
       "description": "SKU-275"
     },
@@ -136,6 +136,14 @@
       "touch_to_scan": "Touch to scan",
       "touch_to_not_scan": "Touch to close camera",
       "change_camera": "Change Camera"
+    },
+    "lot_receipt_info": {
+      "lot": "Lot Id",
+      "weight": "Weight",
+      "initial_weight": "Claimed Weight",
+      "delivery_date": "Delivery Date",
+      "sender": "Sender",
+      "receipt_id": "Receipt Id"
     }
   },
   "dashboard": {
@@ -284,19 +292,12 @@
       "title": "Create Lot",
       "description": "Confirm the composition of your new lot and submit if all is correct.",
       "creation_failed": "Creation failed. Try again, or ask for support",
-      "creation_success": "Creation of the lot successful.",
-      "lot_receipt_info": {
-        "lot": "Lot Id",
-        "weight": "Weight",
-        "initial_weight": "Claimed Weight",
-        "delivery_date": "Delivery Date",
-        "sender": "Sender",
-        "receipt_id": "Receipt Id"
-      }
+      "creation_success": "Creation of the lot successful."
     },
     "confirm_lot_and_weight": {
       "title": "Create Lot",
       "description": "Enter weight you want to withdraw from Lot",
+      "enter_weight": "Enter weight",
       "creation_failed": "Creation failed. Try again, or ask for support",
       "creation_success": "Creation of the lot successful.",
       "lot_receipt_info": {
@@ -354,19 +355,19 @@
     }
   },
   "transfer": {
-      "title": "Transfer Token",
-      "description": "Fill out form to transfer token to your business partner",
-      "recipient": "Recipient",
-      "submitting_title": "Submitting",
-      "submitting_description": "Submitting the transfer request to the network.",
-      "submitted_title": "Submission Successful",
-      "submitted_description": "The transfer was submitted successfully to the network. It takes a few moments to be settled.",
-      "see_in_explorer": "See in Explorer",
-      "transfer_success": "Successfully submitted transaction",
-      "transfer_failed": "Oh, no. Transfer failed. Try again or contact support."
+    "title": "Transfer Token",
+    "description": "Fill out form to transfer token to your business partner",
+    "recipient": "Recipient",
+    "submitting_title": "Submitting",
+    "submitting_description": "Submitting the transfer request to the network.",
+    "submitted_title": "Submission Successful",
+    "submitted_description": "The transfer was submitted successfully to the network. It takes a few moments to be settled.",
+    "see_in_explorer": "See in Explorer",
+    "transfer_success": "Successfully submitted transaction",
+    "transfer_failed": "Oh, no. Transfer failed. Try again or contact support."
   },
-  "transaction" : {
-    "pending":{
+  "transaction": {
+    "pending": {
       "title": "Pending Transaction",
       "description": "A transaction is being processed by the network. It should be settled in a few moments.",
       "see_in_explorer": "Watch Transaction in Explorer",

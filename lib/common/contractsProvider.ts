@@ -52,9 +52,9 @@ export class ContractsProvider {
     async getStockContract(contractId: string) {
         const contract = await this.getStockContractService().with(contractId)
         const expectedHash = process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "";
-        if(contract.contract.machineCodeHashId !== expectedHash ) {
-          throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
-        }
+        // if(contract.contract.machineCodeHashId !== expectedHash ) {
+        //   throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
+        // }
         return contract;
     }
 

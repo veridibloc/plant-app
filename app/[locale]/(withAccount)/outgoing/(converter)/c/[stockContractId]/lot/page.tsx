@@ -1,16 +1,19 @@
 import {useTranslations} from "next-intl";
 import {PageContainer} from "@/ui/components/Layout/PageContainer";
-import {Header} from "@/ui/components/Layout/Header";
 import {PageProps} from "@/types/pageProps";
 import {cache} from "react";
-import {LotReceiptsInfo} from "@/types/lotReceiptsInfo";
-import {contractsProvider} from "@/common/contractsProvider";
-import {getMaterialSlugFromContractDescriptor} from "@/common/getMaterialSlugFromContractDescriptor";
 import {StockInfo} from "@/types/stockInfo";
 import {notFound} from "next/navigation";
+import {LotReceiptsInfo} from "@/types/lotReceiptsInfo";
+import {Header} from "@/ui/components/Layout/Header";
+import {contractsProvider} from "@/common/contractsProvider";
+import {getMaterialSlugFromContractDescriptor} from "@/common/getMaterialSlugFromContractDescriptor";
+import {SingleLotConfirmationForm} from "@/features/outgoing/converter/SingleLotConfirmationForm";
+import {createLotByLotIdAndWeight} from "./actions";
+import {SingleLotReceiptInfo} from "@/types/singleLotReceiptInfo";
 
 
-const fetchMaterialLotData = cache(async (materialId: string, lotId: string): Promise<LotReceiptsInfo | null> => {
+const fetchMaterialLotData = cache(async (materialId: string, lotId: string): Promise<SingleLotReceiptInfo | null> => {
     try {
         const stockContract = await contractsProvider.getStockContract(materialId);
         const lotReceipt = await stockContract.getSingleLotReceipt(lotId);
@@ -20,7 +23,7 @@ const fetchMaterialLotData = cache(async (materialId: string, lotId: string): Pr
         return {
             materialId,
             materialSlug: (getMaterialSlugFromContractDescriptor(stockContract.contract.description) ?? "other").toLowerCase(),
-            receipts: [lotReceipt]
+            receipt: lotReceipt
         }
     } catch (e: any) {
         console.error(e);
@@ -53,19 +56,18 @@ export default async function Page({params: {stockContractId}, searchParams: {lo
     if (!lotsInfo || !stockInfo) return notFound();
 
     return <PageContainer>
-        <PageContent lotsInfo={lotsInfo} stockInfo={stockInfo}/>
+        <PageContent lotInfo={lotsInfo} stockInfo={stockInfo}/>
     </PageContainer>
 }
 
 
-function PageContent({lotsInfo, stockInfo}: { lotsInfo: LotReceiptsInfo, stockInfo: StockInfo }) {
+function PageContent({lotInfo, stockInfo}: { lotInfo: SingleLotReceiptInfo, stockInfo: StockInfo }) {
     const t = useTranslations("outgoing.confirm_lot_and_weight")
     return <PageContainer>
         <Header title={t("title")} description={t("description")}/>
-        {JSON.stringify(lotsInfo)}
+        {JSON.stringify(lotInfo)}
         <hr/>
         {JSON.stringify(stockInfo)}
-
-        {/*<LotByIdAndWeightForm stockContractId={stockContractId} createLotAction={createLotByLotIdAndWeight} />*/}
+        <SingleLotConfirmationForm lotInfo={lotInfo} stockInfo={stockInfo} createLotAction={createLotByLotIdAndWeight} />
     </PageContainer>
 }

@@ -9,8 +9,8 @@ import {useFormState} from "react-dom";
 import {useEffect, useState} from "react";
 import {useTranslations} from "next-intl";
 import {useNotification} from "@/ui/hooks/useNotification";
-import {MultiLotsInfo} from "@/features/outgoing/recycler/MultiLotsInfo";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
+import {LotsInfo} from "@/ui/components/LotsInfo";
 
 interface Props {
     lotsInfo: LotReceiptsInfo;
@@ -43,7 +43,7 @@ export function MultiLotsConfirmationForm({lotsInfo, stockInfo, createLotAction}
 
     return <>
         <section className="flex flex-col items-center justify-center w-full gap-y-2">
-            <MultiLotsInfo lotsInfo={lotsInfo}/>
+            <LotsInfo lotsInfo={lotsInfo}/>
             <RiArrowDownLine size={48} color="#6b7280"/>
             <MaterialCard materialSlug={stockInfo.materialSlug} id={stockInfo.stockContractId}/>
         </section>
