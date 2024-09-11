@@ -8,19 +8,6 @@ import {Logo} from "@/ui/components/Logo";
 import Link from "next/link";
 import Image from "next/image";
 
-// dirty hack to remove signup links
-// function disableSignUp() {
-//     if (!document) return;
-//     // TODO: use MutationObserver
-//     setTimeout(() => {
-//             const footer = document.getElementsByClassName("cl-footer");
-//             for (let e of footer) {
-//                 e.remove();
-//             }
-//         }, 1_000
-//     )
-// }
-
 function disableSignUp() {
     if (!document) return;
 

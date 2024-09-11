@@ -25,7 +25,7 @@ function IncomingMaterialTransaction({transaction}: { transaction: Transaction }
     return <LabeledTextItem label={t(`${contract.label.toLowerCase()}.description`)}
                             text={`${number(parsed.quantity)} kg`}/>
 }
-
+// TODO: adapt for checking for outgoing lots
 export function PendingSeparatedMaterial() {
     const {stockContracts, publicKey} = useUserAccount();
     const ledgerService = useLedgerService()
