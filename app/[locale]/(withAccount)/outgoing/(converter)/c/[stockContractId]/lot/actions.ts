@@ -6,34 +6,30 @@ import {createSigner} from '@/server/createSigner';
 import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
 
 const schema = z.object({
-    materialContractId: z.string(),
+    lotId: z.string().regex(/^\d{10,24}$/), // single ID
+    stockContractId: z.string().regex(/^\d{10,24}$/),
     weight: z.number().gt(0),
 })
 
 
-export async function createLotByWeight(prevState: any, formData: FormData) {
+export async function createLotByLotIdAndWeight(prevState: any, formData: FormData) {
     try {
         const parsedData = schema.parse({
-            materialContractId: formData.get("materialId"),
-            weight: Number(formData.get("weight")),
+            weight: formData.get("weight"),
+            lotId: formData.get("lotId"),
+            stockContractId: formData.get("stockContractId"),
         })
 
         const user = await ensureAuthenticatedUser();
-        if (user.publicMetadata.role !== 'separator') {
+        if (user.publicMetadata.role !== 'converter') {
             throw unauthorized("You are not authorized to perform this action");
         }
 
-        const {materialContractId, weight} = parsedData
-        const contract = await contractsProvider.getStockContract(materialContractId);// check if exists!
+        const {lotId, stockContractId, weight} = parsedData
+        const contract = await contractsProvider.getStockContract(stockContractId);// check if exists!
         contract.signer = await createSigner(contract.ledger)
-
-        const {stockQuantity} = contract.getData();
-        if(stockQuantity < weight){
-            throw new Error("Not enough material in stock");
-        }
-
-        const txId = await contract.registerOutgoingMaterialByQuantity(weight);
-        console.info(`Created a lot (id: ${txId!.transaction}) of weight ${weight} kg for contract ${materialContractId}`);
+        const txId = await contract.registerOutgoingMaterialByLotIdAndQuantity(lotId, weight);
+        console.info(`Created a new lot (id: ${txId!.transaction}) from ${lotId} with quantity ${weight} for contract ${stockContractId}`);
         return {
             success: true,
             lotId: txId!.transaction

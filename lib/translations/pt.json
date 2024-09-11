@@ -132,6 +132,14 @@
       "touch_to_scan": "Toque para escanear",
       "touch_to_not_scan": "Toque para fechar a câmera",
       "change_camera": "Alterar Câmera"
+    },
+    "lot_receipt_info": {
+      "lot": "Id Lote",
+      "weight": "Peso",
+      "initial_weight": "Peso Anunciado",
+      "delivery_date": "Data de Entrega",
+      "sender": "Contrato de Envio",
+      "receipt_id": "Id Recibo"
     }
   },
   "dashboard": {
@@ -233,7 +241,7 @@
       "title": "Saída de Mercadoria",
       "description": "Selecionar material usado para criação de lote de mercardoria"
     },
-    "scan_lots": {
+    "scan_multi_lots": {
       "title": "Saída de Mercadoria",
       "description": "Escanear códigos de lotes de materiais a serem usados para nova lote de mercadoria",
       "create": "Criar",
@@ -261,15 +269,13 @@
       "description": "Confirme a composição de seu novo lote e envie se tudo estiver correto.",
       "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte.",
       "creation_success": "Sucesso na criação do lote",
-      "lot_receipt_info": {
-        "lot": "Id Lote",
-        "weight": "Peso",
-        "initial_weight": "Peso Anunciado",
-        "delivery_date": "Data de Entrega",
-        "sender": "Contrato de Envio",
-        "receipt_id": "Id Recibo"
+      "confirm_lot_and_weight": {
+        "title": "Saída de Mercadoria",
+        "description": "Selecione o lote e digite o peso do do novo lote a ser criado",
+        "enter_weight": "Digite o peso do novo lote",
+        "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte.",
+        "creation_success": "Sucesso na criação do lote"
       }
-
     },
 
     "lot": {

@@ -19,10 +19,11 @@ export class ContractsProvider {
     getCertificateTokenContractService() {
         return new CertificateContractService({
             ledger: this.ledger,
-            codeHash: getEnv("NEXT_PUBLIC_CONTRACTS_CERTIFICATE_TOKEN_CODE_HASH"),
-            reference: getEnv("NEXT_PUBLIC_CONTRACTS_CERTIFICATE_TOKEN_REF"),
             activationCosts: Amount.fromSigna(0.25),
             baseTransactionFee: Amount.fromSigna(0.01),
+            // we don't need the reference nor hash, as we do not create contracts
+            codeHash: "",
+            reference: "",
         })
     }
 
@@ -44,16 +45,17 @@ export class ContractsProvider {
             ledger: this.ledger,
             activationCosts: Amount.fromSigna(1.0),
             baseTransactionFee: Amount.fromSigna(0.01),
-            reference: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_REF || "",
-            codeHash: process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "",
+            // we don't need the reference nor hash, as we do not create contracts
+            reference: "",
+            codeHash: "",
         })
     }
 
     async getStockContract(contractId: string) {
         const contract = await this.getStockContractService().with(contractId)
-        const expectedHash = process.env.NEXT_PUBLIC_CONTRACTS_STOCK_CODE_HASH || "";
-        if(contract.contract.machineCodeHashId !== expectedHash ) {
-          throw new Error(`Contract Id (${contractId}) doesn't match Code Hash: Expected [${expectedHash}] but got [${contract.contract.machineCodeHashId}]`)
+        const contractCreatorId = process.env.NEXT_PUBLIC_CONTRACTS_CREATOR_ID || "";
+        if(contract.contract.creator !== process.env.NEXT_PUBLIC_CONTRACTS_CREATOR_ID) {
+          throw new Error(`Contract Id (${contractId}) is not created by VeridiBloc! Expected (id: ${contractCreatorId}), but got (id: ${contract.contract.creator})`)
         }
         return contract;
     }

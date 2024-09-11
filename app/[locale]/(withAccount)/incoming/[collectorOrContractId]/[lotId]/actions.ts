@@ -56,8 +56,8 @@ export async function registerLot(prevState: any, formData: FormData) {
 
         return {success: txId!.transaction};
     } catch (e: any) {
-        console.error("[Error registerLot]:", e.message);
         const boom = boomify(e);
+        console.error("[Error registerLot]:", boom.output.payload.message);
         return {error: boom.output.payload.message};
     }
 }

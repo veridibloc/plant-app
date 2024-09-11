@@ -1,19 +1,19 @@
 "use client"
 
+import React from "react";
+import Link from "next/link";
+import {useFormatter, useTranslations} from "next-intl";
+import {Address} from "@signumjs/core";
 import {LotReceiptData} from "@veridibloc/smart-contracts";
 import {useAppContext} from "@/ui/hooks/useAppContext";
 import {LabeledTextItem} from "@/ui/components/LabeledTextItem";
-import Link from "next/link";
-import {Address} from "@signumjs/core";
-import React from "react";
-import {useFormatter, useTranslations} from "next-intl";
 
 interface ItemProps{
     receipt:LotReceiptData
 }
 
 export function LotItemContent({receipt}: ItemProps){
-    const t = useTranslations("outgoing.confirm_multilot.lot_receipt_info");
+    const t = useTranslations("common.lot_receipt_info");
     const {number, dateTime} = useFormatter();
     const {Ledger : {ExplorerUrl}} = useAppContext();
     const {lotId, date, quantity, contractId, receiptId} = receipt
