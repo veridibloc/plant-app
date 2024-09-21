@@ -4,8 +4,6 @@ import {useTranslations} from "next-intl";
 import {useAuth, SignIn as ClerkSignIn} from "@clerk/nextjs";
 import {Spinner} from "@/ui/components/Spinner";
 import {useEffect, useRef} from "react";
-import {Logo} from "@/ui/components/Logo";
-import Link from "next/link";
 import Image from "next/image";
 
 function disableSignUp() {

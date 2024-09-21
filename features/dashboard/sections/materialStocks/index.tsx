@@ -47,8 +47,7 @@ export const MaterialStocks = () => {
 
   return (
       <section className="flex justify-start items-start w-full px-2 flex-wrap">
-        <p className="font-bold w-full text-start text-lg">{t("material_other")}</p>
-        <div className="flex flex-col mx-auto space-y-2 my-2 w-full">
+        <div className="flex flex-col mx-auto space-y-2 w-full">
           {isLoading && (
               <>
                 <MaterialCardSkeleton/>

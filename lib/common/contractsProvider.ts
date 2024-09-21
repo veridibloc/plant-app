@@ -36,7 +36,7 @@ export class ContractsProvider {
     }
 
     getCollectorTokenContractSingleton() {
-        return this.getCollectorTokenContractService().with(getEnv("NEXT_PUBLIC_CONTRACTS_COLLECTOR_TOKEN_ID"))
+        return this.getCollectorTokenContractService().with(getEnv("NEXT_PUBLIC_VERICLEAN_TOKEN_CONTRACT"))
     }
 
 
