@@ -7,7 +7,9 @@ import {Address} from "@signumjs/core";
 import {Avatar} from "@/ui/components/Avatar";
 import {AvatarImage} from "@/ui/components/Avatar/AvatarImage";
 import {Logo} from "@/ui/components/Logo";
-export function Printable({identifier, stockContractId, weight, materialLabel}: DisplayablePrintableProps) {
+
+
+export function Printable({identifier, weight, materialLabel}: DisplayablePrintableProps) {
     const tm = useTranslations("materials");
     const {publicKey, logoUrl} = useUserAccount()
 

@@ -13,6 +13,7 @@ import {notFound} from "next/navigation";
 import {useNotification} from "@/ui/hooks/useNotification";
 import useSWR from "swr";
 import {contractsProvider} from "@/common/contractsProvider";
+import {FormStateResponse} from "@/types/formStateResponse";
 
 
 interface Props {
@@ -36,7 +37,7 @@ export const LotByIdAndWeightForm = ({stockContractId, lotId, createLotAction}: 
     const router = useEnhancedRouter();
     const {stockContracts} = useUserAccount();
     const {isLoading: isLoadingStockContract, contract} = useSingleStockContract(stockContractId);
-    const [state, action] = useFormState(createLotAction, {success: false, lotId: "", error: ""});
+    const [state, action] = useFormState<FormStateResponse & {lotId: string}>(createLotAction, {lotId: ""});
     const [fieldValues, setFieldValues] = useState<{ material: string, weight: string, lotId: string }>({
         material: stockContractId,
         weight: "",
@@ -56,7 +57,7 @@ export const LotByIdAndWeightForm = ({stockContractId, lotId, createLotAction}: 
             router.replace(`/outgoing/c/${stockContractId}/${state.lotId}?w=${fieldValues.weight}`)
         }
         if (state.error) {
-            showError(to("creation_failed"))
+            showError(to("creation_failed", {reason: state.error}))
         }
     }, [state, stockContractId]);
 

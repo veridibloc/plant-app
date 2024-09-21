@@ -12,6 +12,7 @@ type Props = PageProps<{
     stockContractId: string,
     lotId: string
 }, { w: number }>;
+
 export default function Page({params: {stockContractId, lotId}, searchParams}: Props) {
     const t = useTranslations("outgoing.lot")
     return <PageContainer>

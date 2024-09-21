@@ -41,5 +41,5 @@ const config: AppContextType = {
 export const AppContext = createContext<AppContextType>(config);
 
 export const AppContextProvider: FC<ChildrenProps> = ({ children }) => {
-  return <AppContext.Provider value={config}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={config}>{children}</AppContext.Provider>
 };

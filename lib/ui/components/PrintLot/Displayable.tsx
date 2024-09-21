@@ -7,7 +7,6 @@ import {RiPrinterLine} from "react-icons/ri";
 
 
 export function Displayable({weight, materialLabel, identifier, stockContractId}: DisplayablePrintableProps) {
-    const tm = useTranslations("materials");
     const t = useTranslations("common");
 
     const handlePrint = () => {

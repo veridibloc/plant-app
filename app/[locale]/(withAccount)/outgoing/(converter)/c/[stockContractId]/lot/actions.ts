@@ -15,7 +15,7 @@ const schema = z.object({
 export async function createLotByLotIdAndWeight(prevState: any, formData: FormData) {
     try {
         const parsedData = schema.parse({
-            weight: formData.get("weight"),
+            weight: Number(formData.get("weight")),
             lotId: formData.get("lotId"),
             stockContractId: formData.get("stockContractId"),
         })
@@ -31,7 +31,7 @@ export async function createLotByLotIdAndWeight(prevState: any, formData: FormDa
         const txId = await contract.registerOutgoingMaterialByLotIdAndQuantity(lotId, weight);
         console.info(`Created a new lot (id: ${txId!.transaction}) from ${lotId} with quantity ${weight} for contract ${stockContractId}`);
         return {
-            success: true,
+            success: "true",
             lotId: txId!.transaction
         };
     } catch (e: any) {

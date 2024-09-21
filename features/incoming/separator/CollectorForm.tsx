@@ -6,8 +6,9 @@ import {useFormState, useFormStatus} from "react-dom";
 import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
 import {Select} from "@/ui/components/Select";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useNotification} from "@/ui/hooks/useNotification";
+import {FormStateResponse} from "@/types/formStateResponse";
 
 
 const initialFormValues = {
@@ -27,7 +28,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
     const tm = useTranslations("materials");
     const user = useUserAccount();
     const {showError} = useNotification()
-    const [state, action] = useFormState<any>(registerAction, {});
+    const [state, action] = useFormState<FormStateResponse>(registerAction, {});
     const [fieldValues, setFieldValues] = useState(initialFormValues);
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
     const handleOnChange = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -50,7 +51,7 @@ export const CollectorForm = ({collectorId, registerAction}: Props) => {
 
         if (state.error) {
             console.error(state.error);
-            showError(ti("confirmation.collection.registration_failed"))
+            showError(ti("confirmation.collection.registration_failed", {reason: state.error}))
         }
     }, [state]);
 

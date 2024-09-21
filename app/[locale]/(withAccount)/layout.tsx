@@ -26,7 +26,7 @@ export default async function RootLayout({children}: ChildrenProps) {
         <AccountProvider account={account}>
             <ClientRootLayout>
                 {children}
-            </ClientRootLayout>;
+            </ClientRootLayout>
         </AccountProvider>
     )
 }

@@ -220,7 +220,7 @@
       "collection": {
         "title": "Recebimento da Coleta",
         "description": "Por favor, confirme o recebimento do material coletado.",
-        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte."
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte. Motivo: {reason}"
       },
       "lot": {
         "title": "Recebimento de Mercadoria",
@@ -231,7 +231,7 @@
         "announced_weight": "Peso Anunciado",
         "enter_actual_weight": "Digite o peso atual em kg",
         "creation_date": "Data de Criação",
-        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte.",
+        "registration_failed": "Droga, o registro falhou. Tente novamente ou entre em contato com o suporte. Motivo: {reason}",
         "registration_success": "O registro foi feito com sucesso e está sendo processado pela rede."
       }
     }
@@ -262,18 +262,19 @@
       "title": "Saída de Mercadoria",
       "description": "Digite o peso do novo lote a ser criado",
       "enter_weight": "Digite o peso do novo lote",
-      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte."
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}"
     },
     "confirm_multilot": {
       "title": "Saída de Mercadoria",
-      "description": "Confirme a composição de seu novo lote e envie se tudo estiver correto.",
-      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte.",
+      "description_scan": "Escaneie o lote que você deseja converter",
+      "description_confirm": "Informe o peso que você deseja retirar do lote",
+      "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}",
       "creation_success": "Sucesso na criação do lote",
       "confirm_lot_and_weight": {
         "title": "Saída de Mercadoria",
         "description": "Selecione o lote e digite o peso do do novo lote a ser criado",
         "enter_weight": "Digite o peso do novo lote",
-        "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte.",
+        "creation_failed": "Falha na criação do lote. Tente novamente ou solicite suporte. Motivo: {reason}",
         "creation_success": "Sucesso na criação do lote"
       }
     },

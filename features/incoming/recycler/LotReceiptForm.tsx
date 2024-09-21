@@ -4,12 +4,13 @@ import {IntegerNumberInput} from "@/ui/components/IntegerNumberInput";
 import {useFormState} from "react-dom";
 import {FormSubmitButton} from "@/ui/components/Buttons/FormSubmitButton";
 import {useTranslations} from "next-intl";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNotification} from "@/ui/hooks/useNotification";
 import {SimpleCard} from "@/ui/components/Cards/SimpleCard";
 import {RiCheckboxCircleFill} from "react-icons/ri";
 import {Select} from "@/ui/components/Select";
 import {useUserAccount} from "@/ui/hooks/useUserAccount";
+import {FormStateResponse} from "@/types/formStateResponse";
 
 const initialFormValues = {
     recyclerContractId: "",
@@ -29,7 +30,7 @@ export const LotReceiptForm = ({contractId, lotId, quantity: nominalQuantity, re
     const tm = useTranslations("materials");
     const {showSuccess, showError} = useNotification();
     const {stockContracts} = useUserAccount()
-    const [state, action] = useFormState<any>(registerLotAction, {});
+    const [state, action] = useFormState<FormStateResponse>(registerLotAction, {});
     const [fieldValues, setFieldValues] = useState(initialFormValues);
     const [submitSuccessful, setSubmitSuccessful] = useState(false);
     const handleOnChange = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -51,7 +52,7 @@ export const LotReceiptForm = ({contractId, lotId, quantity: nominalQuantity, re
 
         if (state.error) {
             console.error(state.error);
-            showError(ti("confirmation.lot.registration_failed"));
+            showError(ti("confirmation.lot.registration_failed", {reason: state.error}));
         }
 
     }, [state]);

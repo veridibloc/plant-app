@@ -11,6 +11,7 @@ import {useTranslations} from "next-intl";
 import {useNotification} from "@/ui/hooks/useNotification";
 import {useEnhancedRouter} from "@/ui/hooks/useEnhancedRouter";
 import {LotsInfo} from "@/ui/components/LotsInfo";
+import {FormStateResponse} from "@/types/formStateResponse";
 
 interface Props {
     lotsInfo: LotReceiptsInfo;
@@ -22,7 +23,7 @@ export function MultiLotsConfirmationForm({lotsInfo, stockInfo, createLotAction}
     const t = useTranslations("common");
     const to = useTranslations("outgoing.confirm_multilot");
     const  router = useEnhancedRouter()
-    const [state, action] = useFormState<any>(createLotAction, {});
+    const [state, action] = useFormState<FormStateResponse & { lotId: string }>(createLotAction, {lotId : ""});
     const [submitSuccessful, setSubmitSuccessful] = useState(false)
     const {showError, showSuccess} = useNotification();
 
@@ -36,7 +37,7 @@ export function MultiLotsConfirmationForm({lotsInfo, stockInfo, createLotAction}
 
         if (state.error) {
             console.error(state.error);
-            showError(to("creation_failed"));
+            showError(to("creation_failed", {reason: state.error}));
         }
 
     }, [state]);

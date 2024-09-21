@@ -1,0 +1,1 @@
+export type FormStateResponse = { error?: string, success?: string };

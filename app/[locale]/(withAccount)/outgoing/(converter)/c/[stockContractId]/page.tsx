@@ -10,8 +10,7 @@ interface Props extends PageProps<{ stockContractId: string }> {
 export default function Page({params: {stockContractId}, searchParams}: Props) {
     const t = useTranslations("outgoing.confirm_lot_and_weight")
     return <PageContainer>
-        <Header title={t("title")} description={t("description")}/>
+        <Header title={t("title")} description={t("description_scan")}/>
         <SingleLotScanner stockContractId={stockContractId} />
-        {/*<LotByIdAndWeightForm stockContractId={stockContractId} createLotAction={createLotByLotIdAndWeight} />*/}
     </PageContainer>
 }

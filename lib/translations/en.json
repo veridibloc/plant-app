@@ -227,7 +227,7 @@
       "collection": {
         "title": "Confirm Collection Receipt",
         "description": "Please, confirm the receipt of the collected material.",
-        "registration_failed": "Snap, registration failed. Try again or contact support."
+        "registration_failed": "Snap, registration failed. Try again or contact support. Reason: {reason}"
       },
       "lot": {
         "title": "Confirm Lot Receipt",
@@ -238,7 +238,7 @@
         "announced_weight": "Announced Weight",
         "enter_actual_weight": "Enter actual weight in kg",
         "creation_date": "Creation Date",
-        "registration_failed": "Snap, registration failed. Try again or contact support.",
+        "registration_failed": "Snap, registration failed. Try again or contact support. Reason: {reason}",
         "registration_success": "Registration successful. It's being processed by the network now.",
         "lot_registered_already": {
           "title": "Lot Already Registered",
@@ -286,19 +286,20 @@
       "title": "Create Lot",
       "description": "Enter weight of the new lot/bale",
       "enter_weight": "Enter weight of the lot",
-      "creation_failed": "Creation failed. Try again, or ask for support"
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}"
     },
     "confirm_multilot": {
       "title": "Create Lot",
       "description": "Confirm the composition of your new lot and submit if all is correct.",
-      "creation_failed": "Creation failed. Try again, or ask for support",
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}",
       "creation_success": "Creation of the lot successful."
     },
     "confirm_lot_and_weight": {
       "title": "Create Lot",
-      "description": "Enter weight you want to withdraw from Lot",
+      "description_scan": "Scan the lot you want to convert",
+      "description_confirm": "Enter weight you want to withdraw from Lot",
       "enter_weight": "Enter weight",
-      "creation_failed": "Creation failed. Try again, or ask for support",
+      "creation_failed": "Creation failed. Try again, or ask for support. Reason: {reason}",
       "creation_success": "Creation of the lot successful.",
       "lot_receipt_info": {
         "lot": "Lot Id",

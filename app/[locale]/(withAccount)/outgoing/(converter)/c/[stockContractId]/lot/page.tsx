@@ -63,11 +63,11 @@ export default async function Page({params: {stockContractId}, searchParams: {lo
 
 function PageContent({lotInfo, stockInfo}: { lotInfo: SingleLotReceiptInfo, stockInfo: StockInfo }) {
     const t = useTranslations("outgoing.confirm_lot_and_weight")
-    return <PageContainer>
-        <Header title={t("title")} description={t("description")}/>
-        {JSON.stringify(lotInfo)}
-        <hr/>
-        {JSON.stringify(stockInfo)}
-        <SingleLotConfirmationForm lotInfo={lotInfo} stockInfo={stockInfo} createLotAction={createLotByLotIdAndWeight} />
-    </PageContainer>
+    return (
+        <>
+            <Header title={t("title")} description={t("description_confirm")}/>
+            <SingleLotConfirmationForm lotInfo={lotInfo} stockInfo={stockInfo}
+                                       createLotAction={createLotByLotIdAndWeight}/>
+        </>
+    )
 }

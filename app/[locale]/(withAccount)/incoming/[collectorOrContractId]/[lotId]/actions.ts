@@ -44,7 +44,9 @@ export async function registerLot(prevState: any, formData: FormData) {
             throw notAcceptable(`The lot ${lotId} was already confirmed`);
         }
 
+
         const signer = await createSigner(contractsProvider.ledger, user);
+
         separatorContract.signer = signer
         const receiptTxId = await separatorContract.confirmLotReceipt(lotId, quantity);
         console.info("Lot Receipt confirmed...", receiptTxId);

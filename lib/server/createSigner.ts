@@ -1,12 +1,13 @@
-import {notFound, unauthorized} from '@hapi/boom';
+import {notFound, unauthorized, notAcceptable} from '@hapi/boom';
 import {getEnv} from '@/common/getEnv';
 import {generateMasterKeys} from '@signumjs/crypto';
 import {NonSecureSigner} from '@veridibloc/smart-contracts';
 import {currentUser} from '@clerk/nextjs';
-import {Ledger} from '@signumjs/core';
+import {Address, Ledger} from '@signumjs/core';
 import {decrypt} from './crypto';
 import {fetchUserAccount} from './fetchUserAccount';
 import {User} from "@clerk/backend";
+import {Amount} from "@signumjs/util";
 
 export async function createSigner(ledger: Ledger, u: User | null = null) {
     let user = u;
@@ -29,6 +30,11 @@ export async function createSigner(ledger: Ledger, u: User | null = null) {
 
     if (publicKey.toLowerCase() !== userAccount.publicKey.toLowerCase()) {
         throw unauthorized("Public Key Mismatch");
+    }
+    const address = Address.fromPublicKey(publicKey);
+    const  account = await ledger.account.getAccount({accountId:address.getNumericId(), includeCommittedAmount: false, includeEstimatedCommitment: false});
+    if(Amount.fromPlanck(account.guaranteedBalanceNQT).less(Amount.fromSigna(3))){
+        throw notAcceptable("Insufficient funds")
     }
 
     return new NonSecureSigner({
