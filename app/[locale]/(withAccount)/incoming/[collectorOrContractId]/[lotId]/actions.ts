@@ -7,7 +7,9 @@ import {ensureAuthenticatedUser} from "@/server/ensureAuthenticatedUser";
 import {BusinessPartnerSelector, StockContract} from "@veridibloc/smart-contracts";
 import {fetchUserAccount} from "@/server/fetchUserAccount";
 import {User} from "@clerk/backend";
-import {Address} from "@signumjs/core";
+import {Address, Transaction} from "@signumjs/core";
+import {MetaInfo} from "@/types/userAccount";
+import {parseRegisterIncomingMaterialMessage} from "@/common/transactionParser";
 
 const schema = z.object({
     separatorContractId: z.string(),
@@ -15,6 +17,7 @@ const schema = z.object({
     lotId: z.string(),
     quantity: z.number().gt(0),
 })
+
 
 export async function registerLot(prevState: any, formData: FormData) {
     try {
@@ -36,7 +39,10 @@ export async function registerLot(prevState: any, formData: FormData) {
 
         const {lotId, quantity, separatorContractId, recyclerContractId} = parsedData.data;
         const separatorContract = await contractsProvider.getStockContract(separatorContractId);
-        await ensureRecyclerIsAuthorizedPartner(user, separatorContract);
+        await Promise.all([
+            ensureUserIsAuthorizedPartner(user, separatorContract),
+            ensureLotIdIsNotRegisteredAlready(user, lotId)
+        ])
 
         console.info("Incoming Lot Receipt...", parsedData.data);
         const lotReceipt = await separatorContract.getSingleLotReceipt(lotId);
@@ -65,16 +71,68 @@ export async function registerLot(prevState: any, formData: FormData) {
 }
 
 
-async function ensureRecyclerIsAuthorizedPartner(user: User, separatorContract: StockContract) {
+async function ensureUserIsAuthorizedPartner(user: User, separatorContract: StockContract) {
     const [authorizedPartners, account] = await Promise.all([
         separatorContract.getBusinessPartners(BusinessPartnerSelector.Authorized),
         fetchUserAccount(user)]
     )
-    if(!account){
+    if (!account) {
         throw unauthorized();
     }
     const recyclerAccountId = Address.fromPublicKey(account.publicKey).getNumericId();
-    if (!authorizedPartners.some(({accountId}) => recyclerAccountId === accountId)){
+    if (!authorizedPartners.some(({accountId}) => recyclerAccountId === accountId)) {
         throw unauthorized();
     }
+}
+
+/**
+ * This message checks, if an incoming lot is not pending already, or was registered elsewhere.
+ * @param user
+ * @param lotId
+ */
+async function ensureLotIdIsNotRegisteredAlready(user: User, lotId: string) {
+    await Promise.all([
+        ensureUserContractsHaveNotLotId(user, lotId), // no other of my contracts have this
+        ensureLotIdIsNotPending(lotId), // not in transit
+        ensureLotIdIsNotInRecentBlocks(lotId, 4) // was not registered elsewhere last 4 blocks
+    ])
+}
+
+async function ensureUserContractsHaveNotLotId(user: User, lotId: string): Promise<void> {
+    const metaInfo = (user.publicMetadata as unknown as MetaInfo) ?? {};
+    const stockContractIds = metaInfo.stockContracts.map(({id}) => id)
+
+    const ownStockContracts = await contractsProvider.getManyStockContracts(stockContractIds);
+
+    // 1 - check if any of the contracts has the lot ID registered already (Map Key 4)
+    const incomingQuantities = await Promise.all(ownStockContracts.map(c => c.getKeyMapValue(StockContract.Maps.KeyIncomingMaterial.toString(), lotId)))
+    const contractHasLotAlready = incomingQuantities.some(q => Number(q) > 0);
+    if (contractHasLotAlready) {
+        throw unauthorized(`Lot (id: ${lotId}) was already registered`);
+    }
+}
+
+async function ensureLotIdIsNotPending(lotId: string): Promise<void> {
+    const {unconfirmedTransactions} = await contractsProvider.ledger.transaction.getUnconfirmedTransactions()
+    if (_transactionHasIncomingMessage(unconfirmedTransactions, lotId)) {
+        throw unauthorized(`Lot (id: ${lotId}) is being registered already`);
+    }
+}
+
+async function ensureLotIdIsNotInRecentBlocks(lotId: string, numberOfBlocks: number): Promise<void> {
+    const {blocks} = await contractsProvider.ledger.block.getBlocks(0, numberOfBlocks - 1, true)
+    const lastBlocksTransactions = blocks.flatMap(b => b.transactions as Transaction[]);
+    if (_transactionHasIncomingMessage(lastBlocksTransactions, lotId)) {
+        throw unauthorized(`Lot (id: ${lotId}) was registered already`);
+    }
+}
+
+function _transactionHasIncomingMessage(txs: Transaction[], lotId: string) {
+    return txs.some(tx => {
+        const incomingMaterialMessage = parseRegisterIncomingMaterialMessage(tx)
+        if (!incomingMaterialMessage) {
+            return false
+        }
+        return incomingMaterialMessage.originId === lotId
+    })
 }

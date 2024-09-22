@@ -8,12 +8,12 @@ import {LotDetails} from "@/features/stock/LotDetails";
 const fetchLotData = cache(async ( lotId: string, contractId: string) => {
     try {
 
-        console.debug("[fetchLotData] Fetching LotData...", lotId, contractId);
         const stock = await contractsProvider.getStockContract(contractId);
         const [lotData, lotReceipt]  = await Promise.all([
             stock.getLotData(lotId),
             stock.getSingleLotReceipt(lotId),
             ])
+
         return {
             lotData,
             lotReceipt
