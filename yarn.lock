@@ -772,9 +772,10 @@
     "@typescript-eslint/types" "6.8.0"
     eslint-visitor-keys "^3.4.1"
 
-"@veridibloc/smart-contracts@./veridibloc-smart-contracts-v0.0.24.tgz":
+"@veridibloc/smart-contracts@^0.0.24":
   version "0.0.24"
-  resolved "./veridibloc-smart-contracts-v0.0.24.tgz#61876bab1555122c8c39f65be3dcb555663306e6"
+  resolved "https://npm.pkg.github.com/download/@veridibloc/smart-contracts/0.0.24/63f8519671d8514a1cad41a099fcea44cd193af8#63f8519671d8514a1cad41a099fcea44cd193af8"
+  integrity sha512-utqXNZgl/P5cWDSeuEQeF7FBbSkDgSU6fBSovSOsnRGVvEVkJryt8nVpZEHIDr6Xnm9GsKn/OHKqkDbrfp5FKw==
   dependencies:
     "@signumjs/contracts" "^1.0.0-rc.75"
     "@signumjs/core" "^1.0.0-rc.75"
