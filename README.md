@@ -40,3 +40,32 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# PRIVATE GITHUB PACKAGE
+
+`Veridibloc` packages are private. 
+
+## Local Development
+
+Create a file `.npmrc` in the root folder"
+
+```bash
+touch .nvmrc
+
+```
+And copy the following content. `<GHP_TOKEN>` needs to be replaced by the (classic) Private Access Token with at least `read:repo` scope
+
+```
+; Use NPM registry by default
+//registry.npmjs.org/
+
+; GitHub Packages registry for your org's packages
+//npm.pkg.github.com/:_authToken=<GHP_TOKEN>
+@veridibloc:registry=https://npm.pkg.github.com
+```
+
+## Vercel
+
+In vercel create a _shared_ environment variable named `NPM_RC` and copy the content from `.npmrc` into it.
+Then assign this env var to all your projects that uses the package.
