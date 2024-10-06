@@ -69,3 +69,5 @@ And copy the following content. `<GHP_TOKEN>` needs to be replaced by the (class
 
 In vercel create a _shared_ environment variable named `NPM_RC` and copy the content from `.npmrc` into it.
 Then assign this env var to all your projects that uses the package.
+
+> The Token for Vercel requires repo access also, otherwise you'll get permission errors. Addtionally, this doesn't work with yarn but npm.
