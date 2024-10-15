@@ -41,7 +41,7 @@ export async function registerLot(prevState: any, formData: FormData) {
         const separatorContract = await contractsProvider.getStockContract(separatorContractId);
         await Promise.all([
             ensureUserIsAuthorizedPartner(user, separatorContract),
-            ensureLotIdIsNotRegisteredAlready(user, lotId)
+            // ensureLotIdIsNotRegisteredAlready(user, lotId)
         ])
 
         console.info("Incoming Lot Receipt...", parsedData.data);
