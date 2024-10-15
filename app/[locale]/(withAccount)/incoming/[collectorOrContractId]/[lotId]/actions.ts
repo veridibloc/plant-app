@@ -41,7 +41,7 @@ export async function registerLot(prevState: any, formData: FormData) {
         const separatorContract = await contractsProvider.getStockContract(separatorContractId);
         await Promise.all([
             ensureUserIsAuthorizedPartner(user, separatorContract),
-            // ensureLotIdIsNotRegisteredAlready(user, lotId)
+            ensureLotIdIsNotRegisteredAlready(user, lotId)
         ])
 
         console.info("Incoming Lot Receipt...", parsedData.data);
@@ -64,8 +64,8 @@ export async function registerLot(prevState: any, formData: FormData) {
 
         return {success: txId!.transaction};
     } catch (e: any) {
+        console.error("[Error registerLot]:", e.message);
         const boom = boomify(e);
-        console.error("[Error registerLot]:", boom.output.payload.message);
         return {error: boom.output.payload.message};
     }
 }
@@ -108,14 +108,14 @@ async function ensureUserContractsHaveNotLotId(user: User, lotId: string): Promi
     const incomingQuantities = await Promise.all(ownStockContracts.map(c => c.getKeyMapValue(StockContract.Maps.KeyIncomingMaterial.toString(), lotId)))
     const contractHasLotAlready = incomingQuantities.some(q => Number(q) > 0);
     if (contractHasLotAlready) {
-        throw unauthorized(`Lot (id: ${lotId}) was already registered`);
+        throw notAcceptable(`Lot (id: ${lotId}) was already registered`);
     }
 }
 
 async function ensureLotIdIsNotPending(lotId: string): Promise<void> {
     const {unconfirmedTransactions} = await contractsProvider.ledger.transaction.getUnconfirmedTransactions()
     if (_transactionHasIncomingMessage(unconfirmedTransactions, lotId)) {
-        throw unauthorized(`Lot (id: ${lotId}) is being registered already`);
+        throw notAcceptable(`Lot (id: ${lotId}) is being registered already`);
     }
 }
 
@@ -123,7 +123,7 @@ async function ensureLotIdIsNotInRecentBlocks(lotId: string, numberOfBlocks: num
     const {blocks} = await contractsProvider.ledger.block.getBlocks(0, numberOfBlocks - 1, true)
     const lastBlocksTransactions = blocks.flatMap(b => b.transactions as Transaction[]);
     if (_transactionHasIncomingMessage(lastBlocksTransactions, lotId)) {
-        throw unauthorized(`Lot (id: ${lotId}) was registered already`);
+        throw notAcceptable(`Lot (id: ${lotId}) was registered already`);
     }
 }
 
